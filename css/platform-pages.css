@@ -616,7 +616,7 @@
     width: .16rem;
     height: .16rem;
     margin-right: .06rem;
-    background: url('../images/listShow/Frame-1.svg') center / contain no-repeat;
+    background: url('../images/listShow/icon-date.svg') center / contain no-repeat;
 }
 
 .agri_img_meta span + span {
@@ -627,7 +627,7 @@
 }
 
 .agri_img_meta span + span::before {
-    background-image: url('../images/listShow/Group 1000005293.svg');
+    background-image: url('../images/listShow/icon-location.svg');
 }
 
 .agri_project_info {
@@ -677,19 +677,19 @@
 }
 
 .agri_project_info li:nth-child(1)::before {
-    background-image: url('../images/listShow/Frame.svg');
+    background-image: url('../images/listShow/icon-category.svg');
 }
 
 .agri_project_info li:nth-child(2)::before {
-    background-image: url('../images/listShow/Group 1000005598-1.svg');
+    background-image: url('../images/listShow/icon-scale.svg');
 }
 
 .agri_project_info li:nth-child(3)::before {
-    background-image: url('../images/listShow/Group 1000005594-1.svg');
+    background-image: url('../images/listShow/icon-transfer.svg');
 }
 
 .agri_project_info li:nth-child(4)::before {
-    background-image: url('../images/listShow/Group 1171275739.svg');
+    background-image: url('../images/listShow/icon-price.svg');
 }
 
 .agri_project_info h2,
@@ -707,7 +707,7 @@
     color: rgba(255, 255, 255, .86);
 }
 
-/* filter 将彩色图标过渡为白色，支持 transition 动画 */
+/* filter 将彩色图标过渡为白色，支�?transition 动画 */
 .agri_project_card:hover .agri_project_info li::before {
     filter: brightness(0) invert(1);
 }
