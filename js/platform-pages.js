@@ -7,6 +7,76 @@
         });
     }
 
+    function initHeroSwiper() {
+        var heroEl = document.querySelector('.agri_hero_swiper');
+        if (!heroEl || !window.Swiper) return;
+
+        new Swiper('.agri_hero_swiper', {
+            loop: true,
+            speed: 800,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false
+            },
+            navigation: {
+                prevEl: '.agri_hero_prev',
+                nextEl: '.agri_hero_next'
+            }
+        });
+    }
+
+    function initCategorySwiper() {
+        var catEl = document.querySelector('.agri_category_swiper');
+        if (!catEl || !window.Swiper) return;
+
+        function getRem() {
+            return parseFloat(getComputedStyle(document.documentElement).fontSize);
+        }
+
+        function getW1480Offset() {
+            var rem = getRem();
+            var w1480px = 14.8 * rem;
+            var maxW = window.innerWidth * 0.9;
+            var contentW = Math.min(w1480px, maxW);
+            return Math.max(0, (window.innerWidth - contentW) / 2);
+        }
+
+        var categorySwiper = new Swiper('.agri_category_swiper', {
+            slidesPerView: 'auto',
+            freeMode: {
+                enabled: true,
+                momentum: true
+            },
+            grabCursor: true,
+            spaceBetween: Math.round(getRem() * 0.4),
+            slidesOffsetBefore: getW1480Offset(),
+            slidesOffsetAfter: getW1480Offset(),
+            resistance: true,
+            resistanceRatio: 0.6
+        });
+
+        var catLinks = document.querySelectorAll('.agri_category_swiper .agri_category');
+        catLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                catLinks.forEach(function(l) { l.classList.remove('cur'); });
+                link.classList.add('cur');
+            });
+        });
+
+        var resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (categorySwiper && !categorySwiper.destroyed) {
+                    categorySwiper.params.spaceBetween = Math.round(getRem() * 0.4);
+                    categorySwiper.params.slidesOffsetBefore = getW1480Offset();
+                    categorySwiper.params.slidesOffsetAfter = getW1480Offset();
+                    categorySwiper.update();
+                }
+            }, 100);
+        });
+    }
+
     function initAgricultureFilters() {
         var filter = document.querySelector('.agri_filter');
         if (!filter) return;
@@ -84,9 +154,15 @@
         updateSelectedTags();
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initAgricultureFilters);
-    } else {
+    function initAll() {
+        initHeroSwiper();
         initAgricultureFilters();
+        initCategorySwiper();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAll);
+    } else {
+        initAll();
     }
 })();

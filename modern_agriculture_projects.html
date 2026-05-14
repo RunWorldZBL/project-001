@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
@@ -60,8 +60,21 @@
 
 <main class="agri_projects">
     <section class="agri_hero">
-        <div class="agri_hero_img">
-            <img src="images/listShow/banner.png" alt="密云区东邵渠镇东葫芦峪村农业场景">
+        <div class="agri_hero_img swiper agri_hero_swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/listShow/banner.png" alt="密云区东邵渠镇东葫芦峪村农业场景">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/listShow/item3.png" alt="平谷区镇罗营镇农田">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/listShow/item1.png" alt="设施农业温室">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/listShow/item2.png" alt="东葫芦峪村涉农实物资产">
+                </div>
+            </div>
         </div>
         <button class="agri_hero_arrow agri_hero_prev" type="button" aria-label="上一项">
             <img src="images/listShow/icon-arrow.svg" alt="">
@@ -76,36 +89,55 @@
     </section>
 
     <section class="agri_body">
-        <div class="agri_category_scroll">
-            <div class="agri_categories w1480">
-                <a class="agri_category" href="javascript:;" style="--cat-bg: url('images/listShow/item3.png')">
-                    <div>
-                        <h2>都市型现代农业</h2>
-                        <p>项目数量 <strong>231</strong></p>
+        <div class="agri_category_swiper_outer">
+            <div class="swiper agri_category_swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide agri_category_slide">
+                        <a class="agri_category cur" href="javascript:;" style="--cat-bg: url('../images/listShow/cat-item1.png')">
+                            <div>
+                                <h2>都市型现代农业</h2>
+                                <p>项目数量 <strong>231</strong></p>
+                            </div>
+                            <span><div class="cat-icon-wrap"><div class="cat-icon-back"></div><div class="cat-icon-front"><img src="images/listShow/icon-cat1.svg" alt=""></div></div></span>
+                        </a>
                     </div>
-                    <span><img src="images/listShow/icon-cat-urban.svg" alt=""></span>
-                </a>
-                <a class="agri_category" href="javascript:;">
-                    <div>
-                        <h2>休闲农业与乡村旅游</h2>
-                        <p>项目数量 <strong>189</strong></p>
+                    <div class="swiper-slide agri_category_slide">
+                        <a class="agri_category" href="javascript:;" style="--cat-bg: url('../images/listShow/cat-item1.png')">
+                            <div>
+                                <h2>休闲农业与乡村旅游</h2>
+                                <p>项目数量 <strong>189</strong></p>
+                            </div>
+                            <span><div class="cat-icon-wrap"><div class="cat-icon-back"></div><div class="cat-icon-front"><img src="images/listShow/icon-cat2.svg" alt=""></div></div></span>
+                        </a>
                     </div>
-                    <span><img src="images/listShow/icon-cat-leisure.svg" alt=""></span>
-                </a>
-                <a class="agri_category" href="javascript:;">
-                    <div>
-                        <h2>现代设施农业</h2>
-                        <p>项目数量 <strong>654</strong></p>
+                    <div class="swiper-slide agri_category_slide">
+                        <a class="agri_category" href="javascript:;" style="--cat-bg: url('../images/listShow/cat-item1.png')">
+                            <div>
+                                <h2>现代设施农业</h2>
+                                <p>项目数量 <strong>654</strong></p>
+                            </div>
+                            <span><div class="cat-icon-wrap"><div class="cat-icon-back"></div><div class="cat-icon-front"><img src="images/listShow/icon-cat3.svg" alt=""></div></div></span>
+                        </a>
                     </div>
-                    <span><img src="images/listShow/icon-cat-facility.svg" alt=""></span>
-                </a>
-                <a class="agri_category" href="javascript:;">
-                    <div>
-                        <h2>农业产业链融合产业</h2>
-                        <p>项目数量 <strong>147</strong></p>
+                    <div class="swiper-slide agri_category_slide">
+                        <a class="agri_category" href="javascript:;" style="--cat-bg: url('../images/listShow/cat-item1.png')">
+                            <div>
+                                <h2>农业产业链融合产业</h2>
+                                <p>项目数量 <strong>147</strong></p>
+                            </div>
+                            <span><div class="cat-icon-wrap"><div class="cat-icon-back"></div><div class="cat-icon-front"><img src="images/listShow/icon-cat4.svg" alt=""></div></div></span>
+                        </a>
                     </div>
-                    <span><img src="images/listShow/icon-cat-chain.svg" alt=""></span>
-                </a>
+                    <div class="swiper-slide agri_category_slide">
+                        <a class="agri_category" href="javascript:;" style="--cat-bg: url('../images/listShow/cat-item1.png')">
+                            <div>
+                                <h2>物业经营管理</h2>
+                                <p>项目数量 <strong>36</strong></p>
+                            </div>
+                            <span><div class="cat-icon-wrap"><div class="cat-icon-back"></div><div class="cat-icon-front"><img src="images/listShow/icon-cat5.svg" alt=""></div></div></span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
