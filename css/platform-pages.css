@@ -277,7 +277,6 @@
     transition: opacity .3s;
 }
 
-.agri_category.cur::before,
 .agri_category:hover::before {
     opacity: 1;
 }
@@ -324,9 +323,6 @@
     max-height: .42rem;
 }
 
-.agri_category.cur h2,
-.agri_category.cur p,
-.agri_category.cur strong,
 .agri_category:hover h2,
 .agri_category:hover p,
 .agri_category:hover strong {
@@ -512,6 +508,7 @@
 }
 
 .agri_project_card {
+    position: relative;
     display: flex;
     align-items: center;
     min-height: 3.34rem;
@@ -519,21 +516,34 @@
     border-radius: .2rem;
     background: rgba(255, 255, 255, .96);
     box-shadow: 0 .12rem .34rem rgba(4, 42, 86, .03);
-    transition: transform .3s, box-shadow .3s;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+/* 用伪元素承载渐变，通过 opacity 实现平滑淡入淡出 */
+.agri_project_card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: .2rem;
+    background: linear-gradient(90deg, #0751ad 0%, #0846a2 60%, #073f96 100%);
+    opacity: 0;
+    transition: opacity .4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.agri_project_card:hover::before {
+    opacity: 1;
 }
 
 .agri_project_card:hover {
     transform: translateY(-.04rem);
-    box-shadow: 0 .2rem .42rem rgba(4, 42, 86, .08);
-}
-
-.agri_project_featured {
-    color: var(--color-white);
-    background: linear-gradient(90deg, #0751ad 0%, #0846a2 60%, #073f96 100%);
+    box-shadow: 0 .24rem .48rem rgba(4, 42, 86, .18);
 }
 
 .agri_project_img {
     position: relative;
+    z-index: 1;
     flex: 0 0 3.69rem;
     height: 2.62rem;
     overflow: hidden;
@@ -621,6 +631,8 @@
 }
 
 .agri_project_info {
+    position: relative;
+    z-index: 1;
     flex: 1;
     min-width: 0;
     margin-left: .6rem;
@@ -632,11 +644,11 @@
     font-size: .26rem;
     line-height: 1.5;
     font-weight: 700;
+    transition: color .4s ease;
 }
 
-.agri_project_featured .agri_project_info h2 {
+.agri_project_card:hover .agri_project_info h2 {
     color: var(--color-white);
-    font-size: .28rem;
 }
 
 .agri_project_info ul {
@@ -648,22 +660,22 @@
 }
 
 .agri_project_info li {
-    position: relative;
-    padding-left: .3rem;
+    display: flex;
+    align-items: center;
     color: #222;
     font-size: .16rem;
     line-height: 1.35;
+    transition: color .4s ease;
 }
 
 .agri_project_info li::before {
     content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    flex-shrink: 0;
+    margin-right: .1rem;
     width: .2rem;
     height: .2rem;
     background: center / contain no-repeat;
+    transition: filter .4s ease;
 }
 
 .agri_project_info li:nth-child(1)::before {
@@ -684,27 +696,17 @@
 
 .agri_project_info li span {
     color: rgba(0, 0, 0, .5);
+    transition: color .4s ease;
 }
 
-.agri_project_featured .agri_project_info li,
-.agri_project_featured .agri_project_info li span {
+.agri_project_card:hover .agri_project_info li,
+.agri_project_card:hover .agri_project_info li span {
     color: rgba(255, 255, 255, .86);
 }
 
-.agri_project_featured .agri_project_info li:nth-child(1)::before {
-    background-image: url('../images/listShow/Frame-2.svg');
-}
-
-.agri_project_featured .agri_project_info li:nth-child(2)::before {
-    background-image: url('../images/listShow/Group 1000005598.svg');
-}
-
-.agri_project_featured .agri_project_info li:nth-child(3)::before {
-    background-image: url('../images/listShow/Group 1000005594.svg');
-}
-
-.agri_project_featured .agri_project_info li:nth-child(4)::before {
-    background-image: url('../images/listShow/Group 1171275739-1.svg');
+/* filter 将彩色图标过渡为白色，支持 transition 动画 */
+.agri_project_card:hover .agri_project_info li::before {
+    filter: brightness(0) invert(1);
 }
 
 .agri_project_info .agri_price strong {
@@ -726,22 +728,17 @@
     color: var(--color-blue);
     font-size: .2rem;
     font-weight: 500;
-    transition: background .3s, color .3s, border-color .3s;
-}
-
-.agri_project_featured .agri_detail_btn {
-    color: var(--color-white);
-    border-color: var(--color-white);
+    transition: background .4s ease, color .4s ease, border-color .4s ease;
 }
 
 .agri_project_card:hover .agri_detail_btn {
     color: var(--color-white);
-    border-color: var(--color-blue);
-    background: var(--color-blue);
+    border-color: rgba(255, 255, 255, .75);
+    background: transparent;
 }
 
-.agri_project_featured:hover .agri_detail_btn {
-    color: var(--color-blue);
+.agri_project_card:hover .agri_detail_btn:hover {
+    color: #0b4ca1;
     border-color: var(--color-white);
     background: var(--color-white);
 }
