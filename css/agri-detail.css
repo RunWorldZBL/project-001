@@ -579,7 +579,8 @@
     position: relative;
 }
 .agri_dtl_gallery_swiper {
-    overflow: hidden;
+    /* 让阴影可以溢出 swiper 容器；远处 slide 已用 opacity:0 隐藏，不会暴露 */
+    overflow: visible;
     padding: 0;
 }
 .agri_dtl_gallery_swiper .swiper-wrapper {
