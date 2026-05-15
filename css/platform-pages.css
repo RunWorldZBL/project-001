@@ -370,8 +370,9 @@
 
 .cat-icon-front img {
     width: .22rem;
-    max-height: .22rem;
     display: block;
+    max-height: .22rem;
+    margin-top: 0.02rem;
 }
 
 .agri_category:hover h2,
@@ -395,16 +396,21 @@
 }
 
 .agri_filter {
-    position: relative;
-    padding: .46rem .6rem .42rem;
-    border-radius: .2rem;
+    position: relative; 
+    z-index: 9;
+    padding: .4rem .6rem .3rem;
+    border-radius: .28rem;
     background: var(--color-white);
     box-shadow: 0 .18rem .36rem rgba(4, 42, 86, .04);
+}
+.agri_filter .filter_row {
+    padding: 0;
 }
 
 .agri_filter_row {
     display: flex;
     align-items: flex-start;
+    border-bottom: none !important;
 }
 
 .agri_filter_label {
@@ -419,12 +425,12 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: .14rem .24rem;
+    gap: .14rem 0;
     width: calc(100% - 1.2rem);
 }
 
 .agri_town_row {
-    margin-top: .28rem;
+    margin-top: .2rem;
 }
 
 .agri_town_options {
@@ -444,6 +450,7 @@
     line-height: 1;
     font-size: .18rem;
     cursor: pointer;
+    border: none;
 }
 
 .agri_filter .filter_option.cur {
@@ -453,9 +460,11 @@
 }
 
 .agri_town_options .filter_option {
-    color: rgba(0, 0, 0, .48);
+    color: rgba(0, 0, 0, 0.48);
 }
-
+.agri_filter .filter_option:hover {
+    color: var(--color-white);
+}
 .agri_town_options .filter_option.cur {
     color: var(--color-blue);
     background: transparent;
@@ -465,7 +474,7 @@
 .agri_filter_selected {
     align-items: center;
     margin-top: .36rem;
-    padding-top: .28rem;
+    padding-top: .31rem;
     border-top: 1px dashed rgba(11, 76, 161, .2);
 }
 
@@ -553,7 +562,7 @@
 .agri_filter_search .search_btn {
     width: .76rem;
     height: .48rem;
-    margin-right: .03rem;
+    margin-right: .06rem;
     border-radius: .24rem;
     background: var(--color-blue);
     color: var(--color-white);
@@ -811,11 +820,44 @@
 
 .agri_bottom_scene {
     position: relative;
-    margin-top: -.1rem;
-    padding: 2.1rem 0 .78rem;
-    background: linear-gradient(180deg, rgba(241, 248, 254, 1) 0%, rgba(241, 248, 254, .68) 28%, rgba(241, 248, 254, .18) 100%), url("../images/listShow/banner.png") center bottom / cover no-repeat;
+    padding: .8rem 0 .78rem 1.2rem;
 }
 
+.agri_bottom_scene_bg {
+    width: 100%;
+    height: 10rem;
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+}
+.agri_bottom_scene_bg_inner {
+    width:  100%;
+    height: 16rem;
+    background: linear-gradient(180deg, rgba(241, 248, 254, 1) 0%, rgba(241, 248, 254, .68) 28%, rgba(241, 248, 254, .18) 100%), url("../images/listShow/footer-1.png") center bottom / cover no-repeat;
+}
+
+.slider_bg_left,
+.slider_bg_right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4rem;
+    pointer-events: none;
+    z-index: 0;
+}
+.slider_bg_left {
+    left: 0;
+}
+.slider_bg_right {
+    right: 0;
+}
+.slider_bg_left .slider_bg,
+.slider_bg_right .slider_bg {
+    position: absolute;
+    width: 100%;
+    height: 4rem;
+    background: var(--slider-bg);
+}
 .agri_bottom_scene::before {
     content: "";
     position: absolute;
@@ -830,6 +872,7 @@
     margin: 0;
 }
 
+/* ===== 平板 / 中等屏 ===== */
 @media screen and (max-width: 1200px) {
     .agri_hero {
         height: 5rem;
@@ -857,19 +900,26 @@
         padding-top: .36rem;
     }
 
+    /* 侧边装饰图在平板/移动端隐藏 */
+    .slider_bg_left,
+    .slider_bg_right {
+        display: none;
+    }
+
     .agri_category_slide {
         width: 3rem;
     }
 
     .agri_category {
         height: 1.72rem;
-        padding: .42rem .24rem .24rem;
+        padding: .32rem .24rem;
     }
 
     .agri_category h2 {
         font-size: .2rem;
     }
 
+    /* ---- 筛选面板：行内换行、选项区横向滚动 ---- */
     .agri_filter {
         margin-top: .36rem;
         padding: .3rem .24rem;
@@ -883,7 +933,7 @@
     .agri_filter_label,
     .agri_filter_options,
     .agri_town_options {
-        flex-basis: 100%;
+        flex: 0 0 100%;
         width: 100%;
     }
 
@@ -905,7 +955,9 @@
         display: none;
     }
 
+    /* 已选择区：标题、标签行、搜索框 三段堆叠 */
     .agri_filter_selected {
+        flex-wrap: wrap;
         align-items: flex-start;
         gap: .14rem;
     }
@@ -913,6 +965,7 @@
     .agri_filter_selected .selected_tit,
     .agri_filter_selected .selected_tags,
     .agri_filter_search {
+        flex: 0 0 100%;
         width: 100%;
         margin-left: 0;
     }
@@ -922,57 +975,85 @@
     }
 
     .agri_filter_selected .selected_tag_list {
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        scrollbar-width: none;
+        flex-wrap: wrap;
     }
 
     .agri_filter_search {
         margin-top: .04rem;
     }
 
+    /* ---- 项目卡片：核心修复，改为纵向堆叠 ---- */
     .agri_project_list {
         gap: .24rem;
         margin-top: .36rem;
     }
 
     .agri_project_card {
-        flex-wrap: wrap;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        flex-wrap: nowrap;
         padding: .22rem;
-        min-height: initial;
+        min-height: 0;
         border-radius: .16rem;
     }
 
     .agri_project_img {
-        flex-basis: 100%;
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 100%;
         height: auto;
         aspect-ratio: 369 / 262;
     }
 
     .agri_project_info {
+        flex: 0 0 auto;
         width: 100%;
+        min-width: 0;
         margin-left: 0;
         margin-top: .22rem;
     }
 
     .agri_project_info h2 {
+        max-width: 100%;
         font-size: .22rem;
     }
 
     .agri_project_info ul {
-        grid-template-columns: 1fr;
-        gap: .12rem;
+        grid-template-columns: 1fr 1fr;
+        gap: .14rem .2rem;
         margin-top: .2rem;
+        max-width: 100%;
+    }
+
+    .agri_project_info li {
+        font-size: .15rem;
+    }
+
+    .agri_project_info .agri_price strong {
+        font-size: .24rem;
+    }
+
+    .agri_detail_btn {
+        margin-top: .24rem;
+        width: 2rem;
     }
 
     .agri_bottom_scene {
-        padding-top: .9rem;
+        padding: .9rem 0 .78rem;
+        text-align: center;
     }
 }
 
+/* ===== 移动端 ===== */
 @media screen and (max-width: 767px) {
     .agri_hero {
         height: 4.2rem;
+    }
+
+    .agri_hero_text {
+        top: 52%;
+        max-width: 92%;
     }
 
     .agri_hero_text h1 {
@@ -983,8 +1064,30 @@
         display: none;
     }
 
+    .agri_hero_text p {
+        font-size: .18rem;
+    }
+
+    .agri_category_swiper_outer {
+        padding-bottom: .4rem;
+    }
+
     .agri_category_slide {
         width: 2.75rem;
+    }
+
+    .agri_category {
+        height: 1.5rem;
+        padding: .26rem .18rem;
+    }
+
+    .agri_category h2 {
+        font-size: .18rem;
+    }
+
+    .agri_category p {
+        margin-top: .12rem;
+        font-size: .14rem;
     }
 
     .agri_category span {
@@ -992,18 +1095,76 @@
         height: .68rem;
     }
 
-    .agri_filter .filter_option,
-    .agri_filter_selected .selected_tag {
+    .agri_filter {
+        padding: .24rem .2rem;
+    }
+
+    .agri_filter_label {
         font-size: .16rem;
+    }
+
+    .agri_filter .filter_option,
+    .agri_filter_selected .selected_tag,
+    .agri_filter_selected .selected_tit,
+    .agri_filter_selected .clear_btn {
+        font-size: .16rem;
+    }
+
+    .agri_filter_selected {
+        margin-top: .24rem;
+        padding-top: .24rem;
+    }
+
+    .agri_filter_search {
+        height: .56rem;
+        border-radius: .28rem;
+    }
+
+    .agri_filter_search input {
+        font-size: .16rem;
+    }
+
+    .agri_filter_search .search_btn {
+        height: .44rem;
+        width: .9rem;
+        font-size: .16rem;
+    }
+
+    /* 项目卡片：单列展示信息 */
+    .agri_project_info h2 {
+        font-size: .2rem;
+        line-height: 1.45;
+    }
+
+    .agri_project_info ul {
+        grid-template-columns: 1fr;
+        gap: .12rem;
+        margin-top: .18rem;
+    }
+
+    .agri_project_info li {
+        font-size: .15rem;
     }
 
     .agri_img_meta {
         font-size: .14rem;
-        flex-wrap: wrap;
+        gap: .08rem;
+    }
+
+    .agri_detail_btn {
+        width: 100%;
+        margin-top: .22rem;
+        height: .52rem;
+        font-size: .18rem;
     }
 
     .agri_project_info .agri_price strong {
         display: block;
-        margin-top: .08rem;
+        font-size: .24rem;
+        margin-top: .06rem;
+    }
+
+    .agri_bottom_scene {
+        padding: .6rem .24rem;
     }
 }

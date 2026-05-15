@@ -79,9 +79,7 @@
     <div class="agri_dtl_hero_inner">
         <!-- 面包屑 -->
         <div class="agri_dtl_breadcrumb">
-            <svg class="agri_dtl_bc_home" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 6.5L8 1.5L14 6.5V14H10V10H6V14H2V6.5Z" stroke="rgba(255,255,255,0.75)" stroke-width="1.2" fill="none"/>
-            </svg>
+            <img src="images/agri-detail/icon-home.svg" class="icon-home" alt="">
             <a href="index.html">首页</a>
             <span class="agri_dtl_bc_sep">›</span>
             <a href="modern_agriculture_projects.html">精选项目</a>
@@ -117,19 +115,13 @@
                     </div>
 
                     <!-- 主图上层：播放按钮 -->
-                    <a class="agri_dtl_play_btn" href="javascript:;" aria-label="播放视频">
-                        <svg viewBox="0 0 30 30" width="30" height="30" fill="none">
-                            <circle cx="15" cy="15" r="14" stroke="white" stroke-width="1.5"/>
-                            <polygon points="12,9 22,15 12,21" fill="white"/>
-                        </svg>
-                    </a>
-
+                    <a class="agri_dtl_play_btn" href="javascript:;" aria-label="播放视频"></a>
                     <!-- 左右箭头（叠在主图上） -->
                     <button class="agri_dtl_arrow agri_dtl_arrow_prev" id="heroImgPrev" aria-label="上一张">
-                        <img src="images/agri-detail/btn-arrow.svg" alt="">
+                        <img src="images/agri-detail/icon-left.svg" alt="">
                     </button>
                     <button class="agri_dtl_arrow agri_dtl_arrow_next" id="heroImgNext" aria-label="下一张">
-                        <img src="images/agri-detail/btn-arrow.svg" alt="">
+                        <img src="images/agri-detail/icon-right.svg" alt="">
                     </button>
 
                     <!-- 底部渐变遮罩（叠在图上，让缩略图背景融合） -->
@@ -162,18 +154,26 @@
 
                 <!-- 收藏 / 分享 -->
                 <div class="agri_dtl_actions">
-                    <button class="agri_dtl_act_btn">
+                    <!-- 收藏：点击切换激活状态 -->
+                    <button class="agri_dtl_act_btn agri_dtl_fav_btn">
                         <span class="agri_dtl_act_icon">
-                            <img src="images/agri-detail/icon-fav.svg" alt="">
+                            <img class="agri_dtl_icon_normal" src="images/agri-detail/favorite.svg" alt="收藏">
+                            <img class="agri_dtl_icon_active" src="images/agri-detail/favorite-active.svg" alt="已收藏">
                         </span>
                         <span>收藏</span>
                     </button>
-                    <button class="agri_dtl_act_btn">
+                    <!-- 分享：hover 显示激活图标 + 二维码浮层 -->
+                    <div class="agri_dtl_act_btn agri_dtl_share_btn">
                         <span class="agri_dtl_act_icon">
-                            <img src="images/agri-detail/icon-share1.svg" alt="">
+                            <img class="agri_dtl_icon_normal" src="images/agri-detail/share.svg" alt="分享">
+                            <img class="agri_dtl_icon_active" src="images/agri-detail/share-active.svg" alt="分享">
                         </span>
                         <span>分享</span>
-                    </button>
+                        <div class="agri_dtl_share_popup">
+                            <img src="images/code.png" alt="扫码分享">
+                            <p>扫码分享</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 属性列表 -->
@@ -345,51 +345,67 @@
             <span class="agri_dtl_title_bar"></span>
             <h2>项目详情</h2>
         </div>
-        <p class="agri_dtl_detail_text">
-            <strong>基本情况：</strong>项目建设、使用主体均为北京泰华芦村种植专业合作社，项目所在地块731.84亩土地，主要用途为各类蔬菜种植。
-            <strong>地理位置：</strong>北京市房山区窦店镇芦村河西，紧邻京石高速窦店出口。
-            <strong>园区规模：</strong>占地面积2000亩，其中设施农业种植面积1200亩。
-            <strong>功能定位：</strong>集蔬菜种植、生态淡水养殖、科技推广、科普教育、休闲旅游等功能于一身。
-        </p>
+        <div class="agri_dtl_detail_text">
+            <p>
+                基本情况：项目建设、使用主体均为北京泰华芦村种植专业合作社，项目所在地块731.84亩土地，主要用途为各类蔬菜种植。
+            </p>
+            <p> 地理位置：北京市房山区窦店镇芦村河西，紧邻京石高速窦店出口。</p>
+            <p> 园区规模：占地面积2000亩，其中设施农业种植面积1200亩。</p>
+            <p> 功能定位：集蔬菜种植、生态淡水养殖、科技推广、科普教育、休闲旅游等功能于一身。</p>
+        </div>
 
         <!-- 图集轮播（中心放大式） -->
         <div class="agri_dtl_gallery_wrap">
             <div class="agri_dtl_gallery_swiper swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <a data-fancybox="detail-gallery" href="images/listShow/item1.png">
-                            <img src="images/listShow/item1.png" alt="园区实景1">
+                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
+                            <img src="images/agri-detail/item1.png" alt="园区实景1">
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="detail-gallery" href="images/listShow/item2.png">
-                            <img src="images/listShow/item2.png" alt="园区实景2">
+                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
+                            <img src="images/agri-detail/item1.png" alt="园区实景2">
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="detail-gallery" href="images/listShow/item3.png">
-                            <img src="images/listShow/item3.png" alt="园区实景3">
+                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
+                            <img src="images/agri-detail/item1.png" alt="园区实景2">
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="detail-gallery" href="images/listShow/item4.png">
-                            <img src="images/listShow/item4.png" alt="园区实景4">
+                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
+                            <img src="images/agri-detail/item1.png" alt="园区实景2">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
+                            <img src="images/agri-detail/item1.png" alt="园区实景2">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
+                            <img src="images/agri-detail/item1.png" alt="园区实景3">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
+                            <img src="images/agri-detail/item1.png" alt="园区实景4">
                         </a>
                     </div>
                 </div>
-                <button class="agri_dtl_arrow agri_dtl_arrow_prev agri_dtl_arrow--dark" aria-label="上一张">
-                    <img src="images/agri-detail/btn-arrow.svg" alt="">
-                </button>
-                <button class="agri_dtl_arrow agri_dtl_arrow_next agri_dtl_arrow--dark" aria-label="下一张">
-                    <img src="images/agri-detail/btn-arrow.svg" alt="">
-                </button>
             </div>
-            <!-- 分页点 -->
-            <div class="agri_dtl_gallery_dots flex">
-                <span class="agri_dtl_dot agri_dtl_dot--active"></span>
-                <span class="agri_dtl_dot"></span>
-                <span class="agri_dtl_dot"></span>
-                <span class="agri_dtl_dot"></span>
+            <!-- 控件：左箭头 + 分页点 + 右箭头 -->
+            <div class="agri_dtl_gallery_ctrls">
+                <button class="agri_dtl_gallery_arrow agri_dtl_gallery_arrow--prev" aria-label="上一张">
+                    <img class="agri_dtl_gallery_arrow_normal" src="images/agri-detail/icon-left.png" alt="">
+                    <img class="agri_dtl_gallery_arrow_active" src="images/agri-detail/icon-right-active.png" alt="">
+                </button>
+                <div class="agri_dtl_gallery_dots flex"></div>
+                <button class="agri_dtl_gallery_arrow agri_dtl_gallery_arrow--next" aria-label="下一张">
+                    <img class="agri_dtl_gallery_arrow_normal" src="images/agri-detail/icon-left.png" alt="">
+                    <img class="agri_dtl_gallery_arrow_active" src="images/agri-detail/icon-right-active.png" alt="">
+                </button>
             </div>
         </div>
     </div>
@@ -759,7 +775,7 @@
     <div class="agri_dtl_cta_inner">
         <h2 class="agri_dtl_cta_title">我们正在寻找优质的合作方</h2>
         <a href="javascript:;" class="agri_dtl_cta_apply_btn">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M3 10h14" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <img src="images/agri-detail/icon-apply.svg" alt="">
             服务申请
         </a>
     </div>

@@ -16,7 +16,7 @@
 .agri_dtl_sec_title {
     display: flex;
     align-items: center;
-    gap: .22rem;
+    gap: .24rem;
     margin-bottom: .6rem;
 }
 .agri_dtl_title_bar {
@@ -84,7 +84,7 @@
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
-    padding: 1.2rem 0.3rem 0;
+    padding: 1.2rem 0 0;
     box-sizing: border-box;
 }
 
@@ -96,6 +96,10 @@
     font-size: .16rem;
     color: rgba(255,255,255,.75);
     margin-bottom: .68rem;
+}
+.agri_dtl_breadcrumb .icon-home {
+    width: .16rem;
+    height: .16rem;
 }
 .agri_dtl_bc_home { flex-shrink: 0; margin-right: .04rem; vertical-align: middle; }
 .agri_dtl_breadcrumb a  { color: rgba(255,255,255,.75); }
@@ -148,26 +152,23 @@
     position: absolute;
     z-index: 6;
     left: 50%;
-    top: 41%;
+    top: 45%;
     transform: translate(-50%, -50%);
-    width: .78rem;
-    height: .78rem;
+    width: .8rem;
+    height: .8rem;
     border-radius: 50%;
-    border: 1.5px solid rgba(255,255,255,.9);
-    background: rgba(255,255,255,.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background .2s;
     pointer-events: auto;
+    background: url('../images/agri-detail/icon-play.svg') center / cover no-repeat;
 }
-.agri_dtl_play_btn:hover { background: rgba(255,255,255,.25); }
 
 /* 导航箭头 —— Figma: prev x=304 → (304-220)/100=.84rem；next x=988 → (988-220)/100=7.68rem；y=466 → (466-216)/100=2.5rem */
 .agri_dtl_arrow {
     position: absolute;
     z-index: 7;
-    top: 2.5rem;            /* 250px from content top = 41% of 604px */
+    top: 45%;          
     transform: translateY(-50%);
     width: .52rem;
     height: .52rem;
@@ -183,15 +184,11 @@
 }
 .agri_dtl_arrow:hover { background: rgba(255,255,255,.22); opacity: 1; }
 .agri_dtl_arrow img   { width: .3rem; }
-/* Prev 在 x=84px 处，旋转 180deg */
 .agri_dtl_arrow_prev {
-    left: .84rem;
-    transform: translateY(-50%) rotate(180deg);
+    left: .32rem;
 }
-.agri_dtl_arrow_prev:hover { transform: translateY(-50%) rotate(180deg); }
-/* Next 在 x=768px → right = 850-768-52=30px ≈ .3rem */
 .agri_dtl_arrow_next {
-    left: 7.68rem;
+    right: 0.32rem;
 }
 
 /* 底部渐变（让缩略图与主图融合） */
@@ -227,7 +224,7 @@
     border: 1px solid rgba(255,255,255,.5);
     opacity: .7;
     cursor: pointer;
-    transition: opacity .2s, border-color .2s;
+    transition: opacity .3s, border-color .3s, width .3s, height .3s;
     padding: 0;
 }
 .agri_dtl_thumb img {
@@ -268,8 +265,8 @@
 /* 收藏/分享按钮组  Figma y=322 → margin-bottom ≈ .32rem */
 .agri_dtl_actions {
     display: flex;
-    gap: .14rem;
-    margin-bottom: .56rem; /* 322+38+18=378 → next content at y=410, gap=410-360=.5rem */
+    gap: .3rem;
+    margin-bottom: .5rem;
 }
 .agri_dtl_act_btn {
     display: flex;
@@ -285,19 +282,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: .38rem;
-    height: .38rem;
-    border-radius: .12rem;
-    background: rgba(255,255,255,.18);
 }
-.agri_dtl_act_icon img { width: .22rem; height: .22rem; }
+.agri_dtl_act_icon img { width: .38rem; height: .38rem; }
 
 /* 属性列表  Figma: 18px，行间距 y=46px */
 .agri_dtl_proj_stats {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: .16rem;
+    gap: .2rem;
 }
 .agri_dtl_proj_stats li {
     display: flex;
@@ -309,7 +302,6 @@
 /* 标签列宽 = 1240-1132=108px=1.08rem，文字居中 */
 .agri_dtl_stat_label {
     flex: 0 0 1.08rem;
-    text-align: center;
     opacity: .5;
     font-size: .18rem;
 }
@@ -322,7 +314,7 @@
 .agri_dtl_stat_divider {
     height: 0;
     border-top: 1px solid rgba(255,255,255,.2);
-    margin: .22rem 0;
+    margin: .3rem 0;
 }
 
 /* 价格行  Figma y=685-713 */
@@ -330,11 +322,10 @@
     display: flex;
     align-items: baseline;
     gap: .14rem;
-    margin-bottom: .3rem;
+    margin-bottom: .46rem;
 }
 .agri_dtl_price_label {
     flex: 0 0 1.08rem;
-    text-align: center;
     font-size: .18rem;
     color: rgba(255,255,255,.5);
     opacity: 1;
@@ -350,7 +341,7 @@
 /* CTA 按钮组  Figma y=759 */
 .agri_dtl_cta_btns {
     display: flex;
-    gap: .2rem;
+    gap: .3rem;
     margin-top: .12rem;
 }
 .agri_dtl_cta_btn {
@@ -380,8 +371,8 @@
    项目概览  (Figma: y=940, h=770, 白底)
    ============================================================ */
 .agri_dtl_overview {
-    padding: .8rem 0 1rem;
-    background: #fff;
+    padding: 1.08rem 0;
+    background: #fff url('../images/agri-detail/section1-bg.png') center / cover no-repeat;
 }
 .agri_dtl_overview_inner {
     display: flex;
@@ -396,7 +387,7 @@
 .agri_dtl_overview_desc {
     font-size: .18rem;
     line-height: 1.85;
-    color: rgba(0,0,0,.7);
+    color: rgba(0,0,0, 1);
     margin-top: .14rem;
 }
 
@@ -404,6 +395,7 @@
 .agri_dtl_overview_stats {
     flex: 1;
     min-width: 0;
+    margin-top: 0.38rem;
 }
 .agri_dtl_stat_table {
     width: 100%;
@@ -412,10 +404,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .16rem 0;
+    padding: .44rem 0 .16rem;
     border-bottom: 1px solid rgba(11,76,161,.1);
 }
-.agri_dtl_stat_row--last { border-bottom: none; }
+.agri_dtl_stat_row--last { 
+    border-bottom: none; 
+    padding-top: 0.68rem;
+}
 .agri_dtl_stat_num_row {
     display: flex;
     align-items: baseline;
@@ -445,7 +440,7 @@
 .agri_dtl_stat_name {
     display: block;
     font-size: .18rem;
-    color: rgba(0,0,0,.5);
+    color: rgba(0,0,0,1);
 }
 
 
@@ -454,22 +449,14 @@
    ============================================================ */
 .agri_dtl_invest {
     position: relative;
-    padding: .8rem 0 .9rem;
+    padding: 1.08rem 0;
     overflow: hidden;
 }
 .agri_dtl_invest_bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(150deg, #0f3d98 0%, #0a2e7a 50%, #071e5a 100%);
+    background: url('../images/agri-detail/section2-bg.jpg') center / cover no-repeat;
     z-index: 0;
-}
-.agri_dtl_invest_bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: url('../images/agri-detail/bg-blue-pattern.jpg') center / cover no-repeat;
-    opacity: .1;
-    mix-blend-mode: screen;
 }
 .agri_dtl_invest_inner {
     position: relative;
@@ -483,7 +470,6 @@
 }
 .agri_dtl_invest_col {
     flex: 1;
-    padding-bottom: .3rem;
 }
 .agri_dtl_invest_col_label {
     font-size: .24rem;
@@ -543,13 +529,13 @@
 
 /* 详情行 */
 .agri_dtl_invest_detail {
-    padding-top: .3rem;
+    padding-top: .42rem;
 }
 .agri_dtl_invest_detail_label {
     font-size: .24rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: .18rem;
+    margin-bottom: .23rem;
 }
 .agri_dtl_invest_detail_text {
     font-size: .18rem;
@@ -558,8 +544,8 @@
 }
 .agri_dtl_invest_long_line {
     height: 0;
-    border-top: 1px solid rgba(255,255,255,.15);
-    margin-top: .3rem;
+    border-top: 1px solid rgba(255,255,255,.4);
+    margin-top: .4rem;
 }
 
 
@@ -572,40 +558,58 @@
 }
 .agri_dtl_detail_text {
     font-size: .18rem;
-    line-height: 1.85;
-    color: rgba(0,0,0,.72);
-    margin-bottom: .6rem;
+    line-height: 1.7;
+    color: rgba(0,0,0,1);
+    margin-bottom: .4rem;
 }
 .agri_dtl_detail_text strong {
     color: #1a1a1a;
     font-weight: 600;
 }
 
-/* 图集轮播：中心放大式  Figma: 主图 1200×680，侧图 865×489 */
+/* ============================================================
+   项目详情图集：3 层层叠卡片轮播
+   作用范围严格限定在 .agri_dtl_gallery_swiper 内，不会影响其它 Swiper
+   ------------------------------------------------------------
+   第一层 active : 12rem × 6.8rem
+   第二层 prev/next : 10rem × 5.7rem，相对 active 露出 0.69rem
+   第三层 prev2/next2 : 7.84rem × 4.58rem，相对第二层露出 0.6rem
+   ============================================================ */
 .agri_dtl_gallery_wrap {
     position: relative;
 }
 .agri_dtl_gallery_swiper {
-    overflow: visible;
-    padding: 0 1.4rem;       /* 两侧各留部分侧图可见 */
+    overflow: hidden;
+    padding: 0;
+}
+.agri_dtl_gallery_swiper .swiper-wrapper {
+    align-items: center;
 }
 .agri_dtl_gallery_swiper .swiper-slide {
     width: 12rem;
     height: 6.8rem;
     border-radius: .2rem;
     overflow: hidden;
-    opacity: .5;
-    transform: scale(.92);
-    transition: opacity .4s, transform .4s;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(.55);
+    transition: transform .5s ease, opacity .5s ease, box-shadow .5s ease;
+    box-shadow: 0 .12rem .3rem rgba(11, 76, 161, .15);
+    z-index: 0;
 }
+/* 第一层 active：最强阴影，与下层产生层级感 */
 .agri_dtl_gallery_swiper .swiper-slide-active {
-    opacity: 1;
-    transform: scale(1);
+    box-shadow: 0 .24rem .56rem rgba(11, 76, 161, .35), 0 .08rem .2rem rgba(0, 0, 0, .12);
 }
+/* 第二层：中等阴影 */
 .agri_dtl_gallery_swiper .swiper-slide-prev,
 .agri_dtl_gallery_swiper .swiper-slide-next {
-    opacity: .65;
-    transform: scale(.96);
+    box-shadow: 0 .16rem .4rem rgba(11, 76, 161, .25);
+}
+/* 第三层：轻阴影 */
+.agri_dtl_gallery_swiper .agri_dtl_slide_prev2,
+.agri_dtl_gallery_swiper .agri_dtl_slide_next2 {
+    box-shadow: 0 .1rem .26rem rgba(11, 76, 161, .18);
 }
 .agri_dtl_gallery_swiper .swiper-slide img {
     width: 100%;
@@ -618,40 +622,103 @@
     height: 100%;
 }
 
-/* 分页点 */
-.agri_dtl_gallery_dots {
+/* 第三层：prev2 / next2 */
+.agri_dtl_gallery_swiper .agri_dtl_slide_prev2,
+.agri_dtl_gallery_swiper .agri_dtl_slide_next2 {
+    opacity: 1;
+    z-index: 1;
+}
+.agri_dtl_gallery_swiper .agri_dtl_slide_prev2 {
+    transform: translateX(20.63rem) scale(.6533);
+}
+.agri_dtl_gallery_swiper .agri_dtl_slide_next2 {
+    transform: translateX(-20.63rem) scale(.6533);
+}
+
+/* 第二层：prev / next */
+.agri_dtl_gallery_swiper .swiper-slide-prev,
+.agri_dtl_gallery_swiper .swiper-slide-next {
+    opacity: 1;
+    z-index: 2;
+}
+.agri_dtl_gallery_swiper .swiper-slide-prev {
+    transform: translateX(10.31rem) scale(.8333);
+}
+.agri_dtl_gallery_swiper .swiper-slide-next {
+    transform: translateX(-10.31rem) scale(.8333);
+}
+
+/* 第一层：active */
+.agri_dtl_gallery_swiper .swiper-slide-active {
+    opacity: 1;
+    z-index: 3;
+    transform: none;
+    pointer-events: auto;
+}
+
+/* 控件行：左箭头 + 分页点 + 右箭头 */
+.agri_dtl_gallery_ctrls {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: .37rem;
+    margin-top: .4rem;
+}
+
+/* 分页点（Swiper pagination 容器） */
+.agri_dtl_gallery_dots {
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: .1rem;
-    margin-top: .3rem;
+    width: auto;
 }
 .agri_dtl_dot {
     display: block;
-    width: .38rem;
+    width: .08rem;
     height: .08rem;
-    border-radius: .08rem;
-    background: rgba(11,76,161,.2);
-    transition: background .3s, width .3s;
+    border-radius: 50%;
+    background: rgba(11, 76, 161, .2);
+    transition: background .3s;
     cursor: pointer;
 }
 .agri_dtl_dot--active {
-    width: .6rem;
-    background: #0b4ca1;
+    background: rgba(11, 76, 161, 1);
 }
 
-/* 详情区箭头（深色风格） */
-.agri_dtl_arrow--dark {
-    top: 50%;
-    border-color: rgba(11,76,161,.4);
-    background: rgba(255,255,255,.9);
-    box-shadow: 0 .04rem .12rem rgba(0,0,0,.12);
+/* 控件箭头按钮（图片悬浮切换） */
+.agri_dtl_gallery_arrow {
+    position: relative;
+    width: .48rem;
+    height: .48rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
 }
-.agri_dtl_arrow--dark:hover {
-    background: #fff;
-    border-color: #0b4ca1;
+.agri_dtl_gallery_arrow img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: opacity .25s;
 }
-.agri_dtl_arrow--dark img {
-    filter: invert(28%) sepia(80%) saturate(800%) hue-rotate(205deg);
+.agri_dtl_gallery_arrow_active {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+.agri_dtl_gallery_arrow:hover .agri_dtl_gallery_arrow_normal { opacity: 0; }
+.agri_dtl_gallery_arrow:hover .agri_dtl_gallery_arrow_active { opacity: 1; }
+
+/* 默认 icon 朝左：prev 不变，next 翻转后朝右 */
+.agri_dtl_gallery_arrow--next .agri_dtl_gallery_arrow_normal {
+    transform: scaleX(-1);
+}
+/* hover 图标朝右：next 不变，prev 翻转后朝左 */
+.agri_dtl_gallery_arrow--prev .agri_dtl_gallery_arrow_active {
+    transform: scaleX(-1);
 }
 
 
@@ -1144,36 +1211,105 @@
 .agri_dtl_cta_bg {
     position: absolute;
     inset: 0;
-    background: url('../images/listShow/item2.png') center / cover no-repeat;
+    background: url('../images/agri-detail/section6-bg.jpg') center / cover no-repeat;
     z-index: 0;
 }
-.agri_dtl_cta_bg::before {
+/* .agri_dtl_cta_bg::before {
     content: "";
     position: absolute;
     inset: 0;
     background: rgba(0,15,48,.58);
-}
+} */
 .agri_dtl_cta_inner { position: relative; z-index: 1; text-align: center; }
 .agri_dtl_cta_title {
     font-size: .36rem;
+    line-height: 0.72rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: .5rem;
+    margin-bottom: .4rem;
 }
 .agri_dtl_cta_apply_btn {
     display: inline-flex;
     align-items: center;
     gap: .1rem;
-    height: .54rem;
-    padding: 0 .32rem;
+    padding: 0.12rem .28rem;
     border-radius: 5.6rem;
-    background: linear-gradient(123.54deg, #165dff 2.38%, #0b4ca1 59.53%);
+    background: linear-gradient(102deg, #165DFF -2.38%, #0B4CA1 59.52%);
     color: #fff;
-    font-size: .18rem;
+    font-size: .2rem;
     font-weight: 500;
     transition: filter .2s, transform .2s;
 }
 .agri_dtl_cta_apply_btn:hover { filter: brightness(1.15); transform: translateY(-.03rem); }
+
+
+/* ============================================================
+   收藏 / 分享 按钮图标切换 & 分享弹出层
+   ============================================================ */
+
+/* active 图标默认隐藏 */
+.agri_dtl_icon_active { display: none; }
+
+/* 收藏：点击后 .cur 切换图标 */
+.agri_dtl_fav_btn.cur .agri_dtl_icon_normal { display: none; }
+.agri_dtl_fav_btn.cur .agri_dtl_icon_active  { display: block; }
+
+/* 分享：悬浮时切换图标 */
+.agri_dtl_share_btn {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+.agri_dtl_share_btn:hover .agri_dtl_icon_normal { display: none; }
+.agri_dtl_share_btn:hover .agri_dtl_icon_active  { display: block; }
+
+/* 分享浮层（二维码） */
+.agri_dtl_share_popup {
+    position: absolute;
+    top: calc(100% + .14rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.6rem;
+    background: #fff;
+    border-radius: .12rem;
+    box-shadow: 0 .08rem .28rem rgba(0, 0, 0, .22);
+    padding: .16rem .14rem .12rem;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility .3s, top .3s;
+    z-index: 20;
+    pointer-events: none;
+}
+.agri_dtl_share_popup img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: .06rem;
+}
+.agri_dtl_share_popup p {
+    margin-top: .08rem;
+    font-size: .13rem;
+    color: rgba(0, 0, 0, .5);
+    line-height: 1.4;
+}
+/* 小三角（指向上方） */
+.agri_dtl_share_popup::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: .07rem solid transparent;
+    border-bottom-color: #fff;
+}
+/* hover 时显示浮层（稍下移） */
+.agri_dtl_share_btn:hover .agri_dtl_share_popup {
+    opacity: 1;
+    visibility: visible;
+    top: calc(100% + .22rem);
+    pointer-events: auto;
+}
 
 
 /* ============================================================
@@ -1210,7 +1346,19 @@
 
     .agri_dtl_related_grid { flex-direction: column; gap: .24rem; }
 
-    .agri_dtl_gallery_swiper .swiper-slide { width: 100%; height: 4rem; }
+    .agri_dtl_gallery_swiper .swiper-slide {
+        width: 100%;
+        height: 4rem;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+    .agri_dtl_gallery_swiper .swiper-slide-prev,
+    .agri_dtl_gallery_swiper .swiper-slide-next,
+    .agri_dtl_gallery_swiper .agri_dtl_slide_prev2,
+    .agri_dtl_gallery_swiper .agri_dtl_slide_next2 {
+        transform: none;
+    }
     .agri_dtl_gallery_swiper { padding: 0; }
 
     .agri_dtl_policy_table { font-size: .16rem; }
