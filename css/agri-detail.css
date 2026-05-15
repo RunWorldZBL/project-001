@@ -1071,7 +1071,7 @@
 .agri_dtl_policy_table th:nth-child(3) {
     text-align: left;
 }
-.agri_dtl_policy_table th:last-child { border-right: none; }
+.agri_dtl_policy_table th:last-child { border-right: none; padding: 0 0.72rem; white-space: nowrap; }
 .agri_dtl_policy_th--type { width: 1.9rem; }
 .agri_dtl_policy_th--date { width: 1.5rem; }
 .agri_dtl_policy_th--op   { width: 1.4rem; text-align: center; }
@@ -1099,11 +1099,13 @@
     align-items: center;
     justify-content: center;
     height: .33rem;
-    padding: 0 .16rem;
-    border: 1px solid rgba(255,255,255,.55);
-    border-radius: .06rem;
+    padding: .04rem .19rem;
+    border-radius: .33rem;
     color: #fff;
     font-size: .16rem;
+    border-radius: 0.33rem;
+    border: 1px solid #0B4CA1;
+    background: #0B4CA1;
 }
 
 
