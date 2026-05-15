@@ -339,8 +339,8 @@
 </section>
 
 <!-- ========== 项目详情 ========== -->
-<section class="agri_dtl_detail_sec">
-    <div class="w1480" data-aos="fade-up">
+<section class="agri_dtl_detail_sec w1480">
+    <div class="" data-aos="fade-up">
         <div class="agri_dtl_sec_title agri_dtl_sec_title--dark">
             <span class="agri_dtl_title_bar"></span>
             <h2>项目详情</h2>
@@ -354,44 +354,44 @@
             <p> 功能定位：集蔬菜种植、生态淡水养殖、科技推广、科普教育、休闲旅游等功能于一身。</p>
         </div>
 
-        <!-- 图集轮播（中心放大式） -->
+        <!-- 图集轮播（中心主卡 + 两层叠卡） -->
         <div class="agri_dtl_gallery_wrap">
             <div class="agri_dtl_gallery_swiper swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
+                        <div class="agri_dtl_gallery_card">
                             <img src="images/agri-detail/item1.png" alt="园区实景1">
-                        </a>
+                        </div>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
-                            <img src="images/agri-detail/item1.png" alt="园区实景2">
-                        </a>
+                        <div class="agri_dtl_gallery_card">
+                            <img src="images/agri-detail/section1-bg.png" alt="园区实景2">
+                        </div>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
-                            <img src="images/agri-detail/item1.png" alt="园区实景2">
-                        </a>
+                        <div class="agri_dtl_gallery_card">
+                            <img src="images/agri-detail/section2-bg.jpg" alt="园区实景3">
+                        </div>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
-                            <img src="images/agri-detail/item1.png" alt="园区实景2">
-                        </a>
+                        <div class="agri_dtl_gallery_card">
+                            <img src="images/agri-detail/section3-bg.jpg" alt="园区实景4">
+                        </div>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
-                            <img src="images/agri-detail/item1.png" alt="园区实景2">
-                        </a>
+                        <div class="agri_dtl_gallery_card">
+                            <img src="images/agri-detail/section4-bg.jpg" alt="园区实景5">
+                        </div>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
-                            <img src="images/agri-detail/item1.png" alt="园区实景3">
-                        </a>
+                        <div class="agri_dtl_gallery_card">
+                            <img src="images/agri-detail/section5-bg.jpg" alt="园区实景6">
+                        </div>
                     </div>
                     <div class="swiper-slide">
-                        <a data-fancybox="detail-gallery" href="images/agri-detail/item1.png">
-                            <img src="images/agri-detail/item1.png" alt="园区实景4">
-                        </a>
+                        <div class="agri_dtl_gallery_card">
+                            <img src="images/agri-detail/section6-bg.jpg" alt="园区实景7">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -414,38 +414,50 @@
 <!-- ========== 特色优势 ========== -->
 <section class="agri_dtl_advantage">
     <div class="agri_dtl_advantage_bg"></div>
-    <div class="w1480 agri_dtl_advantage_inner" data-aos="fade-up">
-        <div class="agri_dtl_sec_title agri_dtl_sec_title--white">
-            <span class="agri_dtl_title_bar"></span>
-            <h2>特色优势</h2>
-        </div>
+    <div class="agri_dtl_advantage_inner" data-aos="fade-up">
 
-        <div class="agri_dtl_advantage_imgs flex">
-            <div class="agri_dtl_advantage_img">
-                <a data-fancybox="adv-gallery" href="images/listShow/item2.png">
-                    <img src="images/listShow/item2.png" alt="特色优势图1">
-                </a>
-            </div>
-            <div class="agri_dtl_advantage_img">
-                <a data-fancybox="adv-gallery" href="images/listShow/item3.png">
-                    <img src="images/listShow/item3.png" alt="特色优势图2">
-                </a>
+        <!-- 标题 -->
+        <div class="w1480">
+            <div class="agri_dtl_sec_title agri_dtl_sec_title--white">
+                <span class="agri_dtl_title_bar"></span>
+                <h2>特色优势</h2>
             </div>
         </div>
 
-        <!-- 进度条/指示器 -->
-        <div class="agri_dtl_advantage_bar">
-            <div class="agri_dtl_advantage_track">
-                <div class="agri_dtl_advantage_fill"></div>
+        <!-- 通栏滑动轮播 -->
+        <div class="swiper agri_dtl_adv_swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide agri_dtl_advantage_img">
+                    <img src="images/agri-detail/section4-banner.jpg" alt="特色优势图1">
+                </div>
+                <div class="swiper-slide agri_dtl_advantage_img">
+                    <img src="images/agri-detail/section4-banner.jpg" alt="特色优势图2">
+                </div>
+                <div class="swiper-slide agri_dtl_advantage_img">
+                    <img src="images/agri-detail/section4-banner.jpg" alt="特色优势图3">
+                </div>
+                <div class="swiper-slide agri_dtl_advantage_img">
+                    <img src="images/agri-detail/section4-banner.jpg" alt="特色优势图4">
+                </div>
             </div>
         </div>
+
+        <!-- 进度条（宽度跟随 w1480） -->
+        <div class="w1480">
+            <div class="agri_dtl_advantage_bar">
+                <div class="agri_dtl_advantage_track">
+                    <div class="agri_dtl_advantage_fill"></div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
 <!-- ========== 项目图集 ========== -->
 <section class="agri_dtl_photos_sec">
     <div class="w1480" data-aos="fade-up">
-        <div class="agri_dtl_sec_title agri_dtl_sec_title--white">
+        <div class="agri_dtl_sec_title agri_dtl_sec_title--dark">
             <span class="agri_dtl_title_bar"></span>
             <h2>项目图集</h2>
         </div>
@@ -453,14 +465,19 @@
         <!-- 第一行：2张大图 -->
         <div class="agri_dtl_photos_row1 flex">
             <div class="agri_dtl_photo_lg">
-                <a data-fancybox="photos-gallery" href="images/listShow/item1.png">
-                    <img src="images/listShow/item1.png" alt="现场照片1">
-                    <div class="agri_dtl_photo_caption">现场照片</div>
+                <a data-fancybox="photos-gallery" href="images/agri-detail/pro-1.png">
+                    <img src="images/agri-detail/pro-1.png" alt="现场照片1">
+                    <div class="agri_dtl_photo_caption">
+                        <span>现场照片</span>
+                    </div>
                 </a>
             </div>
             <div class="agri_dtl_photo_lg">
-                <a data-fancybox="photos-gallery" href="images/listShow/item2.png">
-                    <img src="images/listShow/item2.png" alt="现场照片2">
+                <a data-fancybox="photos-gallery" href="images/agri-detail/pro-2.png">
+                    <img src="images/agri-detail/pro-2.png" alt="现场照片2">
+                    <div class="agri_dtl_photo_caption">
+                        <span>现场照片</span>
+                    </div>
                 </a>
             </div>
         </div>
@@ -468,18 +485,27 @@
         <!-- 第二行：3张小图 -->
         <div class="agri_dtl_photos_row2 flex">
             <div class="agri_dtl_photo_sm">
-                <a data-fancybox="photos-gallery" href="images/listShow/item3.png">
-                    <img src="images/listShow/item3.png" alt="现场照片3">
+                <a data-fancybox="photos-gallery" href="images/agri-detail/pro-3.png">
+                    <img src="images/agri-detail/pro-3.png" alt="现场照片3">
+                    <div class="agri_dtl_photo_caption">
+                        <span>现场照片</span>
+                    </div>
                 </a>
             </div>
             <div class="agri_dtl_photo_sm">
-                <a data-fancybox="photos-gallery" href="images/listShow/item4.png">
-                    <img src="images/listShow/item4.png" alt="现场照片4">
+                <a data-fancybox="photos-gallery" href="images/agri-detail/pro-4.png">
+                    <img src="images/agri-detail/pro-4.png" alt="现场照片4">
+                    <div class="agri_dtl_photo_caption">
+                        <span>现场照片</span>
+                    </div>
                 </a>
             </div>
             <div class="agri_dtl_photo_sm">
-                <a data-fancybox="photos-gallery" href="images/listShow/item1.png">
-                    <img src="images/listShow/item1.png" alt="现场照片5">
+                <a data-fancybox="photos-gallery" href="images/agri-detail/pro-5.png">
+                    <img src="images/agri-detail/pro-5.png" alt="现场照片5">
+                    <div class="agri_dtl_photo_caption">
+                        <span>现场照片</span>
+                    </div>
                 </a>
             </div>
         </div>
@@ -504,25 +530,9 @@
         <div class="agri_dtl_map_wrap">
             <!-- 地图主体 -->
             <div class="agri_dtl_map_img">
-                <img src="images/listShow/banner.png" alt="周边地图">
-                <!-- 地图标注点 -->
-                <div class="agri_dtl_map_pin" style="left:48%;top:38%">
-                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M24.5 4C16.2 4 9.5 10.7 9.5 19C9.5 30 24.5 44.5 24.5 44.5C24.5 44.5 39.5 30 39.5 19C39.5 10.7 32.8 4 24.5 4Z" fill="#165DFF"/>
-                        <circle cx="24.5" cy="19" r="5" fill="white"/>
-                    </svg>
-                </div>
-                <div class="agri_dtl_map_pin" style="left:37%;top:55%">
-                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M24.5 4C16.2 4 9.5 10.7 9.5 19C9.5 30 24.5 44.5 24.5 44.5C24.5 44.5 39.5 30 39.5 19C39.5 10.7 32.8 4 24.5 4Z" fill="#165DFF"/>
-                        <circle cx="24.5" cy="19" r="5" fill="white"/>
-                    </svg>
-                </div>
+                <img src="images/agri-detail/map.jpg" alt="周边地图">
                 <!-- 免责声明 -->
-                <p class="agri_dtl_map_disclaimer">*免责声明：与距离相关的数据均来源于百度地图或高德地图等第三方，仅供您参考。</p>
-            </div>
-
-            <!-- 右侧 POI 面板 -->
+                 <!-- 右侧 POI 面板 -->
             <div class="agri_dtl_poi_panel">
                 <div class="agri_dtl_poi_tabs">
                     <div class="agri_dtl_poi_tab_head flex">
@@ -599,6 +609,8 @@
                 </div>
             </div>
         </div>
+      </div>
+      <p class="agri_dtl_map_disclaimer">*免责声明：与距离相关的数据均来源于百度地图或高德地图等第三方，仅供您参考。</p>
     </div>
 </section>
 
@@ -606,7 +618,7 @@
 <section class="agri_dtl_policy_sec">
     <div class="agri_dtl_policy_bg"></div>
     <div class="w1480 agri_dtl_policy_inner" data-aos="fade-up">
-        <div class="agri_dtl_sec_title agri_dtl_sec_title--white">
+        <div class="agri_dtl_sec_title agri_dtl_sec_title--dark">
             <span class="agri_dtl_title_bar"></span>
             <h2>支持政策</h2>
         </div>
@@ -666,105 +678,98 @@
             <h2>相关推荐项目</h2>
         </div>
 
-        <div class="agri_dtl_related_grid flex">
-            <!-- 推荐卡片 1 -->
-            <article class="agri_dtl_related_card">
-                <div class="agri_dtl_related_img">
-                    <img src="images/listShow/item1.png" alt="相关项目1">
-                    <div class="agri_dtl_related_date">
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="white" stroke-width="1"/></svg>
-                        2026-04-12
-                    </div>
-                    <span class="agri_dtl_related_tag">Heading</span>
+        <!-- Swiper 轮播容器 -->
+        <div class="agri_dtl_related_swiper swiper">
+            <div class="swiper-wrapper">
+                <!-- 推荐卡片 1 -->
+                <div class="swiper-slide">
+                    <article class="agri_dtl_related_card">
+                        <div class="agri_dtl_related_img">
+                            <img src="images/listShow/item1.png" alt="相关项目1">
+                            <div class="agri_dtl_related_date">2026-04-12</div>
+                            <span class="agri_dtl_related_tag">朝阳区-十八里店</span>
+                        </div>
+                        <div class="agri_dtl_related_body">
+                            <h3>北京市朝阳区十八里店乡老君堂村康化路南侧8008号24005.89平方米房屋及5.02亩院落出租</h3>
+                            <ul class="agri_dtl_related_meta">
+                                <li><span>项目类别：</span>都市型现代农业-智慧农业</li>
+                                <li><span>拟出让方式：</span>出租</li>
+                                <li><span>拟项目规模：</span>24005.89平米</li>
+                                <li class="price_item"><span>拟出让价格：</span></li>
+                            </ul>
+                            <div class="agri_dtl_related_price">436,280.00元</div>
+                        </div>
+                        <a href="javascript:;" class="agri_dtl_related_link" aria-label="查看项目详情"></a>
+                    </article>
                 </div>
-                <div class="agri_dtl_related_body">
-                    <h3>北京市朝阳区十八里店乡老君堂村康化路南侧8008号24005.89平方米房屋及5.02亩院落出租</h3>
-                    <ul class="agri_dtl_related_meta">
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#165DFF" stroke-width="1.2"/></svg>
-                            <span>项目类别：</span>都市型现代农业-智慧农业
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#165DFF" stroke-width="1.2"/></svg>
-                            <span>拟出让方式：</span>出租
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#165DFF" stroke-width="1.2"/></svg>
-                            <span>拟项目规模：</span>24005.89平米
-                        </li>
-                    </ul>
-                    <div class="agri_dtl_related_price">436,280.00元</div>
-                </div>
-                <a href="javascript:;" class="agri_dtl_related_link" aria-label="查看项目详情">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#165DFF" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </a>
-            </article>
 
-            <!-- 推荐卡片 2 -->
-            <article class="agri_dtl_related_card">
-                <div class="agri_dtl_related_img">
-                    <img src="images/listShow/item2.png" alt="相关项目2">
-                    <div class="agri_dtl_related_date">
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="white" stroke-width="1"/></svg>
-                        2026-04-12
-                    </div>
-                    <span class="agri_dtl_related_tag">Heading</span>
+                <!-- 推荐卡片 2 -->
+                <div class="swiper-slide">
+                    <article class="agri_dtl_related_card">
+                        <div class="agri_dtl_related_img">
+                            <img src="images/listShow/item2.png" alt="相关项目2">
+                            <div class="agri_dtl_related_date">2026-04-12</div>
+                            <span class="agri_dtl_related_tag">朝阳区-十八里店</span>
+                        </div>
+                        <div class="agri_dtl_related_body">
+                            <h3>北京市朝阳区十八里店乡老君堂村康化路南侧8008号24005.89平方米房屋及5.02亩院落出租</h3>
+                            <ul class="agri_dtl_related_meta">
+                                <li><span>项目类别：</span>都市型现代农业-智慧农业</li>
+                                <li><span>拟出让方式：</span>出租</li>
+                                <li><span>拟项目规模：</span>24005.89平米</li>
+                                <li class="price_item"><span>拟出让价格：</span></li>
+                            </ul>
+                            <div class="agri_dtl_related_price">436,280.00元</div>
+                        </div>
+                        <a href="javascript:;" class="agri_dtl_related_link" aria-label="查看项目详情"></a>
+                    </article>
                 </div>
-                <div class="agri_dtl_related_body">
-                    <h3>北京市朝阳区十八里店乡老君堂村康化路南侧8008号24005.89平方米房屋及5.02亩院落出租</h3>
-                    <ul class="agri_dtl_related_meta">
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#165DFF" stroke-width="1.2"/></svg>
-                            <span>项目类别：</span>都市型现代农业-智慧农业
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#165DFF" stroke-width="1.2"/></svg>
-                            <span>拟出让方式：</span>出租
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#165DFF" stroke-width="1.2"/></svg>
-                            <span>拟项目规模：</span>24005.89平米
-                        </li>
-                    </ul>
-                    <div class="agri_dtl_related_price">436,280.00元</div>
-                </div>
-                <a href="javascript:;" class="agri_dtl_related_link" aria-label="查看项目详情">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#165DFF" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </a>
-            </article>
 
-            <!-- 推荐卡片 3 -->
-            <article class="agri_dtl_related_card">
-                <div class="agri_dtl_related_img">
-                    <img src="images/listShow/item3.png" alt="相关项目3">
-                    <div class="agri_dtl_related_date">
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="white" stroke-width="1"/></svg>
-                        2026-04-12
-                    </div>
-                    <span class="agri_dtl_related_tag">Heading</span>
+                <!-- 推荐卡片 3 -->
+                <div class="swiper-slide">
+                    <article class="agri_dtl_related_card">
+                        <div class="agri_dtl_related_img">
+                            <img src="images/listShow/item3.png" alt="相关项目3">
+                            <div class="agri_dtl_related_date">2026-04-12</div>
+                            <span class="agri_dtl_related_tag">朝阳区-十八里店</span>
+                        </div>
+                        <div class="agri_dtl_related_body">
+                            <h3>北京市朝阳区十八里店乡老君堂村康化路南侧8008号24005.89平方米房屋及5.02亩院落出租</h3>
+                            <ul class="agri_dtl_related_meta">
+                                <li><span>项目类别：</span>都市型现代农业-智慧农业</li>
+                                <li><span>拟出让方式：</span>出租</li>
+                                <li><span>拟项目规模：</span>24005.89平米</li>
+                                <li class="price_item"><span>拟出让价格：</span></li>
+                            </ul>
+                            <div class="agri_dtl_related_price">436,280.00元</div>
+                        </div>
+                        <a href="javascript:;" class="agri_dtl_related_link" aria-label="查看项目详情"></a>
+                    </article>
                 </div>
-                <div class="agri_dtl_related_body">
-                    <h3>北京市朝阳区十八里店乡老君堂村康化路南侧8008号24005.89平方米房屋及5.02亩院落出租</h3>
-                    <ul class="agri_dtl_related_meta">
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#165DFF" stroke-width="1.2"/></svg>
-                            <span>项目类别：</span>都市型现代农业-智慧农业
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#165DFF" stroke-width="1.2"/></svg>
-                            <span>拟出让方式：</span>出租
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#165DFF" stroke-width="1.2"/></svg>
-                            <span>拟项目规模：</span>24005.89平米
-                        </li>
-                    </ul>
-                    <div class="agri_dtl_related_price">436,280.00元</div>
+                <!-- 推荐卡片 3 -->
+                <div class="swiper-slide">
+                    <article class="agri_dtl_related_card">
+                        <div class="agri_dtl_related_img">
+                            <img src="images/listShow/item3.png" alt="相关项目3">
+                            <div class="agri_dtl_related_date">2026-04-12</div>
+                            <span class="agri_dtl_related_tag">朝阳区-十八里店</span>
+                        </div>
+                        <div class="agri_dtl_related_body">
+                            <h3>北京市朝阳区十八里店乡老君堂村康化路南侧8008号24005.89平方米房屋及5.02亩院落出租</h3>
+                            <ul class="agri_dtl_related_meta">
+                                <li><span>项目类别：</span>都市型现代农业-智慧农业</li>
+                                <li><span>拟出让方式：</span>出租</li>
+                                <li><span>拟项目规模：</span>24005.89平米</li>
+                                <li class="price_item"><span>拟出让价格：</span></li>
+                            </ul>
+                            <div class="agri_dtl_related_price">436,280.00元</div>
+                        </div>
+                        <a href="javascript:;" class="agri_dtl_related_link" aria-label="查看项目详情"></a>
+                    </article>
                 </div>
-                <a href="javascript:;" class="agri_dtl_related_link" aria-label="查看项目详情">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#165DFF" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </a>
-            </article>
+            </div>
+            <!-- 分页器 -->
+            <div class="swiper-pagination agri_dtl_related_pagination"></div>
         </div>
     </div>
 </section>

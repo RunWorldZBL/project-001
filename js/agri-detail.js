@@ -38,14 +38,16 @@ $(function () {
     });
 
     /* ----------------------------------------------------------
-       项目详情 图集 Swiper（中心放大式）
+       项目详情 图集 Swiper（中心放大 + 两侧层叠）
+       通过给 active 前后第二位的 slide 加 prev2/next2 类
+       由 CSS 静态控制三层位置/缩放，远处 slide opacity:0 隐藏
     ---------------------------------------------------------- */
     var detailGallerySwiper = new Swiper('.agri_dtl_gallery_swiper', {
         centeredSlides: true,
         slidesPerView: 'auto',
         spaceBetween: 0,
         loop: true,
-        loopAdditionalSlides: 3,
+        loopAdditionalSlides: 5,
         speed: 500,
         allowTouchMove: false,
         simulateTouch: false,
@@ -60,22 +62,14 @@ $(function () {
             bulletActiveClass: 'agri_dtl_dot--active'
         },
         on: {
-            init: function () {
-                updateGalleryLayerClasses(this);
-            },
-            slideChange: function () {
-                updateGalleryLayerClasses(this);
-            },
-            loopFix: function () {
-                updateGalleryLayerClasses(this);
-            },
-            transitionEnd: function () {
-                updateGalleryLayerClasses(this);
-            }
+            init: function () { updateGalleryLayerClasses(this); },
+            slideChange: function () { updateGalleryLayerClasses(this); },
+            slideChangeTransitionStart: function () { updateGalleryLayerClasses(this); },
+            loopFix: function () { updateGalleryLayerClasses(this); },
+            transitionEnd: function () { updateGalleryLayerClasses(this); }
         }
     });
 
-    /* 给当前 active 前后第二位的 slide 加上第三层 class */
     function updateGalleryLayerClasses(swiper) {
         var slides = swiper && swiper.slides ? swiper.slides : [];
         if (!slides.length) return;
@@ -84,15 +78,12 @@ $(function () {
             slides[i].classList.remove('agri_dtl_slide_prev2', 'agri_dtl_slide_next2');
         }
 
-        var activeIdx = swiper.activeIndex;
-        var prev2Idx = activeIdx - 2;
-        var next2Idx = activeIdx + 2;
-
-        if (prev2Idx >= 0 && slides[prev2Idx]) {
-            slides[prev2Idx].classList.add('agri_dtl_slide_prev2');
+        var a = swiper.activeIndex;
+        if (a - 2 >= 0 && slides[a - 2]) {
+            slides[a - 2].classList.add('agri_dtl_slide_prev2');
         }
-        if (next2Idx < slides.length && slides[next2Idx]) {
-            slides[next2Idx].classList.add('agri_dtl_slide_next2');
+        if (a + 2 < slides.length && slides[a + 2]) {
+            slides[a + 2].classList.add('agri_dtl_slide_next2');
         }
     }
 
@@ -100,12 +91,7 @@ $(function () {
        Fancybox
     ---------------------------------------------------------- */
     if (typeof Fancybox !== 'undefined') {
-        Fancybox.bind('[data-fancybox="detail-gallery"]', {
-            Toolbar: { display: ['close', 'counter', 'fullscreen'] }
-        });
-        Fancybox.bind('[data-fancybox="adv-gallery"]', {
-            Toolbar: { display: ['close', 'counter', 'fullscreen'] }
-        });
+
         Fancybox.bind('[data-fancybox="photos-gallery"]', {
             Toolbar: { display: ['close', 'counter', 'fullscreen'] }
         });
@@ -129,20 +115,54 @@ $(function () {
     });
 
     /* ----------------------------------------------------------
-       特色优势：进度条滚动动画
+       相关推荐项目：3列轮播 + 可点击分页器
     ---------------------------------------------------------- */
-    function updateAdvFill() {
-        var $fill = $('.agri_dtl_advantage_fill');
-        if (!$fill.length) return;
-        var top  = $('.agri_dtl_advantage').offset().top;
-        var h    = $('.agri_dtl_advantage').outerHeight();
-        var sy   = $(window).scrollTop() + $(window).height() * 0.6;
-        if (sy > top && sy < top + h) {
-            var pct = Math.min(100, Math.round((sy - top) / h * 120));
-            $fill.css('width', pct + '%');
+    new Swiper('.agri_dtl_related_swiper', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        grabCursor: true,
+        pagination: {
+            el: '.agri_dtl_related_pagination',
+            clickable: true
         }
+    });
+
+    /* ----------------------------------------------------------
+       特色优势：通栏滑动轮播 + 进度条
+    ---------------------------------------------------------- */
+    var $advFill = $('.agri_dtl_advantage_fill');
+
+    function setAdvProgress(progress) {
+        var pct = Math.max(0, Math.min(100, Math.round(progress * 100)));
+        $advFill.css('width', pct + '%');
     }
-    $(window).on('scroll.advFill', updateAdvFill);
-    updateAdvFill();
+
+    /* 计算首张 slide 与 w1480 左边对齐所需的偏移量（px） */
+    function calcAdvOffset() {
+        var fs   = parseFloat(getComputedStyle(document.documentElement).fontSize) || 100;
+        var w    = Math.min(14.8 * fs, window.innerWidth * 0.9);
+        return Math.max(0, (window.innerWidth - w) / 2);
+    }
+
+    var advSwiper = new Swiper('.agri_dtl_adv_swiper', {
+        slidesPerView: 'auto',
+        spaceBetween: (function () {
+            var fs = parseFloat(getComputedStyle(document.documentElement).fontSize) || 100;
+            return Math.round(0.4 * fs);
+        }()),
+        slidesOffsetBefore: calcAdvOffset(),
+        slidesOffsetAfter: calcAdvOffset(),
+        watchSlidesProgress: true,
+        freeMode: { enabled: true, momentum: true },
+        grabCursor: true,
+        on: {
+            init: function () {
+                setAdvProgress(this.progress);
+            },
+            progress: function () {
+                setAdvProgress(this.progress);
+            }
+        }
+    });
 
 });
