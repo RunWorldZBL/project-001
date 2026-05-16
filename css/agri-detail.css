@@ -251,6 +251,7 @@
     flex: 1;
     min-width: 0;
     padding-top: .41rem;
+    z-index: 9;
 }
 
 /* 项目标题  Figma: 30px Medium */
@@ -578,7 +579,7 @@
    ============================================================ */
 .agri_dtl_gallery_wrap {
     position: relative;
-    margin-top: .48rem;
+    padding-top: .48rem;
     overflow: hidden;
 }
 .agri_dtl_gallery_swiper {
@@ -619,7 +620,7 @@
     z-index: 3;
     transform: translateX(0) scale(1);
     pointer-events: auto;
-    box-shadow: 0 .24rem .56rem rgba(11, 76, 161, .35), 0 .08rem .2rem rgba(0, 0, 0, .12);
+    box-shadow: 0 0 0.60rem -0.20rem rgba(11, 76, 161, 0.60);
 }
 
 /* 第二层：prev / next (10rem × 5.7rem) */
@@ -627,7 +628,7 @@
 .agri_dtl_gallery_swiper .swiper-slide-next {
     opacity: 1;
     z-index: 2;
-    box-shadow: 0 .16rem .4rem rgba(11, 76, 161, .25);
+    box-shadow: 0 0.04rem 0.20rem 0 rgba(1, 47, 167, 0.10);
 }
 .agri_dtl_gallery_swiper .swiper-slide-prev {
     transform: translateX(10.31rem) scale(.8333);
@@ -644,7 +645,7 @@
 .agri_dtl_gallery_swiper .agri_dtl_slide_next2 {
     opacity: 1;
     z-index: 1;
-    box-shadow: 0 .1rem .26rem rgba(11, 76, 161, .18);
+    box-shadow: 0 0.04rem 0.20rem 0 rgba(1, 47, 167, 0.10);
     transition: opacity .15s ease, box-shadow .5s ease;
 }
 .agri_dtl_gallery_swiper .agri_dtl_slide_prev2 {
@@ -954,7 +955,6 @@
     bottom: 0.35rem;
     width: 4.46rem;
     background: #fff;
-    border-radius: .12rem;
     overflow: hidden;
     box-shadow: 0 .08rem .28rem rgba(0,0,0,.14);
     display: flex;
@@ -963,54 +963,60 @@
 .agri_dtl_poi_tabs { display: flex; flex-direction: column; height: 100%; overflow: hidden; }
 .agri_dtl_poi_tab_head {
     display: flex;
-    border-bottom: 1px solid #f0f0f0;
-    padding: 0 .14rem;
     flex-shrink: 0;
     height: .53rem;
+    background: linear-gradient(180deg, #FFF 0%, #E2E2E2 100%);
 }
 .agri_dtl_poi_cat {
     flex: 1;
     height: 100%;
     font-size: .14rem;
-    color: #555;
+    color: #000;
     cursor: pointer;
-    border-bottom: 2px solid transparent;
+    border-top: 0.03rem solid transparent;
     transition: color .2s, border-color .2s;
 }
 .agri_dtl_poi_cat--active,
-.agri_dtl_poi_cat:hover { color: #165dff; border-bottom-color: #165dff; }
+.agri_dtl_poi_cat:hover { color: #165dff; border-top-color: #165dff;background-color: #fff; }
 .agri_dtl_poi_sub_tabs {
     display: flex;
-    padding: .1rem .15rem 0;
+    padding: .1rem .17rem 0.06rem;
     gap: .28rem;
     flex-shrink: 0;
 }
 .agri_dtl_poi_sub {
     font-size: .14rem;
-    color: rgba(0,0,0,.55);
+    color: #000;
     cursor: pointer;
     padding-bottom: .07rem;
-    border-bottom: 2px solid transparent;
+    border-bottom: 0.03rem solid transparent;
     transition: color .2s;
 }
 .agri_dtl_poi_sub--active { color: #165dff; border-bottom-color: #165dff; }
-.agri_dtl_poi_sub_line { height: 0; border-top: 1px solid #f0f0f0; margin: 0 .15rem .1rem; }
 .agri_dtl_poi_list {
     list-style: none;
     overflow-y: auto;
     flex: 1;
     scrollbar-width: thin;
+    padding: 0 .25rem;
     scrollbar-color: rgba(0,0,0,.12) transparent;
+}
+.agri_dtl_poi_wrap {
+    padding: .16rem 0 0.2rem;
+    border-bottom: 1px solid #f5f5f5;
+}
+.agri_dtl_poi_wrap:last-child {
+    border-bottom: none;
 }
 .agri_dtl_poi_item {
     display: flex;
     align-items: center;
-    gap: .1rem;
-    padding: .12rem .15rem;
-    border-bottom: 1px solid #f5f5f5;
+    gap: .07rem;
+    margin-bottom: 0.08rem;
 }
 .agri_dtl_poi_info { flex: 1; min-width: 0; }
-.agri_dtl_poi_info strong { display: block; font-size: .14rem; color: #1a1a1a; font-weight: 600; }
+.agri_dtl_poi_info strong { 
+    display: block; font-size: .14rem; color: #444; font-weight: 500; }
 .agri_dtl_poi_info span {
     display: block;
     font-size: .12rem;
@@ -1029,7 +1035,11 @@
     font-weight: 500;
     flex-shrink: 0;
 }
-
+.agri_dtl_poi_dec {
+    font-size: .14rem;
+    color: #666;
+    line-height: 0.25rem;
+}
 
 /* ============================================================
    支持政策  (Figma: y=7277, h=684, 背景图)
@@ -1409,67 +1419,458 @@
 
 
 /* ============================================================
-   响应式：≤ 1200px
+   响应式：≤ 1200px（平板 / 中等屏）
    ============================================================ */
 @media screen and (max-width: 1200px) {
-    .agri_dtl_hero { height: auto; min-height: 8rem; }
+    /* ---- 通用区块标题 ---- */
+    .agri_dtl_sec_title { gap: .18rem; margin-bottom: .36rem; }
+    .agri_dtl_sec_title h2 { font-size: .26rem; }
+    .agri_dtl_title_bar { width: .04rem; height: .26rem; }
+
+    /* ---- HERO ---- */
+    .agri_dtl_hero { height: auto; min-height: 0; }
+    /* 移动端单列堆叠后，文字区背景颜色偏亮，需要压暗背景图 + 加深遮罩，保证白色文字可读 */
+    .agri_dtl_hero_bg .bg_img { filter: blur(30px) brightness(.55); }
+    .agri_dtl_hero_overlay {
+        background: linear-gradient(180deg,
+            rgba(0, 15, 42, .68) 0%,
+            rgba(0, 20, 50, .5) 45%,
+            rgba(0, 15, 42, .72) 100%);
+    }
     .agri_dtl_hero_inner {
-        width: 90%;
         position: static;
+        width: 90%;
+        max-width: none;
         transform: none;
         left: auto;
         margin: 0 auto;
-        padding-top: .9rem;
+        padding: 1.2rem 0 .6rem;
     }
-    .agri_dtl_hero_body { flex-direction: column; gap: .4rem; padding-bottom: .6rem; }
-    .agri_dtl_hero_left { flex-basis: auto; width: 100%; }
-    .agri_dtl_img_wrap { width: 100%; height: 4.8rem; }
-    .agri_dtl_hero_right { padding-left: 0; padding-top: 0; }
+    .agri_dtl_breadcrumb { margin-bottom: .36rem; font-size: .15rem; }
+    .agri_dtl_breadcrumb .icon-home { width: .15rem; height: .15rem; }
+    .agri_dtl_hero_body {
+        flex-direction: column;
+        align-items: stretch;
+        gap: .36rem;
+        flex: none;
+    }
+    .agri_dtl_hero_left {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .agri_dtl_img_wrap {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 850 / 604;
+        border-radius: .14rem;
+    }
+    .agri_dtl_play_btn { width: .68rem; height: .68rem; }
+    .agri_dtl_arrow { width: .44rem; height: .44rem; }
+    .agri_dtl_arrow img { width: .24rem; }
+    .agri_dtl_arrow_prev { left: .2rem; }
+    .agri_dtl_arrow_next { right: .2rem; }
+    /* 缩略图条：横向可滚动，避免溢出 */
+    .agri_dtl_thumb_strip {
+        left: .14rem;
+        right: .14rem;
+        bottom: .14rem;
+        gap: .08rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        padding-bottom: .02rem;
+    }
+    .agri_dtl_thumb_strip::-webkit-scrollbar { display: none; }
+    .agri_dtl_thumb { width: 1.16rem; height: .82rem; }
+    .agri_dtl_thumb--active { width: 1.3rem; height: .92rem; }
 
-    .agri_dtl_overview_inner { flex-direction: column; gap: .4rem; }
-    .agri_dtl_overview_text { flex-basis: auto; width: 100%; }
+    .agri_dtl_hero_right { padding-top: 0; }
+    .agri_dtl_proj_title { font-size: .28rem; line-height: 1.45; margin-bottom: .24rem; }
+    .agri_dtl_actions { margin-bottom: .32rem; gap: .26rem; }
+    .agri_dtl_act_icon img { width: .32rem; height: .32rem; }
+    .agri_dtl_proj_stats { gap: .14rem; }
+    .agri_dtl_proj_stats li { font-size: .17rem; }
+    .agri_dtl_stat_label,
+    .agri_dtl_price_label { flex: 0 0 1rem; font-size: .17rem; }
+    .agri_dtl_stat_divider { margin: .22rem 0; }
+    .agri_dtl_price_row { margin-bottom: .34rem; }
+    .agri_dtl_price_val { font-size: .26rem; }
+    .agri_dtl_cta_btns { gap: .2rem; }
+    .agri_dtl_cta_btn {
+        height: .5rem;
+        padding: 0 .24rem;
+        font-size: .17rem;
+    }
 
-    .agri_dtl_advantage_imgs { flex-direction: column; gap: .24rem; }
-    .agri_dtl_advantage_img { height: 3.6rem; }
+    /* ---- 项目概览 ---- */
+    .agri_dtl_overview { padding: .6rem 0; }
+    .agri_dtl_overview_inner { flex-direction: column; gap: .36rem; }
+    .agri_dtl_overview_text { flex: 0 0 auto; width: 100%; }
+    .agri_dtl_overview_desc { font-size: .17rem; line-height: 1.8; }
+    .agri_dtl_overview_stats { margin-top: 0; }
+    .agri_dtl_stat_row {
+        padding: .26rem 0 .14rem;
+        gap: .2rem;
+    }
+    .agri_dtl_stat_row--last { padding-top: .36rem; }
+    .agri_dtl_stat_num { font-size: .4rem; }
+    .agri_dtl_stat_unit,
+    .agri_dtl_stat_name,
+    .agri_dtl_stat_desc { font-size: .17rem; }
+    .agri_dtl_stat_desc { width: auto; max-width: 60%; }
 
-    .agri_dtl_photos_row1, .agri_dtl_photos_row2 { flex-direction: column; gap: .24rem; }
-    .agri_dtl_photo_lg { height: 3rem; }
-    .agri_dtl_photo_sm { height: 2.4rem; }
+    /* ---- 招商条件 ---- */
+    .agri_dtl_invest { padding: .7rem 0; }
+    .agri_dtl_invest_row1 { gap: .3rem; }
+    .agri_dtl_invest_col_label,
+    .agri_dtl_invest_detail_label { font-size: .2rem; margin-bottom: .18rem; }
+    .agri_dtl_invest_tag { height: .38rem; padding: 0 .24rem; font-size: .16rem; }
+    .agri_dtl_invest_num { font-size: .4rem; }
+    .agri_dtl_invest_unit,
+    .agri_dtl_invest_val,
+    .agri_dtl_invest_detail_text { font-size: .17rem; }
+    .agri_dtl_invest_line { width: 100%; margin-top: .22rem; }
+    .agri_dtl_invest_detail { padding-top: .32rem; }
+    .agri_dtl_invest_long_line { margin-top: .3rem; }
 
-    .agri_dtl_map_wrap { height: auto; }
-    .agri_dtl_map_img { height: 3.6rem; }
-    .agri_dtl_poi_panel { position: static; width: 100%; height: auto; max-height: 4rem; margin-top: .24rem; }
-
-    .agri_dtl_related_grid { flex-direction: column; gap: .24rem; }
-
+    /* ---- 项目详情 ---- */
+    .agri_dtl_detail_sec { padding: .6rem 0; }
+    .agri_dtl_detail_text { font-size: .17rem; margin-bottom: .3rem; }
+    .agri_dtl_gallery_wrap { padding-top: .3rem; }
+    .agri_dtl_gallery_swiper { overflow: hidden; padding: 0; }
     .agri_dtl_gallery_swiper .swiper-slide {
         width: 100% !important;
-        height: 4rem !important;
+        height: auto !important;
+        aspect-ratio: 12 / 6.8;
         opacity: 1 !important;
         transform: none !important;
         pointer-events: auto !important;
+        box-shadow: 0 .04rem .14rem rgba(11, 76, 161, .12) !important;
     }
-    .agri_dtl_gallery_swiper { padding: 0; }
-    .agri_dtl_policy_table { font-size: .16rem; }
-    .agri_dtl_cta_title { font-size: .26rem; }
-    .agri_dtl_invest_line { width: 100%; }
+    .agri_dtl_gallery_ctrls { gap: .24rem; margin-top: .26rem; }
+    .agri_dtl_gallery_arrow { width: .4rem; height: .4rem; }
+
+    /* ---- 特色优势 ---- */
+    .agri_dtl_advantage { padding: .6rem 0 .5rem; }
+    .agri_dtl_advantage_img {
+        width: 7rem !important;
+        height: 3.8rem;
+        border-radius: .18rem;
+    }
+    .agri_dtl_advantage_bar { margin-top: .36rem; }
+
+    /* ---- 项目图集 ---- */
+    .agri_dtl_photos_sec { padding: .6rem 0 .7rem; }
+    .agri_dtl_photos_row1,
+    .agri_dtl_photos_row2 { gap: .24rem; margin-bottom: .24rem; }
+    .agri_dtl_photo_lg,
+    .agri_dtl_photo_sm {
+        flex: 1 1 calc(50% - .12rem);
+        width: auto;
+        height: auto;
+        aspect-ratio: 7.2 / 5.1;
+        border-radius: .16rem;
+    }
+    .agri_dtl_photo_sm { aspect-ratio: 4.36 / 3.32; }
+    .agri_dtl_photo_caption { height: 1.2rem; opacity: 1; }
+    .agri_dtl_photo_caption::before { width: .48rem; height: .48rem; }
+    .agri_dtl_photo_caption span { left: .24rem; bottom: .22rem; font-size: .18rem; }
+    .agri_dtl_photos_more { margin-top: .4rem; }
+    .agri_dtl_more_btn { height: .5rem; font-size: .18rem; }
+
+    /* ---- 周边配套 ---- */
+    .agri_dtl_surroundings_sec { padding: .6rem 0; }
+    .agri_dtl_map_wrap { height: auto; }
+    .agri_dtl_map_img {
+        height: auto;
+        aspect-ratio: 1480 / 590;
+    }
+    .agri_dtl_poi_panel {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin: .24rem 0 0;
+        box-shadow: 0 .04rem .18rem rgba(0, 0, 0, .08);
+    }
+    .agri_dtl_poi_list { max-height: 3.6rem; }
+    .agri_dtl_poi_cat,
+    .agri_dtl_poi_sub { font-size: .16rem; }
+    .agri_dtl_poi_info strong { font-size: .16rem; }
+    .agri_dtl_poi_info span,
+    .agri_dtl_poi_dec { font-size: .14rem; }
+    .agri_dtl_poi_dist { font-size: .15rem; }
+    .agri_dtl_map_disclaimer { font-size: .14rem; margin-left: 0; }
+
+    /* ---- 支持政策 ---- */
+    .agri_dtl_policy_sec { padding: .6rem 0 .8rem; }
+    .agri_dtl_policy_table_wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .agri_dtl_policy_table {
+        min-width: 9rem;
+        font-size: .16rem;
+    }
+    .agri_dtl_policy_table th,
+    .agri_dtl_policy_table td { padding: .16rem .2rem; }
+    .agri_dtl_policy_table th:last-child { padding: 0 .4rem; }
+    .agri_dtl_policy_btn { height: .36rem; font-size: .15rem; padding: 0 .18rem; }
+
+    /* ---- 相关推荐 ---- */
+    .agri_dtl_related_sec { padding: .7rem 0; }
+    .agri_dtl_related_swiper { padding-bottom: .5rem; }
+    .agri_dtl_related_img { height: auto; aspect-ratio: 4.66 / 2.54; }
+    .agri_dtl_related_body { padding: .22rem .2rem .2rem; }
+    .agri_dtl_related_body h3 { font-size: .17rem; margin-bottom: .14rem; }
+    .agri_dtl_related_meta { gap: .08rem; }
+    .agri_dtl_related_meta li { font-size: .13rem; }
+    .agri_dtl_related_price { font-size: .24rem; }
+    .agri_dtl_related_link { width: .32rem; height: .32rem; bottom: .22rem; right: .18rem; }
+
+    /* ---- CTA 招募 ---- */
+    .agri_dtl_cta_sec { height: auto; padding: .8rem .4rem; }
+    .agri_dtl_cta_title { font-size: .28rem; line-height: 1.5; margin-bottom: .3rem; }
+    .agri_dtl_cta_apply_btn { padding: .12rem .26rem; font-size: .18rem; }
 }
 
 /* ============================================================
-   响应式：≤ 767px
+   响应式：≤ 767px（手机端）
    ============================================================ */
 @media screen and (max-width: 767px) {
-    .agri_dtl_img_wrap { height: 3.4rem; }
-    .agri_dtl_proj_title { font-size: .24rem; }
-    .agri_dtl_cta_btns { flex-direction: column; gap: .14rem; }
-    .agri_dtl_cta_btn { justify-content: center; }
-    .agri_dtl_invest_row1 { flex-direction: column; gap: .18rem; }
+    /* ---- 通用区块标题 ---- */
+    .agri_dtl_sec_title { gap: .12rem; margin-bottom: .28rem; }
+    .agri_dtl_sec_title h2 { font-size: .22rem; }
+    .agri_dtl_title_bar { height: .22rem; }
+
+    /* ---- HERO ---- */
+    .agri_dtl_hero_bg .bg_img { filter: blur(24px) brightness(.5); }
+    .agri_dtl_hero_overlay {
+        background: linear-gradient(180deg,
+            rgba(0, 15, 42, .72) 0%,
+            rgba(0, 20, 50, .58) 45%,
+            rgba(0, 15, 42, .78) 100%);
+    }
+    .agri_dtl_hero_inner {
+        width: 92%;
+        padding: 1.1rem 0 .5rem;
+    }
+    .agri_dtl_breadcrumb {
+        margin-bottom: .24rem;
+        font-size: .14rem;
+        flex-wrap: wrap;
+        row-gap: .04rem;
+    }
+    .agri_dtl_hero_body { gap: .26rem; }
+    .agri_dtl_img_wrap { border-radius: .12rem; }
+    .agri_dtl_play_btn { width: .56rem; height: .56rem; }
+    .agri_dtl_arrow {
+        width: .36rem;
+        height: .36rem;
+    }
+    .agri_dtl_arrow img { width: .18rem; }
+    .agri_dtl_arrow_prev { left: .12rem; }
+    .agri_dtl_arrow_next { right: .12rem; }
+    .agri_dtl_thumb_strip {
+        left: .1rem;
+        right: .1rem;
+        bottom: .1rem;
+        gap: .06rem;
+    }
+    .agri_dtl_thumb { width: .9rem; height: .64rem; border-radius: .08rem; }
+    .agri_dtl_thumb--active { width: 1rem; height: .72rem; }
+
+    .agri_dtl_proj_title {
+        font-size: .22rem;
+        line-height: 1.45;
+        margin-bottom: .18rem;
+    }
+    .agri_dtl_actions {
+        gap: .2rem;
+        margin-bottom: .26rem;
+    }
+    .agri_dtl_act_btn { font-size: .15rem; }
+    .agri_dtl_act_icon img { width: .28rem; height: .28rem; }
+    .agri_dtl_proj_stats { gap: .12rem; }
+    .agri_dtl_proj_stats li { font-size: .15rem; line-height: 1.5; }
+    .agri_dtl_stat_label,
+    .agri_dtl_price_label { flex: 0 0 .96rem; font-size: .15rem; }
+    .agri_dtl_stat_divider { margin: .18rem 0; }
+    .agri_dtl_price_row {
+        align-items: center;
+        margin-bottom: .26rem;
+    }
+    .agri_dtl_price_val { font-size: .22rem; }
+    .agri_dtl_cta_btns {
+        flex-direction: column;
+        gap: .14rem;
+    }
+    .agri_dtl_cta_btn {
+        justify-content: center;
+        width: 100%;
+        height: .54rem;
+        padding: 0 .2rem;
+        font-size: .17rem;
+    }
+
+    /* ---- 项目概览 ---- */
+    .agri_dtl_overview { padding: .5rem 0; }
+    .agri_dtl_overview_inner { gap: .26rem; }
+    .agri_dtl_overview_desc { font-size: .16rem; line-height: 1.75; }
+    .agri_dtl_stat_row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .06rem;
+        padding: .22rem 0 .14rem;
+    }
+    .agri_dtl_stat_row--last { padding-top: .28rem; }
+    .agri_dtl_stat_num { font-size: .34rem; }
+    .agri_dtl_stat_unit,
+    .agri_dtl_stat_name,
+    .agri_dtl_stat_desc { font-size: .16rem; }
+    .agri_dtl_stat_desc { max-width: 100%; }
+
+    /* ---- 招商条件 ---- */
+    .agri_dtl_invest { padding: .56rem 0; }
+    .agri_dtl_invest_row1 {
+        flex-direction: column;
+        gap: .26rem;
+    }
+    .agri_dtl_invest_col_label,
+    .agri_dtl_invest_detail_label {
+        font-size: .18rem;
+        margin-bottom: .14rem;
+    }
+    .agri_dtl_invest_tag {
+        height: .34rem;
+        padding: 0 .2rem;
+        font-size: .15rem;
+    }
+    .agri_dtl_invest_num { font-size: .34rem; }
+    .agri_dtl_invest_unit,
+    .agri_dtl_invest_val,
+    .agri_dtl_invest_detail_text {
+        font-size: .15rem;
+        line-height: 1.7;
+    }
+    .agri_dtl_invest_num_row,
+    .agri_dtl_invest_val,
+    .agri_dtl_invest_tags { min-height: 0; }
+    .agri_dtl_invest_line { margin-top: .18rem; }
+    .agri_dtl_invest_detail { padding-top: .26rem; }
+    .agri_dtl_invest_long_line { margin-top: .22rem; }
+
+    /* ---- 项目详情 ---- */
+    .agri_dtl_detail_sec { padding: .5rem 0; }
+    .agri_dtl_detail_text {
+        font-size: .15rem;
+        line-height: 1.7;
+        margin-bottom: .24rem;
+    }
+    .agri_dtl_gallery_wrap { padding-top: .2rem; }
+    .agri_dtl_gallery_ctrls { gap: .18rem; margin-top: .22rem; }
+    .agri_dtl_gallery_arrow { width: .36rem; height: .36rem; }
+
+    /* ---- 特色优势 ---- */
+    .agri_dtl_advantage { padding: .5rem 0 .4rem; }
+    .agri_dtl_advantage_img {
+        width: 5.2rem !important;
+        height: 2.94rem;
+        border-radius: .14rem;
+    }
+    .agri_dtl_advantage_bar { margin-top: .26rem; }
+
+    /* ---- 项目图集（移动端单列） ---- */
+    .agri_dtl_photos_sec { padding: .5rem 0; }
+    .agri_dtl_photos_row1,
+    .agri_dtl_photos_row2 {
+        flex-direction: column;
+        gap: .2rem;
+        margin-bottom: .2rem;
+    }
+    .agri_dtl_photo_lg,
+    .agri_dtl_photo_sm {
+        flex: 0 0 auto;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        border-radius: .14rem;
+    }
+    .agri_dtl_photo_caption { height: 1rem; }
+    .agri_dtl_photo_caption::before { width: .42rem; height: .42rem; }
+    .agri_dtl_photo_caption span {
+        left: .18rem;
+        bottom: .16rem;
+        font-size: .16rem;
+    }
+    .agri_dtl_photos_more { margin-top: .3rem; }
+    .agri_dtl_more_btn {
+        height: .48rem;
+        padding: 0 .28rem;
+        font-size: .16rem;
+    }
+
+    /* ---- 周边配套 ---- */
+    .agri_dtl_surroundings_sec { padding: .5rem 0; }
+    .agri_dtl_map_img {
+        aspect-ratio: 4 / 3;
+        border-radius: .12rem;
+    }
+    .agri_dtl_poi_panel { box-shadow: 0 .04rem .14rem rgba(0, 0, 0, .08); }
+    .agri_dtl_poi_tab_head { height: .56rem; }
+    .agri_dtl_poi_cat,
+    .agri_dtl_poi_sub { font-size: .15rem; }
+    .agri_dtl_poi_sub_tabs {
+        padding: .08rem .14rem .04rem;
+        gap: .22rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+    }
+    .agri_dtl_poi_sub_tabs::-webkit-scrollbar { display: none; }
+    .agri_dtl_poi_list {
+        max-height: 3.4rem;
+        padding: 0 .18rem;
+    }
+    .agri_dtl_poi_info strong { font-size: .15rem; }
+    .agri_dtl_poi_info span,
+    .agri_dtl_poi_dec { font-size: .13rem; }
+    .agri_dtl_poi_dist { font-size: .14rem; }
+
+    /* ---- 支持政策（移动端可横滑表格） ---- */
+    .agri_dtl_policy_sec { padding: .5rem 0; }
+    .agri_dtl_policy_table_wrap { border-radius: .1rem; }
+    .agri_dtl_policy_table {
+        min-width: 7.2rem;
+        font-size: .14rem;
+    }
     .agri_dtl_policy_table th,
-    .agri_dtl_policy_table td { padding: .14rem .16rem; font-size: .14rem; }
-    .agri_dtl_photo_lg { height: 2.4rem; }
-    .agri_dtl_photo_sm { height: 1.8rem; }
-    .agri_dtl_thumb_strip { gap: .07rem; }
-    .agri_dtl_thumb { width: 1rem; height: .72rem; }
-    .agri_dtl_thumb--active { width: 1.2rem; height: .86rem; }
-    .agri_dtl_gallery_swiper .swiper-slide { height: 3.2rem !important; }
+    .agri_dtl_policy_table td {
+        padding: .14rem .16rem;
+    }
+    .agri_dtl_policy_table th:last-child { padding: 0 .28rem; }
+    .agri_dtl_policy_btn {
+        height: .32rem;
+        padding: 0 .14rem;
+        font-size: .14rem;
+    }
+
+    /* ---- 相关推荐 ---- */
+    .agri_dtl_related_sec { padding: .5rem 0 .6rem; }
+    .agri_dtl_related_swiper { padding-bottom: .4rem; }
+    .agri_dtl_related_body { padding: .2rem .18rem .18rem; }
+    .agri_dtl_related_body h3 { font-size: .16rem; margin-bottom: .12rem; }
+    .agri_dtl_related_meta li { font-size: .13rem; }
+    .agri_dtl_related_price { font-size: .22rem; }
+
+    /* ---- CTA 招募 ---- */
+    .agri_dtl_cta_sec { padding: .6rem .3rem; }
+    .agri_dtl_cta_title {
+        font-size: .22rem;
+        line-height: 1.55;
+        margin-bottom: .24rem;
+    }
+    .agri_dtl_cta_apply_btn {
+        padding: .12rem .26rem;
+        font-size: .16rem;
+    }
+    .agri_dtl_cta_apply_btn img { width: .18rem; height: .18rem; }
 }

@@ -1,0 +1,1122 @@
+/* ============================================================
+   property_management_detail.html  —  页面专属样式（差异层）
+   命名空间：prop_dtl_
+   设计基准：1920px，1rem = 100px
+   说明：基础样式复用 agri-detail.css（agri_dtl_*），
+        本文件仅扩展物业经营管理详情页特有的模块。
+   ============================================================ */
+
+/* ---- 全局页面 ---- */
+.prop_dtl_page {
+    background: #fff;
+}
+.prop_dtl_page .footer {
+    margin-top: 0;
+}
+
+
+/* ============================================================
+   HERO 区块差异：标题 + CTA 居中、底部五张属性卡片
+   ============================================================ */
+.prop_dtl_hero {
+    position: relative;
+    height: 9.4rem;
+    overflow: hidden;
+    color: #fff;
+}
+.prop_dtl_hero_bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+.prop_dtl_hero_bg .bg_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.prop_dtl_hero_overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg,
+        rgba(0,15,42,.55) 0%,
+        rgba(0,20,50,.25) 45%,
+        rgba(0,15,42,.55) 100%);
+}
+.prop_dtl_hero_inner {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: min(14.8rem, 100%);
+    max-width: 14.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1.2rem 0 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 顶部行：面包屑 + 收藏/分享 */
+.prop_dtl_hero_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.prop_dtl_breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: .06rem;
+    font-size: .16rem;
+    color: rgba(255,255,255,.75);
+}
+.prop_dtl_breadcrumb .icon-home {
+    width: .16rem;
+    height: .16rem;
+}
+.prop_dtl_breadcrumb a { color: rgba(255,255,255,.75); }
+.prop_dtl_breadcrumb a:hover { color: #fff; text-decoration: underline; }
+.prop_dtl_bc_sep { color: rgba(255,255,255,.4); font-size: .14rem; }
+
+.prop_dtl_hero_actions {
+    display: flex;
+    gap: .24rem;
+}
+.prop_dtl_act_btn {
+    display: flex;
+    align-items: center;
+    gap: .08rem;
+    color: #fff;
+    font-size: .16rem;
+    background: none;
+    cursor: pointer;
+}
+.prop_dtl_act_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.prop_dtl_act_icon img { width: .24rem; height: .24rem; }
+.prop_dtl_act_btn .prop_dtl_icon_active { display: none; }
+.prop_dtl_fav_btn.cur .prop_dtl_icon_normal { display: none; }
+.prop_dtl_fav_btn.cur .prop_dtl_icon_active { display: inline-block; }
+.prop_dtl_share_btn { position: relative; }
+.prop_dtl_share_btn:hover .prop_dtl_icon_normal { display: none; }
+.prop_dtl_share_btn:hover .prop_dtl_icon_active { display: inline-block; }
+.prop_dtl_share_popup {
+    position: absolute;
+    top: 130%;
+    right: 0;
+    width: 1.4rem;
+    padding: .14rem .14rem .12rem;
+    background: #fff;
+    border-radius: .1rem;
+    box-shadow: 0 .1rem .26rem rgba(0,0,0,.18);
+    text-align: center;
+    color: #333;
+    font-size: .14rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(.06rem);
+    transition: .2s;
+    z-index: 5;
+}
+.prop_dtl_share_popup img { width: 100%; display: block; margin-bottom: .06rem; }
+.prop_dtl_share_btn:hover .prop_dtl_share_popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 标题区域（居中） */
+.prop_dtl_title_block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 1rem;
+    text-align: center;
+}
+.prop_dtl_proj_title {
+    font-size: .42rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #fff;
+    margin-bottom: .32rem;
+    max-width: 13rem;
+}
+.prop_dtl_meta_row {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    margin-bottom: .54rem;
+}
+.prop_dtl_meta_item {
+    display: flex;
+    align-items: baseline;
+    gap: .12rem;
+    color: #fff;
+    font-size: .18rem;
+}
+.prop_dtl_meta_label {
+    color: rgba(255,255,255,.6);
+}
+.prop_dtl_meta_value {
+    font-weight: 500;
+}
+.prop_dtl_meta_price {
+    font-family: Manrope, 'Source Han Sans CN', sans-serif;
+    font-size: .26rem;
+    font-weight: 700;
+    color: #ff852b;
+    letter-spacing: -.01em;
+}
+
+/* 居中 CTA 按钮组 */
+.prop_dtl_cta_btns {
+    display: flex;
+    gap: .3rem;
+}
+.prop_dtl_cta_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .1rem;
+    width: 1.68rem;
+    height: .54rem;
+    border-radius: 5.6rem;
+    background: linear-gradient(123.54deg, #165dff 2.38%, #0b4ca1 59.53%);
+    color: #fff;
+    font-size: .18rem;
+    transition: filter .2s, transform .2s;
+}
+.prop_dtl_cta_btn:hover {
+    filter: brightness(1.12);
+    transform: translateY(-.02rem);
+}
+.prop_dtl_cta_btn img { width: .2rem; height: .2rem; filter: brightness(10); }
+
+/* 左右切换按钮 */
+.prop_dtl_arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: .52rem;
+    height: .52rem;
+    border-radius: 50%;
+    border: 1.25px solid rgba(255,255,255,.6);
+    background: rgba(255,255,255,.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    transition: background .2s;
+}
+.prop_dtl_arrow:hover { background: rgba(255,255,255,.22); }
+.prop_dtl_arrow img { width: .3rem; }
+.prop_dtl_arrow_prev { left: 1.7rem; }
+.prop_dtl_arrow_next { right: 1.7rem; }
+.prop_dtl_arrow_next img { transform: scaleX(-1); }
+
+/* 底部五张属性卡片  Figma: y=752, w=306, h=108 */
+.prop_dtl_hero_cards {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: .8rem;
+    transform: translateX(-50%);
+    width: 14.8rem;
+    display: flex;
+    gap: .38rem;
+}
+.prop_dtl_hero_card {
+    flex: 1;
+    height: 1.08rem;
+    padding: 0 .25rem;
+    border-radius: .16rem;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.18);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .08rem;
+    box-shadow: 0 .08rem .2rem rgba(0,15,42,.16);
+}
+.prop_dtl_hero_card_label {
+    font-size: .16rem;
+    color: rgba(255,255,255,.7);
+}
+.prop_dtl_hero_card_value {
+    font-size: .18rem;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: .08rem;
+}
+.prop_dtl_hero_card_value img {
+    width: .42rem;
+    height: .42rem;
+    margin-left: auto;
+}
+.prop_dtl_hero_card_value .prop_dtl_card_icon {
+    width: .42rem;
+    height: .42rem;
+    flex-shrink: 0;
+    margin-left: auto;
+    background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.prop_dtl_hero_card_value .prop_dtl_card_icon::before {
+    content: "";
+    width: .22rem;
+    height: .22rem;
+    background: url('../images/agri-detail/icon-site.svg') center / contain no-repeat;
+}
+
+
+/* ============================================================
+   物业概况  (Figma: y=940, h=904, 蓝色波浪背景 + 中心圆形)
+   ============================================================ */
+.prop_dtl_overview {
+    position: relative;
+    padding: 1.07rem 0 1.1rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, #F3F7FF 0%, #E6EEFB 100%);
+}
+.prop_dtl_overview::before,
+.prop_dtl_overview::after {
+    content: "";
+    position: absolute;
+    height: 4.4rem;
+    background: radial-gradient(ellipse at center, rgba(22,93,255,.07) 0%, transparent 70%);
+    pointer-events: none;
+}
+.prop_dtl_overview::before { top: 2.6rem; left: -6rem; width: 14.9rem; transform: rotate(-8deg); }
+.prop_dtl_overview::after  { top: 3.1rem; right: -6rem; width: 14.9rem; transform: rotate(8deg); }
+
+.prop_dtl_overview_inner {
+    position: relative;
+    z-index: 1;
+}
+
+/* 居中标题 */
+.prop_dtl_sec_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .14rem;
+    margin-bottom: .82rem;
+    position: relative;
+}
+.prop_dtl_sec_title h2 {
+    font-size: .3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+.prop_dtl_title_bar {
+    display: block;
+    width: .04rem;
+    height: .3rem;
+    border-radius: .02rem;
+    background: #0b4ca1;
+}
+
+/* 三列：左数据 + 中圆图 + 右数据 */
+.prop_dtl_overview_grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .4rem;
+    padding: 0 0 .3rem;
+}
+.prop_dtl_overview_list {
+    flex: 0 0 4.38rem;
+    list-style: none;
+}
+.prop_dtl_overview_list li {
+    display: flex;
+    align-items: center;
+    height: .96rem;
+    border-bottom: 1px solid rgba(11,76,161,.12);
+}
+.prop_dtl_overview_list li:last-child {
+    border-bottom: 1px solid rgba(11,76,161,.12);
+}
+.prop_dtl_overview_list--right li {
+    justify-content: flex-end;
+    text-align: right;
+}
+.prop_dtl_overview_label {
+    font-size: .2rem;
+    font-weight: 600;
+    color: #0B4CA1;
+    flex: 0 0 1.4rem;
+}
+.prop_dtl_overview_list--right .prop_dtl_overview_label {
+    order: 2;
+}
+.prop_dtl_overview_value {
+    flex: 1;
+    font-size: .18rem;
+    color: #333;
+}
+.prop_dtl_overview_list--left .prop_dtl_overview_value {
+    margin-left: .28rem;
+}
+.prop_dtl_overview_list--right .prop_dtl_overview_value {
+    margin-right: .28rem;
+    text-align: right;
+    order: 1;
+}
+
+/* 中心圆形视频区 */
+.prop_dtl_overview_center {
+    flex: 0 0 5.58rem;
+    height: 5.58rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.prop_dtl_overview_circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    border: .12rem solid #fff;
+    box-shadow: 0 .2rem .6rem rgba(11,76,161,.18);
+}
+.prop_dtl_overview_circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.prop_dtl_overview_play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: .8rem;
+    height: .8rem;
+    border-radius: 50%;
+    background: url('../images/agri-detail/icon-play.svg') center / cover no-repeat;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform .2s;
+}
+.prop_dtl_overview_play:hover { transform: translate(-50%, -50%) scale(1.08); }
+
+/* 查看更多按钮 */
+.prop_dtl_overview_more {
+    display: flex;
+    justify-content: center;
+    margin-top: .3rem;
+}
+.prop_dtl_more_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .12rem;
+    height: .44rem;
+    padding: 0 .26rem 0 .3rem;
+    border-radius: .44rem;
+    background: linear-gradient(123.54deg, #165dff 2.38%, #0b4ca1 59.53%);
+    color: #fff;
+    font-size: .16rem;
+    box-shadow: 0 7px 9.3px rgba(22, 93, 255, 0.2);
+    transition: filter .2s, transform .2s;
+}
+.prop_dtl_more_btn:hover { filter: brightness(1.12); transform: translateY(-.02rem); }
+.prop_dtl_more_circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: .22rem;
+    height: .22rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,.18);
+    font-size: .14rem;
+    line-height: 1;
+}
+.prop_dtl_more_circle::after {
+    content: "";
+    width: .1rem;
+    height: .1rem;
+    border-top: 1.5px solid #fff;
+    border-right: 1.5px solid #fff;
+    transform: rotate(45deg) translate(-1px, 1px);
+}
+
+
+/* ============================================================
+   招商条件 (5 列卡片) — 复写 agri 版本的 3 列 + 2 详情
+   Figma: y=2066, w=360, h=500
+   ============================================================ */
+.prop_dtl_invest {
+    position: relative;
+    padding: 1.0rem 0 1.2rem;
+    overflow: hidden;
+    background: #fff;
+}
+.prop_dtl_invest .prop_dtl_sec_title { margin-bottom: .54rem; }
+
+.prop_dtl_invest_grid {
+    display: flex;
+    gap: .4rem;
+    align-items: stretch;
+    overflow-x: auto;
+    padding-bottom: .2rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(11,76,161,.18) transparent;
+}
+.prop_dtl_invest_grid::-webkit-scrollbar { height: 6px; }
+.prop_dtl_invest_grid::-webkit-scrollbar-thumb {
+    background: rgba(11,76,161,.18);
+    border-radius: 3px;
+}
+
+.prop_dtl_invest_card {
+    flex: 0 0 3.6rem;
+    height: 5rem;
+    padding: .56rem .32rem .4rem;
+    border-radius: .16rem;
+    background: linear-gradient(180deg, #F4F8FF 0%, #FFFFFF 100%);
+    box-shadow: 0 .12rem .3rem rgba(11,76,161,.06);
+    border: 1px solid rgba(11,76,161,.06);
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s, box-shadow .25s, background .25s;
+}
+.prop_dtl_invest_card:hover {
+    transform: translateY(-.06rem);
+    box-shadow: 0 .18rem .4rem rgba(11,76,161,.12);
+}
+.prop_dtl_invest_card--primary {
+    background: linear-gradient(180deg, #0B4CA1 0%, #165DFF 100%);
+    color: #fff;
+}
+.prop_dtl_invest_icon {
+    width: .8rem;
+    height: .8rem;
+    border-radius: .2rem;
+    background: linear-gradient(135deg, rgba(22,93,255,.16), rgba(11,76,161,.06));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .35rem;
+}
+.prop_dtl_invest_icon img { width: .42rem; height: .42rem; }
+.prop_dtl_invest_card--primary .prop_dtl_invest_icon {
+    background: rgba(255,255,255,.18);
+}
+.prop_dtl_invest_card--primary .prop_dtl_invest_icon img {
+    filter: brightness(10);
+}
+.prop_dtl_invest_label {
+    font-size: .24rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: .22rem;
+}
+.prop_dtl_invest_card--primary .prop_dtl_invest_label { color: #fff; }
+
+.prop_dtl_invest_num_row {
+    display: flex;
+    align-items: baseline;
+    gap: .08rem;
+}
+.prop_dtl_invest_num {
+    font-family: Manrope, 'Source Han Sans CN', sans-serif;
+    font-size: .56rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+.prop_dtl_invest_unit { font-size: .18rem; color: #fff; }
+.prop_dtl_invest_val {
+    font-size: .2rem;
+    color: #333;
+    line-height: 1.6;
+}
+.prop_dtl_invest_card--primary .prop_dtl_invest_val { color: #fff; }
+
+.prop_dtl_invest_text {
+    font-size: .16rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+
+/* ============================================================
+   项目详情  (Figma: y=2484, h=1432)
+   主图 + 右侧 4 缩略图 + 右上下箭头
+   ============================================================ */
+.prop_dtl_detail_sec {
+    position: relative;
+    padding: 1.0rem 0 1.2rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, #EEF3FC 0%, #DCE6F7 100%);
+}
+.prop_dtl_detail_sec::before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 5rem;
+    width: 11.6rem;
+    height: 5.4rem;
+    background: radial-gradient(ellipse at center, rgba(22,93,255,.12) 0%, transparent 70%);
+    z-index: 0;
+}
+.prop_dtl_detail_inner { position: relative; z-index: 1; }
+.prop_dtl_detail_text {
+    font-size: .18rem;
+    line-height: 1.95;
+    color: #333;
+    margin-bottom: .6rem;
+}
+.prop_dtl_detail_gallery {
+    display: flex;
+    gap: .25rem;
+    height: 6.58rem;
+    align-items: stretch;
+}
+.prop_dtl_detail_main {
+    flex: 1;
+    position: relative;
+    border-radius: .16rem;
+    overflow: hidden;
+    box-shadow: 0 .12rem .3rem rgba(11,76,161,.12);
+}
+.prop_dtl_detail_main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.prop_dtl_detail_main_tag {
+    position: absolute;
+    top: .24rem;
+    left: .24rem;
+    height: .42rem;
+    padding: 0 .18rem;
+    background: rgba(0,0,0,.45);
+    color: #fff;
+    border-radius: .08rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .08rem;
+    font-size: .16rem;
+    backdrop-filter: blur(8px);
+}
+.prop_dtl_detail_thumbs {
+    flex: 0 0 2.26rem;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+.prop_dtl_detail_thumb {
+    flex: 1;
+    border-radius: .12rem;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: transform .25s, box-shadow .25s;
+    box-shadow: 0 .06rem .14rem rgba(11,76,161,.1);
+}
+.prop_dtl_detail_thumb:hover {
+    transform: translateY(-.02rem);
+    box-shadow: 0 .1rem .22rem rgba(11,76,161,.18);
+}
+.prop_dtl_detail_thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.prop_dtl_detail_thumb--active::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid #165DFF;
+    border-radius: .12rem;
+}
+
+/* 右上下切换按钮 */
+.prop_dtl_detail_nav {
+    position: absolute;
+    right: 1.7rem;
+    top: 1.2rem;
+    bottom: 1.6rem;
+    width: .52rem;
+    display: none;
+}
+
+
+/* ============================================================
+   特色优势  (Figma: y=3946, h=1238)
+   左右两列：01 + 图片  /  02 + 图片
+   下方进度条 + 翻页箭头
+   ============================================================ */
+.prop_dtl_advantage {
+    position: relative;
+    padding: 1.0rem 0 1.2rem;
+    overflow: hidden;
+    background: #fff;
+}
+.prop_dtl_advantage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('../images/agri-detail/section1-bg.png') center / cover no-repeat;
+    opacity: .55;
+    z-index: 0;
+}
+.prop_dtl_advantage_inner { position: relative; z-index: 1; }
+
+.prop_dtl_adv_swiper { width: 100%; overflow: hidden; }
+.prop_dtl_adv_swiper .swiper-wrapper { align-items: stretch; }
+.prop_dtl_adv_swiper .swiper-slide {
+    width: 7.2rem !important;
+    height: auto;
+}
+.prop_dtl_adv_card {
+    display: flex;
+    flex-direction: column;
+    gap: .36rem;
+    background: rgba(255,255,255,.6);
+    border-radius: .2rem;
+    padding: .42rem .4rem;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 .08rem .26rem rgba(11,76,161,.08);
+    border: 1px solid rgba(11,76,161,.08);
+    height: 100%;
+}
+.prop_dtl_adv_head {
+    display: flex;
+    align-items: flex-start;
+    gap: .26rem;
+}
+.prop_dtl_adv_num {
+    font-family: Manrope, sans-serif;
+    font-size: .72rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #165DFF 0%, #0B4CA1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    flex-shrink: 0;
+}
+.prop_dtl_adv_head_text {
+    display: flex;
+    flex-direction: column;
+    gap: .04rem;
+    padding-top: .04rem;
+}
+.prop_dtl_adv_subtitle {
+    font-size: .14rem;
+    color: rgba(11,76,161,.6);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+.prop_dtl_adv_title {
+    font-size: .24rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+.prop_dtl_adv_desc {
+    font-size: .16rem;
+    color: #555;
+    line-height: 1.75;
+}
+.prop_dtl_adv_img {
+    flex: 1;
+    width: 100%;
+    min-height: 3.6rem;
+    border-radius: .14rem;
+    overflow: hidden;
+}
+.prop_dtl_adv_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 控件：进度条 + 上下分类指示 */
+.prop_dtl_adv_ctrls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: .54rem;
+    gap: .4rem;
+}
+.prop_dtl_adv_track {
+    flex: 1;
+    height: .04rem;
+    background: rgba(11,76,161,.12);
+    border-radius: .04rem;
+    overflow: hidden;
+    position: relative;
+}
+.prop_dtl_adv_fill {
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, #165DFF, #0B4CA1);
+    border-radius: .04rem;
+    transition: width .2s ease;
+}
+.prop_dtl_adv_arrows {
+    display: flex;
+    gap: .14rem;
+    flex-shrink: 0;
+}
+.prop_dtl_adv_arrow {
+    width: .52rem;
+    height: .52rem;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid rgba(11,76,161,.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .2s;
+}
+.prop_dtl_adv_arrow:hover {
+    background: linear-gradient(135deg, #165DFF, #0B4CA1);
+    border-color: transparent;
+}
+.prop_dtl_adv_arrow:hover img { filter: brightness(10); }
+.prop_dtl_adv_arrow img { width: .24rem; height: .24rem; }
+.prop_dtl_adv_arrow--next img { transform: scaleX(-1); }
+
+
+/* ============================================================
+   项目图集 (Figma: y=5086, h=676)
+   3 张大图（现场照片、效果图、平面图CAD），有错落位移效果
+   ============================================================ */
+.prop_dtl_photos_sec {
+    padding: 1.0rem 0 1.2rem;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+.prop_dtl_photos_row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .4rem;
+    align-items: end;
+}
+.prop_dtl_photo_card {
+    position: relative;
+    border-radius: .2rem;
+    overflow: hidden;
+    box-shadow: 0 .12rem .3rem rgba(11,76,161,.1);
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+.prop_dtl_photo_card:nth-child(1),
+.prop_dtl_photo_card:nth-child(3) {
+    transform: translateY(.6rem);
+}
+.prop_dtl_photo_card:hover {
+    transform: translateY(0);
+    box-shadow: 0 .2rem .42rem rgba(11,76,161,.18);
+}
+.prop_dtl_photo_card:nth-child(2):hover {
+    transform: translateY(-.06rem);
+}
+.prop_dtl_photo_card a { display: block; }
+.prop_dtl_photo_thumb {
+    height: 3.3rem;
+    overflow: hidden;
+    position: relative;
+}
+.prop_dtl_photo_thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+.prop_dtl_photo_card:hover .prop_dtl_photo_thumb img { transform: scale(1.06); }
+.prop_dtl_photo_thumb::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 1.2rem;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,.45));
+    pointer-events: none;
+}
+.prop_dtl_photo_zoom {
+    position: absolute;
+    bottom: .22rem;
+    right: .22rem;
+    z-index: 2;
+    width: .56rem;
+    height: .56rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,.32);
+}
+.prop_dtl_photo_zoom img { width: .22rem; height: .22rem; filter: brightness(10); }
+.prop_dtl_photo_label {
+    text-align: center;
+    font-size: .2rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    padding: .24rem 0 .04rem;
+    background: #fff;
+}
+
+/* 项目图集下方进度条 */
+.prop_dtl_photos_bar {
+    margin-top: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .4rem;
+}
+.prop_dtl_photos_track {
+    flex: 1;
+    height: .04rem;
+    background: rgba(11,76,161,.12);
+    border-radius: .04rem;
+    overflow: hidden;
+}
+.prop_dtl_photos_fill {
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, #165DFF, #0B4CA1);
+    border-radius: .04rem;
+}
+.prop_dtl_photos_arrows {
+    display: flex;
+    gap: .14rem;
+}
+
+
+/* ============================================================
+   周边配套  (Figma: y=5862, 复用 agri 的地图样式)
+   ============================================================ */
+.prop_dtl_surroundings_sec {
+    padding: 1rem 0 1.2rem;
+    background: #fff;
+}
+.prop_dtl_surroundings_sec .agri_dtl_sec_title { justify-content: center; margin-bottom: .76rem; }
+
+
+/* ============================================================
+   支持政策  (Figma: y=6738) — 复用 agri 的表格样式
+   ============================================================ */
+.prop_dtl_policy_sec {
+    padding: .8rem 0 1.2rem;
+    background: #F4F7FD;
+}
+.prop_dtl_policy_sec .agri_dtl_sec_title { justify-content: center; margin-bottom: .68rem; }
+
+
+/* ============================================================
+   相关推荐项目  (Figma: y=7321) — 单卡大图 + 信息双列
+   ============================================================ */
+.prop_dtl_related_sec {
+    padding: 1rem 0 1.4rem;
+    background: #fff;
+}
+.prop_dtl_related_sec .prop_dtl_sec_title { margin-bottom: .68rem; }
+
+.prop_dtl_related_card {
+    display: flex;
+    gap: .8rem;
+    background: linear-gradient(135deg, #F5F8FE 0%, #E4EDFB 100%);
+    border-radius: .2rem;
+    overflow: hidden;
+    box-shadow: 0 .12rem .3rem rgba(11,76,161,.08);
+    border: 1px solid rgba(11,76,161,.08);
+    padding: .4rem;
+    align-items: stretch;
+}
+.prop_dtl_related_thumb {
+    flex: 0 0 6rem;
+    height: 4.2rem;
+    border-radius: .16rem;
+    overflow: hidden;
+    position: relative;
+}
+.prop_dtl_related_thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s;
+}
+.prop_dtl_related_card:hover .prop_dtl_related_thumb img { transform: scale(1.05); }
+.prop_dtl_related_body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: .1rem 0;
+}
+.prop_dtl_related_title {
+    font-size: .24rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #1a1a1a;
+    margin-bottom: .36rem;
+}
+.prop_dtl_related_meta {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .26rem;
+    margin-bottom: .42rem;
+}
+.prop_dtl_related_meta li {
+    display: flex;
+    align-items: center;
+    gap: .12rem;
+    font-size: .16rem;
+    color: #333;
+}
+.prop_dtl_related_meta li i {
+    width: .28rem;
+    height: .28rem;
+    border-radius: 50%;
+    background: rgba(22,93,255,.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.prop_dtl_related_meta li i::before {
+    content: "";
+    width: .14rem;
+    height: .14rem;
+    background: #165DFF;
+    border-radius: 2px;
+    opacity: .7;
+}
+.prop_dtl_related_meta li span:first-of-type {
+    color: #888;
+    min-width: 1.4rem;
+}
+.prop_dtl_related_meta li .price_value {
+    font-family: Manrope, sans-serif;
+    font-size: .26rem;
+    font-weight: 700;
+    color: #ff852b;
+}
+.prop_dtl_related_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .08rem;
+    height: .42rem;
+    padding: 0 .22rem;
+    border-radius: .42rem;
+    background: linear-gradient(123.54deg, #165dff 2.38%, #0b4ca1 59.53%);
+    color: #fff;
+    font-size: .16rem;
+    align-self: flex-start;
+    margin-top: auto;
+    transition: filter .2s, transform .2s;
+}
+.prop_dtl_related_btn:hover {
+    filter: brightness(1.12);
+    transform: translateY(-.02rem);
+}
+
+
+/* ============================================================
+   CTA 招募区  (Figma: y=8059, h=680)
+   ============================================================ */
+.prop_dtl_cta_sec {
+    position: relative;
+    padding: 1.6rem 0 1.4rem;
+    overflow: hidden;
+}
+.prop_dtl_cta_bg {
+    position: absolute;
+    inset: 0;
+    background: url('../images/agri-detail/section7-bg.jpg') center / cover no-repeat;
+    z-index: 0;
+}
+.prop_dtl_cta_bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,15,42,.65) 0%, rgba(0,30,80,.85) 100%);
+}
+.prop_dtl_cta_inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+}
+.prop_dtl_cta_title {
+    font-size: .54rem;
+    font-weight: 700;
+    margin-bottom: .5rem;
+    letter-spacing: .04em;
+}
+.prop_dtl_cta_apply_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .1rem;
+    height: .54rem;
+    padding: 0 .36rem;
+    border-radius: 5rem;
+    background: linear-gradient(123.54deg, #165dff 2.38%, #0b4ca1 59.53%);
+    color: #fff;
+    font-size: .2rem;
+    transition: filter .2s, transform .2s;
+}
+.prop_dtl_cta_apply_btn:hover {
+    filter: brightness(1.12);
+    transform: translateY(-.02rem);
+}
+.prop_dtl_cta_apply_btn img {
+    width: .22rem;
+    height: .22rem;
+    filter: brightness(10);
+}
+
+
+/* ============================================================
+   响应式（≤1366px 简单适配）
+   ============================================================ */
+@media (max-width: 1366px) {
+    .prop_dtl_overview_grid {
+        gap: .2rem;
+    }
+    .prop_dtl_overview_list { flex: 0 0 3.6rem; }
+    .prop_dtl_overview_center { flex: 0 0 4.8rem; height: 4.8rem; }
+    .prop_dtl_arrow_prev { left: .4rem; }
+    .prop_dtl_arrow_next { right: .4rem; }
+}
+
+@media (max-width: 1024px) {
+    .prop_dtl_proj_title { font-size: .34rem; }
+    .prop_dtl_meta_row { flex-direction: column; gap: .18rem; }
+    .prop_dtl_hero_cards { gap: .2rem; }
+    .prop_dtl_overview_grid {
+        flex-direction: column;
+    }
+    .prop_dtl_overview_list--right li { justify-content: flex-start; text-align: left; }
+    .prop_dtl_overview_list--right .prop_dtl_overview_label { order: 0; }
+    .prop_dtl_overview_list--right .prop_dtl_overview_value { order: 1; margin-right: 0; margin-left: .28rem; text-align: left; }
+    .prop_dtl_invest_grid { overflow-x: auto; }
+    .prop_dtl_photos_row { grid-template-columns: 1fr; }
+    .prop_dtl_photo_card:nth-child(1),
+    .prop_dtl_photo_card:nth-child(3) { transform: none; }
+    .prop_dtl_related_card { flex-direction: column; gap: .4rem; }
+    .prop_dtl_related_thumb { flex: 0 0 auto; height: 3.6rem; }
+}

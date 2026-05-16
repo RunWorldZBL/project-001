@@ -1,0 +1,1029 @@
+/* ============================================================
+   leisure_agriculture_detail.html  —  页面专属样式
+   命名空间：leis_dtl_
+   设计基准：1920px，1rem = 100px
+   基础样式复用 agri-detail.css（agri_dtl_*），
+   此文件扩展休闲农业与乡村旅游详情页特有的模块。
+   ============================================================ */
+
+/* ---- 全局页面 ---- */
+.leis_dtl_page {
+    background: #fff;
+}
+.leis_dtl_page .footer { margin-top: 0; }
+
+/* ---- 通用区块标题（居中） ---- */
+.leis_dtl_sec_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .14rem;
+    margin-bottom: .68rem;
+}
+.leis_dtl_sec_title h2 {
+    font-size: .3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+.leis_dtl_title_bar {
+    display: block;
+    width: .04rem;
+    height: .3rem;
+    border-radius: .02rem;
+    background: #0b4ca1;
+}
+.leis_dtl_sec_title--white h2 { color: #fff; }
+.leis_dtl_sec_title--white .leis_dtl_title_bar { background: #fff; }
+
+
+/* ============================================================
+   HERO 区块  (Figma: 1920×940, 左标题+CTA + 右白色信息卡)
+   ============================================================ */
+.leis_dtl_hero {
+    position: relative;
+    height: 9.4rem;
+    overflow: hidden;
+    color: #fff;
+}
+.leis_dtl_hero_bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+.leis_dtl_hero_bg .bg_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.leis_dtl_hero_overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg,
+        rgba(0,15,42,.42) 0%,
+        rgba(0,20,50,.18) 45%,
+        rgba(0,15,42,.45) 100%);
+}
+.leis_dtl_hero_inner {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: min(14.8rem, 100%);
+    max-width: 14.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1.2rem 0 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 顶部行：面包屑 + 收藏/分享 */
+.leis_dtl_hero_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+}
+.leis_dtl_breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: .06rem;
+    font-size: .16rem;
+    color: rgba(255,255,255,.75);
+}
+.leis_dtl_breadcrumb .icon-home { width: .16rem; height: .16rem; }
+.leis_dtl_breadcrumb a { color: rgba(255,255,255,.75); }
+.leis_dtl_breadcrumb a:hover { color: #fff; text-decoration: underline; }
+.leis_dtl_bc_sep { color: rgba(255,255,255,.4); font-size: .14rem; }
+
+.leis_dtl_hero_actions {
+    display: flex;
+    gap: .24rem;
+}
+.leis_dtl_act_btn {
+    display: flex;
+    align-items: center;
+    gap: .08rem;
+    color: #fff;
+    font-size: .16rem;
+    background: none;
+    cursor: pointer;
+}
+.leis_dtl_act_icon img { width: .24rem; height: .24rem; }
+.leis_dtl_act_btn .leis_dtl_icon_active { display: none; }
+.leis_dtl_fav_btn.cur .leis_dtl_icon_normal { display: none; }
+.leis_dtl_fav_btn.cur .leis_dtl_icon_active { display: inline-block; }
+.leis_dtl_share_btn { position: relative; }
+.leis_dtl_share_btn:hover .leis_dtl_icon_normal { display: none; }
+.leis_dtl_share_btn:hover .leis_dtl_icon_active { display: inline-block; }
+.leis_dtl_share_popup {
+    position: absolute;
+    top: 130%;
+    right: 0;
+    width: 1.4rem;
+    padding: .14rem .14rem .12rem;
+    background: #fff;
+    border-radius: .1rem;
+    box-shadow: 0 .1rem .26rem rgba(0,0,0,.18);
+    text-align: center;
+    color: #333;
+    font-size: .14rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(.06rem);
+    transition: .2s;
+    z-index: 5;
+}
+.leis_dtl_share_popup img { width: 100%; display: block; margin-bottom: .06rem; }
+.leis_dtl_share_btn:hover .leis_dtl_share_popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 主体双列：左信息 + 右白卡 */
+.leis_dtl_hero_body {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2.86rem;
+}
+
+/* 左侧主信息 */
+.leis_dtl_hero_left {
+    flex: 1;
+    min-width: 0;
+    padding-top: .8rem;
+}
+.leis_dtl_proj_title {
+    font-size: .42rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #fff;
+    margin-bottom: .4rem;
+    max-width: 9.1rem;
+}
+.leis_dtl_price_row {
+    display: flex;
+    align-items: baseline;
+    gap: .14rem;
+    margin-bottom: .54rem;
+}
+.leis_dtl_price_label {
+    font-size: .18rem;
+    color: rgba(255,255,255,.6);
+}
+.leis_dtl_price_val {
+    font-family: Manrope, 'Source Han Sans CN', sans-serif;
+    font-size: .3rem;
+    font-weight: 700;
+    color: #ff852b;
+    letter-spacing: -.01em;
+}
+.leis_dtl_cta_btns {
+    display: flex;
+    gap: .3rem;
+}
+.leis_dtl_cta_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .1rem;
+    width: 1.68rem;
+    height: .54rem;
+    border-radius: 5.6rem;
+    background: linear-gradient(123.54deg, #165dff 2.38%, #0b4ca1 59.53%);
+    color: #fff;
+    font-size: .18rem;
+    transition: filter .2s, transform .2s;
+}
+.leis_dtl_cta_btn:hover {
+    filter: brightness(1.12);
+    transform: translateY(-.02rem);
+}
+.leis_dtl_cta_btn img { width: .2rem; height: .2rem; filter: brightness(10); }
+
+/* 右侧白色信息卡  Figma: w=480, h=534 */
+.leis_dtl_hero_card {
+    position: relative;
+    flex: 0 0 4.8rem;
+    width: 4.8rem;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: .16rem;
+    padding: .62rem .46rem;
+    box-shadow: 0 .14rem .36rem rgba(0,20,55,.18);
+    color: #333;
+    margin-top: 1.12rem;
+}
+.leis_dtl_hero_card_list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.leis_dtl_hero_card_list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .2rem 0;
+    border-bottom: 1px solid #e5e9f0;
+}
+.leis_dtl_hero_card_list li:last-child { border-bottom: none; }
+.leis_dtl_hero_card_label {
+    font-size: .18rem;
+    color: #888;
+}
+.leis_dtl_hero_card_value {
+    font-size: .18rem;
+    color: #1a1a1a;
+    font-weight: 500;
+    display: flex;
+    align-items: baseline;
+    gap: .04rem;
+}
+.leis_dtl_hero_card_num {
+    font-family: Manrope, 'Source Han Sans CN', sans-serif;
+    font-size: .34rem;
+    font-weight: 700;
+    color: #0B4CA1;
+    line-height: 1;
+}
+
+
+/* ============================================================
+   项目概览  (Figma: y=940, h=1415, 蓝色波浪背景)
+   左圆形视频 + 右长文 + 下方 4 数据卡
+   ============================================================ */
+.leis_dtl_overview {
+    position: relative;
+    padding: 1.07rem 0 1.1rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, #F4F7FD 0%, #E6EEFB 100%);
+}
+.leis_dtl_overview::before {
+    content: "";
+    position: absolute;
+    top: 4rem;
+    left: -3rem;
+    width: 12rem;
+    height: 5rem;
+    background: radial-gradient(ellipse at center, rgba(22,93,255,.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+.leis_dtl_overview::after {
+    content: "";
+    position: absolute;
+    top: 3.5rem;
+    right: -3rem;
+    width: 12rem;
+    height: 5rem;
+    background: radial-gradient(ellipse at center, rgba(22,93,255,.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+.leis_dtl_overview_inner {
+    position: relative;
+    z-index: 1;
+}
+.leis_dtl_overview_grid {
+    display: flex;
+    align-items: flex-start;
+    gap: .92rem;
+    margin-bottom: .8rem;
+}
+/* 左圆形视频 */
+.leis_dtl_overview_left {
+    flex: 0 0 7.44rem;
+    height: 5.25rem;
+    position: relative;
+    border-radius: .2rem;
+    overflow: hidden;
+    box-shadow: 0 .14rem .36rem rgba(11,76,161,.16);
+}
+.leis_dtl_overview_left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.leis_dtl_overview_left::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,30,80,.32) 100%);
+    pointer-events: none;
+}
+.leis_dtl_overview_play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: .8rem;
+    height: .8rem;
+    border-radius: 50%;
+    background: url('../images/agri-detail/icon-play.svg') center / cover no-repeat;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform .2s;
+}
+.leis_dtl_overview_play:hover { transform: translate(-50%, -50%) scale(1.08); }
+
+/* 右文字 */
+.leis_dtl_overview_right {
+    flex: 1;
+    min-width: 0;
+    padding-top: .1rem;
+}
+.leis_dtl_overview_para {
+    font-size: .18rem;
+    line-height: 1.95;
+    color: #444;
+    margin-bottom: .3rem;
+}
+.leis_dtl_overview_para:last-child { margin-bottom: 0; }
+
+/* 下方 4 数据卡 */
+.leis_dtl_overview_stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .4rem;
+}
+.leis_dtl_overview_stat {
+    position: relative;
+    padding: .26rem .3rem .26rem .42rem;
+}
+.leis_dtl_overview_stat::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .2rem;
+    width: .15rem;
+    height: .05rem;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #165DFF, #0B4CA1);
+}
+.leis_dtl_overview_stat_label {
+    font-size: .2rem;
+    font-weight: 600;
+    color: #0B4CA1;
+    margin-bottom: .18rem;
+}
+.leis_dtl_overview_stat_num {
+    display: flex;
+    align-items: baseline;
+    gap: .1rem;
+}
+.leis_dtl_overview_stat_value {
+    font-family: Manrope, 'Source Han Sans CN', sans-serif;
+    font-size: .52rem;
+    font-weight: 700;
+    color: #0B4CA1;
+    line-height: 1;
+    letter-spacing: -.02em;
+}
+.leis_dtl_overview_stat_unit {
+    font-size: .18rem;
+    color: #555;
+}
+.leis_dtl_overview_stat_text {
+    font-size: .26rem;
+    font-weight: 600;
+    color: #0B4CA1;
+    line-height: 1;
+}
+
+
+/* ============================================================
+   招商条件  (Figma: y=2050, 白底)
+   左 5 项纵向列表 + 右大图
+   ============================================================ */
+.leis_dtl_invest {
+    padding: 1rem 0 1.2rem;
+    background: #fff;
+    position: relative;
+}
+.leis_dtl_invest_grid {
+    display: flex;
+    align-items: flex-start;
+    gap: .96rem;
+}
+.leis_dtl_invest_list {
+    flex: 0 0 6.4rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.leis_dtl_invest_item {
+    padding: .26rem 0;
+    border-bottom: 1px solid rgba(11,76,161,.12);
+}
+.leis_dtl_invest_item:first-child { padding-top: .14rem; }
+.leis_dtl_invest_item:last-child { border-bottom: none; }
+.leis_dtl_invest_head {
+    display: flex;
+    align-items: center;
+    gap: .16rem;
+    margin-bottom: .14rem;
+}
+.leis_dtl_invest_icon {
+    width: .3rem;
+    height: .3rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(22,93,255,.15), rgba(11,76,161,.08));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.leis_dtl_invest_icon img { width: .18rem; height: .18rem; }
+.leis_dtl_invest_label {
+    font-size: .24rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+.leis_dtl_invest_value {
+    font-size: .18rem;
+    color: #1a1a1a;
+    line-height: 1.7;
+    padding-left: .46rem;
+}
+.leis_dtl_invest_value strong {
+    font-family: Manrope, sans-serif;
+    font-size: .32rem;
+    font-weight: 700;
+    color: #0B4CA1;
+    margin-right: .1rem;
+}
+.leis_dtl_invest_value .unit {
+    font-size: .16rem;
+    color: #666;
+}
+.leis_dtl_invest_text {
+    font-size: .16rem;
+    color: #555;
+    line-height: 1.85;
+    padding-left: .46rem;
+}
+
+/* 右大图 */
+.leis_dtl_invest_image {
+    flex: 1;
+    height: 5.25rem;
+    border-radius: .2rem;
+    overflow: hidden;
+    box-shadow: 0 .14rem .36rem rgba(11,76,161,.16);
+    position: relative;
+}
+.leis_dtl_invest_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s;
+}
+.leis_dtl_invest_image:hover img { transform: scale(1.04); }
+
+
+/* ============================================================
+   项目详情  (Figma: y=2840, h=2052, 大背景图)
+   绿色森林背景 + 文字描述 + 大图轮播（藏山/行游叠加）
+   ============================================================ */
+.leis_dtl_detail_sec {
+    position: relative;
+    padding: 1.0rem 0 1.6rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, #DCE8DA 0%, #C5D8C1 100%);
+    color: #1a1a1a;
+}
+.leis_dtl_detail_sec::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('../images/agri-detail/section3-bg.jpg') center / cover no-repeat;
+    opacity: .35;
+    z-index: 0;
+}
+.leis_dtl_detail_inner { position: relative; z-index: 1; }
+.leis_dtl_detail_intro {
+    max-width: 13rem;
+    margin: 0 auto .76rem;
+    text-align: center;
+    color: #1a1a1a;
+}
+.leis_dtl_detail_intro p {
+    font-size: .18rem;
+    line-height: 1.95;
+    margin-bottom: .16rem;
+}
+.leis_dtl_detail_intro p:last-child { margin-bottom: 0; }
+
+/* 大图轮播：宽 1480 x 高 700，每张图标题叠加 */
+.leis_dtl_detail_swiper {
+    width: 100%;
+    overflow: hidden;
+}
+.leis_dtl_detail_swiper .swiper-slide {
+    width: 14.8rem;
+    height: 7rem;
+    border-radius: .24rem;
+    overflow: hidden;
+    position: relative;
+}
+.leis_dtl_detail_swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.leis_dtl_detail_slide_overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, transparent 50%, rgba(0,0,0,.55) 100%);
+    pointer-events: none;
+}
+.leis_dtl_detail_slide_title {
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1rem;
+    z-index: 2;
+    text-align: right;
+    color: #fff;
+}
+.leis_dtl_detail_slide_title strong {
+    display: block;
+    font-size: .68rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: .12rem;
+    letter-spacing: .08em;
+}
+.leis_dtl_detail_slide_title span {
+    display: block;
+    font-size: .18rem;
+    opacity: .85;
+}
+
+
+/* ============================================================
+   特色优势  (Figma: y=4892, h=982, 蓝色大背景)
+   蓝色背景 + 大图全景轮播 + 左右箭头 + 中间页码
+   ============================================================ */
+.leis_dtl_advantage {
+    position: relative;
+    padding: 1.0rem 0 1.2rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0B4CA1 0%, #082C5E 100%);
+}
+.leis_dtl_advantage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('../images/agri-detail/section2-bg.jpg') center / cover no-repeat;
+    opacity: .35;
+    z-index: 0;
+}
+.leis_dtl_advantage_inner {
+    position: relative;
+    z-index: 1;
+}
+.leis_dtl_advantage_swiper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.leis_dtl_advantage_swiper .swiper-slide {
+    width: 100%;
+    height: 5.34rem;
+    border-radius: .2rem;
+    overflow: hidden;
+}
+.leis_dtl_advantage_swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.leis_dtl_advantage_ctrls {
+    margin-top: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+}
+.leis_dtl_advantage_arrow {
+    width: .52rem;
+    height: .52rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .2s;
+}
+.leis_dtl_advantage_arrow:hover {
+    background: #fff;
+}
+.leis_dtl_advantage_arrow:hover img {
+    filter: none;
+}
+.leis_dtl_advantage_arrow img {
+    width: .26rem;
+    height: .26rem;
+    filter: brightness(10);
+}
+.leis_dtl_advantage_arrow--next img { transform: scaleX(-1); }
+.leis_dtl_advantage_page {
+    font-family: Manrope, sans-serif;
+    font-size: .32rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: .04em;
+    min-width: 1.4rem;
+    text-align: center;
+}
+.leis_dtl_advantage_page .current {
+    font-size: .44rem;
+    color: #fff;
+    margin-right: .04rem;
+}
+.leis_dtl_advantage_page .total {
+    font-size: .26rem;
+    color: rgba(255,255,255,.5);
+    margin-left: .04rem;
+}
+
+
+/* ============================================================
+   项目图集  (Figma: y=5874, h=2193)
+   2 × 2 网格（现场照片、鸟瞰图）+ 下方控件
+   ============================================================ */
+.leis_dtl_photos_sec {
+    padding: 1rem 0 1.4rem;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+.leis_dtl_photos_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .6rem;
+}
+.leis_dtl_photo_card {
+    position: relative;
+    height: 5.1rem;
+    border-radius: .2rem;
+    overflow: hidden;
+    box-shadow: 0 .14rem .36rem rgba(11,76,161,.1);
+    transition: transform .35s, box-shadow .35s;
+}
+.leis_dtl_photo_card:hover {
+    transform: translateY(-.06rem);
+    box-shadow: 0 .2rem .42rem rgba(11,76,161,.18);
+}
+.leis_dtl_photo_card a { display: block; width: 100%; height: 100%; }
+.leis_dtl_photo_card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s;
+}
+.leis_dtl_photo_card:hover img { transform: scale(1.06); }
+.leis_dtl_photo_card::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 1.6rem;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,.6));
+    pointer-events: none;
+}
+.leis_dtl_photo_label {
+    position: absolute;
+    left: .4rem;
+    bottom: .36rem;
+    z-index: 2;
+    font-size: .22rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+/* 下方控件：左右箭头 + 进度点 */
+.leis_dtl_photos_ctrls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .4rem;
+    margin-top: .6rem;
+}
+.leis_dtl_photos_arrow {
+    width: .52rem;
+    height: .52rem;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid rgba(11,76,161,.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .2s;
+}
+.leis_dtl_photos_arrow:hover {
+    background: linear-gradient(135deg, #165DFF, #0B4CA1);
+    border-color: transparent;
+}
+.leis_dtl_photos_arrow:hover img { filter: brightness(10); }
+.leis_dtl_photos_arrow img { width: .26rem; height: .26rem; }
+.leis_dtl_photos_arrow--next img { transform: scaleX(-1); }
+.leis_dtl_photos_dots {
+    display: flex;
+    gap: .08rem;
+    align-items: center;
+}
+.leis_dtl_photos_dot {
+    width: .1rem;
+    height: .1rem;
+    border-radius: 50%;
+    background: rgba(11,76,161,.2);
+    cursor: pointer;
+    transition: background .2s, width .2s;
+}
+.leis_dtl_photos_dot--active {
+    background: #0B4CA1;
+    width: .26rem;
+    border-radius: .1rem;
+}
+
+
+/* ============================================================
+   周边配套  (Figma: y=6953, 复用 agri 的地图样式)
+   ============================================================ */
+.leis_dtl_surroundings_sec {
+    padding: 1rem 0 1.2rem;
+    background: #fff;
+}
+.leis_dtl_surroundings_sec .leis_dtl_sec_title { margin-bottom: .76rem; }
+
+
+/* ============================================================
+   支持政策  (Figma: y=7835, 文章卡片列表)
+   每行：左缩略图 + 标签 + 标题 + 右"查看详情"按钮
+   ============================================================ */
+.leis_dtl_policy_sec {
+    padding: 1rem 0 1.2rem;
+    background: #F5F7FB;
+}
+.leis_dtl_policy_list {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+.leis_dtl_policy_item {
+    display: flex;
+    align-items: center;
+    gap: .36rem;
+    padding: .2rem .3rem .2rem .2rem;
+    background: #fff;
+    border-radius: .16rem;
+    box-shadow: 0 .06rem .18rem rgba(11,76,161,.05);
+    transition: transform .2s, box-shadow .2s;
+}
+.leis_dtl_policy_item:hover {
+    transform: translateY(-.04rem);
+    box-shadow: 0 .14rem .3rem rgba(11,76,161,.12);
+}
+.leis_dtl_policy_thumb {
+    flex: 0 0 2.34rem;
+    width: 2.34rem;
+    height: 1.63rem;
+    border-radius: .12rem;
+    overflow: hidden;
+}
+.leis_dtl_policy_thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+}
+.leis_dtl_policy_item:hover .leis_dtl_policy_thumb img { transform: scale(1.05); }
+.leis_dtl_policy_body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .18rem;
+}
+.leis_dtl_policy_tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    height: .3rem;
+    padding: 0 .14rem;
+    border-radius: .04rem;
+    background: rgba(22,93,255,.1);
+    color: #0B4CA1;
+    font-size: .14rem;
+    font-weight: 500;
+}
+.leis_dtl_policy_title {
+    font-size: .2rem;
+    color: #1a1a1a;
+    line-height: 1.5;
+    font-weight: 500;
+}
+.leis_dtl_policy_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.37rem;
+    height: .45rem;
+    border-radius: .45rem;
+    border: 1px solid #0B4CA1;
+    color: #0B4CA1;
+    font-size: .16rem;
+    background: transparent;
+    transition: background .2s, color .2s;
+}
+.leis_dtl_policy_btn:hover {
+    background: #0B4CA1;
+    color: #fff;
+}
+
+
+/* ============================================================
+   相关推荐项目  (Figma: y=8854, h=1010, 2×2 网格)
+   ============================================================ */
+.leis_dtl_related_sec {
+    padding: 1rem 0 1.4rem;
+    background: #fff;
+}
+.leis_dtl_related_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .6rem;
+}
+.leis_dtl_related_card {
+    position: relative;
+    height: 4.22rem;
+    border-radius: .2rem;
+    overflow: hidden;
+    box-shadow: 0 .14rem .3rem rgba(11,76,161,.08);
+    transition: transform .35s, box-shadow .35s;
+}
+.leis_dtl_related_card:hover {
+    transform: translateY(-.06rem);
+    box-shadow: 0 .2rem .42rem rgba(11,76,161,.16);
+}
+.leis_dtl_related_thumb {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.leis_dtl_related_thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s;
+}
+.leis_dtl_related_card:hover .leis_dtl_related_thumb img { transform: scale(1.06); }
+.leis_dtl_related_overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: .3rem .3rem .26rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 100%);
+    color: #fff;
+}
+.leis_dtl_related_overlay h3 {
+    font-size: .22rem;
+    line-height: 1.5;
+    font-weight: 600;
+    margin-bottom: .14rem;
+    color: #fff;
+}
+.leis_dtl_related_meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .08rem .26rem;
+    font-size: .14rem;
+    color: rgba(255,255,255,.85);
+}
+.leis_dtl_related_meta_item {
+    display: flex;
+    align-items: center;
+    gap: .06rem;
+}
+.leis_dtl_related_meta_item .label { color: rgba(255,255,255,.65); }
+.leis_dtl_related_meta_item .price_value {
+    font-family: Manrope, sans-serif;
+    font-size: .18rem;
+    font-weight: 700;
+    color: #ff852b;
+}
+.leis_dtl_related_more {
+    position: absolute;
+    top: .26rem;
+    right: .26rem;
+    width: .36rem;
+    height: .36rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    border: 1px solid rgba(255,255,255,.28);
+}
+.leis_dtl_related_more::after {
+    content: "";
+    width: .08rem;
+    height: .08rem;
+    border-top: 1.5px solid #fff;
+    border-right: 1.5px solid #fff;
+    transform: rotate(45deg) translate(-1px, 1px);
+}
+
+
+/* ============================================================
+   CTA 招募区  (Figma: y=9983, h=680)
+   ============================================================ */
+.leis_dtl_cta_sec {
+    position: relative;
+    padding: 1.6rem 0 1.4rem;
+    overflow: hidden;
+}
+.leis_dtl_cta_bg {
+    position: absolute;
+    inset: 0;
+    background: url('../images/agri-detail/section7-bg.jpg') center / cover no-repeat;
+    z-index: 0;
+}
+.leis_dtl_cta_bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,15,42,.65) 0%, rgba(0,30,80,.85) 100%);
+}
+.leis_dtl_cta_inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+}
+.leis_dtl_cta_title {
+    font-size: .54rem;
+    font-weight: 700;
+    margin-bottom: .5rem;
+    letter-spacing: .04em;
+}
+.leis_dtl_cta_apply_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .1rem;
+    height: .54rem;
+    padding: 0 .36rem;
+    border-radius: 5rem;
+    background: linear-gradient(123.54deg, #165dff 2.38%, #0b4ca1 59.53%);
+    color: #fff;
+    font-size: .2rem;
+    transition: filter .2s, transform .2s;
+}
+.leis_dtl_cta_apply_btn:hover {
+    filter: brightness(1.12);
+    transform: translateY(-.02rem);
+}
+.leis_dtl_cta_apply_btn img {
+    width: .22rem;
+    height: .22rem;
+    filter: brightness(10);
+}
+
+
+/* ============================================================
+   响应式
+   ============================================================ */
+@media (max-width: 1366px) {
+    .leis_dtl_hero_body { gap: 1.4rem; }
+    .leis_dtl_hero_card { flex: 0 0 4.2rem; width: 4.2rem; padding: .5rem .36rem; }
+    .leis_dtl_overview_grid { gap: .56rem; }
+    .leis_dtl_overview_left { flex: 0 0 5.8rem; height: 4.1rem; }
+    .leis_dtl_invest_grid { gap: .56rem; }
+    .leis_dtl_invest_list { flex: 0 0 5.6rem; }
+}
+@media (max-width: 1024px) {
+    .leis_dtl_hero_body { flex-direction: column; align-items: stretch; gap: .8rem; }
+    .leis_dtl_hero_card { width: 100%; flex: 0 0 auto; margin-top: 0; }
+    .leis_dtl_overview_grid { flex-direction: column; }
+    .leis_dtl_overview_left { flex: 0 0 auto; width: 100%; height: 4.2rem; }
+    .leis_dtl_overview_stats { grid-template-columns: repeat(2, 1fr); gap: .3rem; }
+    .leis_dtl_invest_grid { flex-direction: column; }
+    .leis_dtl_invest_list { flex: 0 0 auto; }
+    .leis_dtl_photos_grid { grid-template-columns: 1fr; }
+    .leis_dtl_related_grid { grid-template-columns: 1fr; }
+    .leis_dtl_policy_item { flex-wrap: wrap; }
+    .leis_dtl_policy_thumb { flex: 0 0 100%; height: 2.2rem; }
+}

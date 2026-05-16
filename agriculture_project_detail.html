@@ -533,81 +533,18 @@
                 <img src="images/agri-detail/map.jpg" alt="周边地图">
                 <!-- 免责声明 -->
                  <!-- 右侧 POI 面板 -->
-            <div class="agri_dtl_poi_panel">
-                <div class="agri_dtl_poi_tabs">
-                    <div class="agri_dtl_poi_tab_head flex">
-                        <button class="agri_dtl_poi_cat agri_dtl_poi_cat--active" data-cat="交通">交通</button>
-                        <button class="agri_dtl_poi_cat" data-cat="教育">教育</button>
-                        <button class="agri_dtl_poi_cat" data-cat="医疗">医疗</button>
-                        <button class="agri_dtl_poi_cat" data-cat="购物">购物</button>
-                        <button class="agri_dtl_poi_cat" data-cat="生活">生活</button>
-                        <button class="agri_dtl_poi_cat" data-cat="娱乐">娱乐</button>
-                    </div>
+                <div class="agri_dtl_poi_panel">
+                    <div class="agri_dtl_poi_tabs">
+                        <!-- 一级分类（由 JS 根据 poiData 动态渲染） -->
+                        <div class="agri_dtl_poi_tab_head flex"></div>
 
-                    <!-- 交通子标签 -->
-                    <div class="agri_dtl_poi_sub_tabs flex" data-cat="交通">
-                        <button class="agri_dtl_poi_sub agri_dtl_poi_sub--active">地铁</button>
-                        <button class="agri_dtl_poi_sub">公交</button>
-                    </div>
-                    <div class="agri_dtl_poi_sub_line"></div>
+                        <!-- 二级子分类（随主分类切换重渲染） -->
+                        <div class="agri_dtl_poi_sub_tabs flex"></div>
 
-                    <!-- POI 列表 -->
-                    <ul class="agri_dtl_poi_list">
-                        <li class="agri_dtl_poi_item">
-                            <div class="agri_dtl_poi_icon">
-                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#165DFF" stroke-width="1.5"/><circle cx="14" cy="14" r="5" fill="#165DFF"/></svg>
-                            </div>
-                            <div class="agri_dtl_poi_info">
-                                <strong>顺义地铁站</strong>
-                                <span>地铁12号线：地铁16号线</span>
-                            </div>
-                            <div class="agri_dtl_poi_dist">
-                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none"><circle cx="11.5" cy="11.5" r="10" stroke="#165DFF" stroke-width="1.5"/></svg>
-                                549米
-                            </div>
-                        </li>
-                        <li class="agri_dtl_poi_item">
-                            <div class="agri_dtl_poi_icon">
-                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#165DFF" stroke-width="1.5"/><circle cx="14" cy="14" r="5" fill="#165DFF"/></svg>
-                            </div>
-                            <div class="agri_dtl_poi_info">
-                                <strong>石门站</strong>
-                                <span>北京市密云区老叟国泰君安楼底商</span>
-                            </div>
-                            <div class="agri_dtl_poi_dist">
-                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none"><circle cx="11.5" cy="11.5" r="10" stroke="#165DFF" stroke-width="1.5"/></svg>
-                                1259米
-                            </div>
-                        </li>
-                        <li class="agri_dtl_poi_item">
-                            <div class="agri_dtl_poi_icon">
-                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#165DFF" stroke-width="1.5"/><circle cx="14" cy="14" r="5" fill="#165DFF"/></svg>
-                            </div>
-                            <div class="agri_dtl_poi_info">
-                                <strong>后沙峪站</strong>
-                                <span>北京市密云区顺密路88号现代广场</span>
-                            </div>
-                            <div class="agri_dtl_poi_dist">
-                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none"><circle cx="11.5" cy="11.5" r="10" stroke="#165DFF" stroke-width="1.5"/></svg>
-                                1579米
-                            </div>
-                        </li>
-                        <li class="agri_dtl_poi_item">
-                            <div class="agri_dtl_poi_icon">
-                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#165DFF" stroke-width="1.5"/><circle cx="14" cy="14" r="5" fill="#165DFF"/></svg>
-                            </div>
-                            <div class="agri_dtl_poi_info">
-                                <strong>密云站</strong>
-                                <span>北京市密云区开发路绮奇路18号楼底商</span>
-                            </div>
-                            <div class="agri_dtl_poi_dist">
-                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none"><circle cx="11.5" cy="11.5" r="10" stroke="#165DFF" stroke-width="1.5"/></svg>
-                                1654米
-                            </div>
-                        </li>
-                    </ul>
+                        <!-- POI 列表（随子分类切换重渲染） -->
+                        <ul class="agri_dtl_poi_list"></ul>
+                    </div>
                 </div>
-            </div>
         </div>
       </div>
       <p class="agri_dtl_map_disclaimer">*免责声明：与距离相关的数据均来源于百度地图或高德地图等第三方，仅供您参考。</p>
