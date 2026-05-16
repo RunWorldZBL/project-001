@@ -33,6 +33,70 @@ $(function () {
     });
 
     /* ----------------------------------------------------------
+       招商条件：通栏 Swiper + 进度条
+    ---------------------------------------------------------- */
+    function propRem(value) {
+        var fs = parseFloat(getComputedStyle(document.documentElement).fontSize) || 100;
+        return Math.round(value * fs);
+    }
+
+    function calcInvestOffset() {
+        var fs = parseFloat(getComputedStyle(document.documentElement).fontSize) || 100;
+        var contentWidth = Math.min(14.8 * fs, window.innerWidth * 0.9);
+        return Math.max(0, (window.innerWidth - contentWidth) / 2);
+    }
+
+    function setInvestCardActive($card, active) {
+        var $icon = $card.find('.prop_dtl_invest_icon img');
+        var normalSrc = $icon.attr('data-normal-src') || $icon.attr('src');
+        var activeSrc = $icon.attr('data-active-src') || normalSrc.replace(/\.svg(\?.*)?$/, '-act.svg$1');
+
+        $icon.attr({
+            'data-normal-src': normalSrc,
+            'data-active-src': activeSrc,
+            src: active ? activeSrc : normalSrc
+        });
+        $card.toggleClass('prop_dtl_invest_card--primary', active);
+    }
+
+    if ($('.prop_dtl_invest_swiper').length) {
+        new Swiper('.prop_dtl_invest_swiper', {
+            slidesPerView: 'auto',
+            spaceBetween: propRem(0.4),
+            slidesOffsetBefore: calcInvestOffset(),
+            slidesOffsetAfter: calcInvestOffset(),
+            watchSlidesProgress: true,
+            freeMode: { enabled: true, momentum: true },
+            grabCursor: true,
+            pagination: {
+                el: '.prop_dtl_invest_progress',
+                type: 'progressbar'
+            },
+            on: {
+                resize: function () {
+                    var offset = calcInvestOffset();
+                    this.params.spaceBetween = propRem(0.4);
+                    this.params.slidesOffsetBefore = offset;
+                    this.params.slidesOffsetAfter = offset;
+                    this.update();
+                }
+            }
+        });
+    }
+
+    $(document)
+        .on('mouseenter', '.prop_dtl_invest_card', function () {
+            var $card = $(this);
+            $card.siblings('.prop_dtl_invest_card').each(function () {
+                setInvestCardActive($(this), false);
+            });
+            setInvestCardActive($card, true);
+        })
+        .on('mouseleave', '.prop_dtl_invest_card', function () {
+            setInvestCardActive($(this), false);
+        });
+
+    /* ----------------------------------------------------------
        特色优势：两列 Swiper（每页 2 卡）+ 进度条 + 上下箭头
     ---------------------------------------------------------- */
     var $advFill = $('.prop_dtl_adv_fill');

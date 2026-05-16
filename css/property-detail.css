@@ -293,7 +293,7 @@
     align-items: center;
     justify-content: center;
     gap: .24rem;
-    margin-bottom: .82rem;
+    margin-bottom: .6rem;
     position: relative;
 }
 .prop_dtl_sec_title h2 {
@@ -428,28 +428,25 @@
    ============================================================ */
 .prop_dtl_invest {
     position: relative;
-    padding: 1.0rem 0 1.2rem;
+    padding: 1.0rem 0 0;
     overflow: hidden;
     background: url('../images/property-detail/section2-bg.png') center / cover no-repeat;
 }
 .prop_dtl_invest .prop_dtl_sec_title { margin-bottom: .54rem; }
 
+.prop_dtl_invest_swiper {
+    width: 100vw;
+    margin-left: calc((100% - 100vw) / 2);
+    overflow: hidden;
+}
+
 .prop_dtl_invest_grid {
     display: flex;
-    gap: .4rem;
     align-items: stretch;
-    overflow-x: auto;
-    padding-bottom: 1rem;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(11,76,161,.18) transparent;
-}
-.prop_dtl_invest_grid::-webkit-scrollbar { height: 6px; }
-.prop_dtl_invest_grid::-webkit-scrollbar-thumb {
-    background: rgba(11,76,161,.18);
-    border-radius: 3px;
 }
 
 .prop_dtl_invest_card {
+    width: 3.6rem;
     flex: 0 0 3.6rem;
     height: 5rem;
     padding: .78rem .32rem .4rem;
@@ -459,15 +456,12 @@
     border: 1px solid rgba(11,76,161,.06);
     display: flex;
     flex-direction: column;
-    transition: transform .25s, box-shadow .25s, background .25s;
-}
-.prop_dtl_invest_card:hover {
-    transform: translateY(-.06rem);
-    box-shadow: 0 .18rem .4rem rgba(11,76,161,.12);
+    transition: box-shadow .25s, background .25s, color .25s;
 }
 .prop_dtl_invest_card--primary {
     background: linear-gradient(158deg, rgba(22, 93, 255, 0.80) 6.16%, rgba(11, 76, 161, 0.80) 91.55%);
     color: #fff;
+    box-shadow: 0 .18rem .4rem rgba(11,76,161,.12);
 }
 .prop_dtl_invest_icon {
     width: .8rem;
@@ -482,9 +476,6 @@
 .prop_dtl_invest_icon img { width: .42rem; height: .42rem; }
 .prop_dtl_invest_card--primary .prop_dtl_invest_icon {
     background: rgba(255,255,255,.18);
-}
-.prop_dtl_invest_card--primary .prop_dtl_invest_icon img {
-    filter: brightness(10);
 }
 .prop_dtl_invest_label {
     font-size: .24rem;
@@ -510,6 +501,10 @@
 .prop_dtl_invest_unit {
      font-size: .18rem; color: #0B4CA1; 
     }
+.prop_dtl_invest_card--primary .prop_dtl_invest_num,
+.prop_dtl_invest_card--primary .prop_dtl_invest_unit {
+    color: #fff;
+}
 .prop_dtl_invest_val {
     font-size: .2rem;
     color: #222;
@@ -521,6 +516,39 @@
     font-size: .18rem;
     line-height: 1.7;
     color: #555;
+}
+.prop_dtl_invest_card--primary .prop_dtl_invest_text { color: #fff; }
+
+.prop_dtl_invest_progress.swiper-pagination-progressbar {
+    position: relative;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    width: 14.8rem;
+    max-width: 90%;
+    height: 0.04rem;
+    margin: 1rem auto 0;
+    background: transparent;
+    border-radius: 500px;
+    cursor: pointer;
+}
+
+.prop_dtl_invest_progress.swiper-pagination-progressbar::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 0.04rem;
+    background: rgba(11, 76, 161, 0.18);
+    border-radius: 500px;
+    transform: translateY(-50%);
+}
+
+.prop_dtl_invest_progress .swiper-pagination-progressbar-fill {
+    height: 6px;
+    background: linear-gradient(45deg, #A2BEFF 20%, #0B4CA1 60%);
+    border-radius: 500px;
 }
 
 
@@ -547,15 +575,20 @@
 .prop_dtl_detail_inner { position: relative; z-index: 1; }
 .prop_dtl_detail_text {
     font-size: .18rem;
-    line-height: 1.95;
+    line-height: 1.7;
     color: #333;
     margin-bottom: .6rem;
+    text-align: center;
 }
 .prop_dtl_detail_gallery {
     display: flex;
     gap: .25rem;
-    height: 6.58rem;
+    height: 7.66rem;
     align-items: stretch;
+    padding: 0.53rem 0.33rem 0.43rem 0.3rem;
+    background: rgba(255, 255, 255, 0.50);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.10);
+    border-radius: 0.24rem;
 }
 .prop_dtl_detail_main {
     flex: 1;
