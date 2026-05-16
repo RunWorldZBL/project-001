@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="css/fancybox.css" />
 <link rel="stylesheet" href="css/my.css" />
 <link rel="stylesheet" href="css/platform-pages.css" />
+<link rel="stylesheet" href="css/service-apply.css" />
 <link rel="stylesheet" href="css/agri-detail.css" />
 <link rel="stylesheet" href="css/property-detail.css" />
 </head>
@@ -71,9 +72,8 @@
 <!-- ========== Hero 详情横幅 ========== -->
 <section class="prop_dtl_hero">
     <div class="prop_dtl_hero_bg">
-        <img src="images/agri-detail/hero-main.jpg" alt="" class="bg_img">
+        <img src="images/property-detail/banner.jpg" alt="" class="bg_img">
     </div>
-    <div class="prop_dtl_hero_overlay"></div>
 
     <!-- 左右大箭头 -->
     <button class="prop_dtl_arrow prop_dtl_arrow_prev" aria-label="上一张">
@@ -147,38 +147,33 @@
     <!-- 底部 5 张属性卡片 -->
     <div class="prop_dtl_hero_cards">
         <div class="prop_dtl_hero_card">
-            <div class="prop_dtl_hero_card_label">项目坐落</div>
             <div class="prop_dtl_hero_card_value">
-                <span>石景山区</span>
-                <i class="prop_dtl_card_icon"></i>
+                <span>项目坐落</span>
+                <i class="prop_dtl_card_icon" style="background-image: url('images/property-detail/icon-ban-1.svg');"></i>
             </div>
         </div>
         <div class="prop_dtl_hero_card">
-            <div class="prop_dtl_hero_card_label">占地面积</div>
             <div class="prop_dtl_hero_card_value">
-                <span>3700㎡</span>
-                <i class="prop_dtl_card_icon"></i>
+                <span>占地面积</span>
+                <i class="prop_dtl_card_icon" style="background-image: url('images/property-detail/icon-ban-2.svg');"></i>
             </div>
         </div>
         <div class="prop_dtl_hero_card">
-            <div class="prop_dtl_hero_card_label">建筑面积</div>
             <div class="prop_dtl_hero_card_value">
-                <span>4280㎡</span>
-                <i class="prop_dtl_card_icon"></i>
+                <span>建筑面积</span>
+                <i class="prop_dtl_card_icon" style="background-image: url('images/property-detail/icon-ban-3.svg');"></i>
             </div>
         </div>
         <div class="prop_dtl_hero_card">
-            <div class="prop_dtl_hero_card_label">是否建成</div>
             <div class="prop_dtl_hero_card_value">
-                <span>已建成</span>
-                <i class="prop_dtl_card_icon"></i>
+                <span>是否建成</span>
+                <i class="prop_dtl_card_icon" style="background-image: url('images/property-detail/icon-ban-4.svg');"></i>
             </div>
         </div>
         <div class="prop_dtl_hero_card">
-            <div class="prop_dtl_hero_card_label">项目用途</div>
             <div class="prop_dtl_hero_card_value">
-                <span>商办综合</span>
-                <i class="prop_dtl_card_icon"></i>
+                <span>项目用途</span>
+                <i class="prop_dtl_card_icon" style="background-image: url('images/property-detail/icon-ban-5.svg');"></i>
             </div>
         </div>
     </div>
@@ -224,7 +219,7 @@
             <!-- 中心圆形视频 -->
             <div class="prop_dtl_overview_center">
                 <div class="prop_dtl_overview_circle">
-                    <img src="images/agri-detail/item1.png" alt="项目实景">
+                    <img src="images/property-detail/overview-video.png" alt="项目实景">
                 </div>
                 <a href="javascript:;" class="prop_dtl_overview_play" aria-label="播放视频"></a>
             </div>
@@ -260,8 +255,10 @@
 
         <div class="prop_dtl_overview_more">
             <a href="javascript:;" class="prop_dtl_more_btn">
+                <span class="prop_dtl_more_circle">
+                    <img src="images/property-detail/icon-more.svg" alt="">
+                </span>
                 查看更多
-                <span class="prop_dtl_more_circle"></span>
             </a>
         </div>
     </div>
@@ -276,13 +273,15 @@
         </div>
 
         <div class="prop_dtl_invest_grid">
-            <div class="prop_dtl_invest_card">
-                <div class="prop_dtl_invest_icon"><img src="images/agri-detail/icon-site.svg" alt=""></div>
+            <div class="prop_dtl_invest_card prop_dtl_invest_card--primary">
+                <div class="prop_dtl_invest_icon">
+                    <img src="images/property-detail/icon-item1-act.svg" alt="">
+                </div>
                 <p class="prop_dtl_invest_label">招商业态</p>
                 <p class="prop_dtl_invest_val">物业经营管理-商业综合</p>
             </div>
-            <div class="prop_dtl_invest_card prop_dtl_invest_card--primary">
-                <div class="prop_dtl_invest_icon"><img src="images/agri-detail/icon-big.svg" alt=""></div>
+            <div class="prop_dtl_invest_card">
+                <div class="prop_dtl_invest_icon"><img src="images/property-detail/icon-item2.svg" alt=""></div>
                 <p class="prop_dtl_invest_label">投资强度</p>
                 <div class="prop_dtl_invest_num_row">
                     <strong class="prop_dtl_invest_num">1000</strong>
@@ -290,19 +289,19 @@
                 </div>
             </div>
             <div class="prop_dtl_invest_card">
-                <div class="prop_dtl_invest_icon"><img src="images/agri-detail/icon-go.svg" alt=""></div>
+                <div class="prop_dtl_invest_icon"><img src="images/property-detail/icon-item3.svg" alt=""></div>
                 <p class="prop_dtl_invest_label">合作方式</p>
                 <p class="prop_dtl_invest_val">出租、合作</p>
             </div>
             <div class="prop_dtl_invest_card">
-                <div class="prop_dtl_invest_icon"><img src="images/agri-detail/icon-service.svg" alt=""></div>
+                <div class="prop_dtl_invest_icon"><img src="images/property-detail/icon-item4.svg" alt=""></div>
                 <p class="prop_dtl_invest_label">合作内容</p>
                 <p class="prop_dtl_invest_text">
                     为进一步激活园区潜力，现诚招合作伙伴，拟共同对现有大棚实施全方位提升改造，依托园区农业基础，打造集特色农产品种植、农事体验于一体的综合性农业园区。
                 </p>
             </div>
             <div class="prop_dtl_invest_card">
-                <div class="prop_dtl_invest_icon"><img src="images/agri-detail/icon-fav.svg" alt=""></div>
+                <div class="prop_dtl_invest_icon"><img src="images/property-detail/icon-item5.svg" alt=""></div>
                 <p class="prop_dtl_invest_label">对合作方的具体要求</p>
                 <p class="prop_dtl_invest_text">
                     合作方需为企业，且注册不低于2000万元；在达成初步合意后，合作方需结合项目现状提供完整规划方案。
@@ -618,11 +617,11 @@
 </section>
 
 <!-- ========== CTA 招募区 ========== -->
-<section class="prop_dtl_cta_sec">
-    <div class="prop_dtl_cta_bg"></div>
-    <div class="prop_dtl_cta_inner">
-        <h2 class="prop_dtl_cta_title">我们正在寻找优质的合作方</h2>
-        <a href="javascript:;" class="prop_dtl_cta_apply_btn">
+<section class="service_apply_sec prop_service_apply_sec">
+    <div class="service_apply_bg"></div>
+    <div class="service_apply_inner">
+        <h2 class="service_apply_title">我们正在寻找优质的合作方</h2>
+        <a href="javascript:;" class="service_apply_btn">
             <img src="images/agri-detail/icon-apply.svg" alt="">
             服务申请
         </a>

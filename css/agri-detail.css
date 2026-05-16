@@ -1303,50 +1303,10 @@
     background: url('../images/agri-detail/icon-go.svg') center / contain no-repeat;
 }
 
-/* ============================================================
-   CTA 招募区  (Figma: y=8879, h=680)
-   ============================================================ */
-.agri_dtl_cta_sec {
-    position: relative;
-    height: 6.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+/* 服务申请：仅覆盖公共模块背景图 */
+.agri_service_apply_sec {
+    --service-apply-bg-image: url('../images/agri-detail/section7-bg.jpg');
 }
-.agri_dtl_cta_bg {
-    position: absolute;
-    inset: 0;
-    background: url('../images/agri-detail/section7-bg.jpg') center / cover no-repeat;
-    z-index: 0;
-}
-/* .agri_dtl_cta_bg::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,15,48,.58);
-} */
-.agri_dtl_cta_inner { position: relative; z-index: 1; text-align: center; }
-.agri_dtl_cta_title {
-    font-size: .36rem;
-    line-height: 0.72rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: .4rem;
-}
-.agri_dtl_cta_apply_btn {
-    display: inline-flex;
-    align-items: center;
-    gap: .1rem;
-    padding: 0.12rem .28rem;
-    border-radius: 5.6rem;
-    background: linear-gradient(102deg, #165DFF -2.38%, #0B4CA1 59.52%);
-    color: #fff;
-    font-size: .2rem;
-    font-weight: 500;
-    transition: filter .2s, transform .2s;
-}
-.agri_dtl_cta_apply_btn:hover { filter: brightness(1.15); transform: translateY(-.03rem); }
 
 
 /* ============================================================
@@ -1627,10 +1587,6 @@
     .agri_dtl_related_price { font-size: .24rem; }
     .agri_dtl_related_link { width: .32rem; height: .32rem; bottom: .22rem; right: .18rem; }
 
-    /* ---- CTA 招募 ---- */
-    .agri_dtl_cta_sec { height: auto; padding: .8rem .4rem; }
-    .agri_dtl_cta_title { font-size: .28rem; line-height: 1.5; margin-bottom: .3rem; }
-    .agri_dtl_cta_apply_btn { padding: .12rem .26rem; font-size: .18rem; }
 }
 
 /* ============================================================
@@ -1861,16 +1817,4 @@
     .agri_dtl_related_meta li { font-size: .13rem; }
     .agri_dtl_related_price { font-size: .22rem; }
 
-    /* ---- CTA 招募 ---- */
-    .agri_dtl_cta_sec { padding: .6rem .3rem; }
-    .agri_dtl_cta_title {
-        font-size: .22rem;
-        line-height: 1.55;
-        margin-bottom: .24rem;
-    }
-    .agri_dtl_cta_apply_btn {
-        padding: .12rem .26rem;
-        font-size: .16rem;
-    }
-    .agri_dtl_cta_apply_btn img { width: .18rem; height: .18rem; }
 }

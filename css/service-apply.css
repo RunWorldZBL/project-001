@@ -1,0 +1,92 @@
+/* ============================================================
+   服务申请公共模块
+   通过 --service-apply-bg-image 覆盖不同页面背景图
+   ============================================================ */
+.service_apply_sec {
+    --service-apply-bg-image: url('../images/agri-detail/section7-bg.jpg');
+    position: relative;
+    height: 6.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.service_apply_bg {
+    position: absolute;
+    inset: 0;
+    background: var(--service-apply-bg-image) center / cover no-repeat;
+    z-index: 0;
+}
+
+.service_apply_inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.service_apply_title {
+    font-size: .36rem;
+    line-height: 0.72rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: .4rem;
+}
+
+.service_apply_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .1rem;
+    padding: 0.12rem .28rem;
+    border-radius: 5.6rem;
+    background: linear-gradient(102deg, #165DFF -2.38%, #0B4CA1 59.52%);
+    color: #fff;
+    font-size: .2rem;
+    font-weight: 500;
+    transition: filter .2s, transform .2s;
+}
+
+.service_apply_btn:hover {
+    filter: brightness(1.15);
+    transform: translateY(-.03rem);
+}
+
+@media screen and (max-width: 1024px) {
+    .service_apply_sec {
+        height: auto;
+        padding: .8rem .4rem;
+    }
+
+    .service_apply_title {
+        font-size: .28rem;
+        line-height: 1.5;
+        margin-bottom: .3rem;
+    }
+
+    .service_apply_btn {
+        padding: .12rem .26rem;
+        font-size: .18rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .service_apply_sec {
+        padding: .6rem .3rem;
+    }
+
+    .service_apply_title {
+        font-size: .22rem;
+        line-height: 1.55;
+        margin-bottom: .24rem;
+    }
+
+    .service_apply_btn {
+        padding: .12rem .26rem;
+        font-size: .16rem;
+    }
+
+    .service_apply_btn img {
+        width: .18rem;
+        height: .18rem;
+    }
+}

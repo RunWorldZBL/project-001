@@ -35,15 +35,6 @@
     height: 100%;
     object-fit: cover;
 }
-.prop_dtl_hero_overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(180deg,
-        rgba(0,15,42,.55) 0%,
-        rgba(0,20,50,.25) 45%,
-        rgba(0,15,42,.55) 100%);
-}
 .prop_dtl_hero_inner {
     position: absolute;
     inset: 0;
@@ -97,7 +88,7 @@
     align-items: center;
     justify-content: center;
 }
-.prop_dtl_act_icon img { width: .24rem; height: .24rem; }
+.prop_dtl_act_icon img { width: .38rem; height: .38rem; }
 .prop_dtl_act_btn .prop_dtl_icon_active { display: none; }
 .prop_dtl_fav_btn.cur .prop_dtl_icon_normal { display: none; }
 .prop_dtl_fav_btn.cur .prop_dtl_icon_active { display: inline-block; }
@@ -136,11 +127,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 1rem;
+    padding-top: 2.14rem;
     text-align: center;
 }
 .prop_dtl_proj_title {
-    font-size: .42rem;
+    font-size: .38rem;
     font-weight: 700;
     line-height: 1.35;
     color: #fff;
@@ -159,16 +150,18 @@
     gap: .12rem;
     color: #fff;
     font-size: .18rem;
+    align-items: center;
 }
 .prop_dtl_meta_label {
-    color: rgba(255,255,255,.6);
+    color: #fff;
+    text-shadow: 0 4px 6.7px rgba(0, 0, 0, 0.25);
 }
 .prop_dtl_meta_value {
-    font-weight: 500;
+    text-shadow: 0 4px 6.7px rgba(0, 0, 0, 0.25);
 }
 .prop_dtl_meta_price {
     font-family: Manrope, 'Source Han Sans CN', sans-serif;
-    font-size: .26rem;
+    font-size: .28rem;
     font-weight: 700;
     color: #ff852b;
     letter-spacing: -.01em;
@@ -237,9 +230,9 @@
     height: 1.08rem;
     padding: 0 .25rem;
     border-radius: .16rem;
-    background: rgba(255,255,255,.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255,255,255,.4);
+    backdrop-filter: blur(.04rem);
+    -webkit-backdrop-filter: blur(.04rem);
     border: 1px solid rgba(255,255,255,.18);
     display: flex;
     flex-direction: column;
@@ -247,13 +240,10 @@
     gap: .08rem;
     box-shadow: 0 .08rem .2rem rgba(0,15,42,.16);
 }
-.prop_dtl_hero_card_label {
-    font-size: .16rem;
-    color: rgba(255,255,255,.7);
-}
 .prop_dtl_hero_card_value {
-    font-size: .18rem;
-    font-weight: 600;
+    font-size: .2rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     color: #fff;
     display: flex;
     align-items: center;
@@ -269,19 +259,8 @@
     height: .42rem;
     flex-shrink: 0;
     margin-left: auto;
-    background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    background: url(background-image) center / contain no-repeat;
 }
-.prop_dtl_hero_card_value .prop_dtl_card_icon::before {
-    content: "";
-    width: .22rem;
-    height: .22rem;
-    background: url('../images/agri-detail/icon-site.svg') center / contain no-repeat;
-}
-
 
 /* ============================================================
    物业概况  (Figma: y=940, h=904, 蓝色波浪背景 + 中心圆形)
@@ -290,7 +269,7 @@
     position: relative;
     padding: 1.07rem 0 1.1rem;
     overflow: hidden;
-    background: linear-gradient(180deg, #F3F7FF 0%, #E6EEFB 100%);
+    background: url('../images/property-detail/section1-bg.png') center / cover no-repeat;
 }
 .prop_dtl_overview::before,
 .prop_dtl_overview::after {
@@ -313,14 +292,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: .14rem;
+    gap: .24rem;
     margin-bottom: .82rem;
     position: relative;
 }
 .prop_dtl_sec_title h2 {
     font-size: .3rem;
-    font-weight: 700;
-    color: #1a1a1a;
+    font-weight: 500;
+    color: #000;
     line-height: 1.2;
 }
 .prop_dtl_title_bar {
@@ -346,21 +325,20 @@
 .prop_dtl_overview_list li {
     display: flex;
     align-items: center;
-    height: .96rem;
-    border-bottom: 1px solid rgba(11,76,161,.12);
+    padding: 0.5rem 0 0.15rem;
+    border-bottom: 1px solid rgba(11,76,161,.2);
 }
 .prop_dtl_overview_list li:last-child {
-    border-bottom: 1px solid rgba(11,76,161,.12);
+    border-bottom: 1px solid rgba(11,76,161,.2);
 }
 .prop_dtl_overview_list--right li {
     justify-content: flex-end;
     text-align: right;
 }
 .prop_dtl_overview_label {
-    font-size: .2rem;
-    font-weight: 600;
-    color: #0B4CA1;
-    flex: 0 0 1.4rem;
+    font-size: .24rem;
+    font-weight: 500;
+    color: #222;
 }
 .prop_dtl_overview_list--right .prop_dtl_overview_label {
     order: 2;
@@ -368,13 +346,15 @@
 .prop_dtl_overview_value {
     flex: 1;
     font-size: .18rem;
-    color: #333;
+    color: #222;
+    font-weight: 400;
+    line-height: 1.7;
 }
 .prop_dtl_overview_list--left .prop_dtl_overview_value {
-    margin-left: .28rem;
+    margin-left: .31rem;
 }
 .prop_dtl_overview_list--right .prop_dtl_overview_value {
-    margin-right: .28rem;
+    margin-right: .31rem;
     text-align: right;
     order: 1;
 }
@@ -393,9 +373,6 @@
     height: 100%;
     border-radius: 50%;
     overflow: hidden;
-    position: relative;
-    border: .12rem solid #fff;
-    box-shadow: 0 .2rem .6rem rgba(11,76,161,.18);
 }
 .prop_dtl_overview_circle img {
     width: 100%;
@@ -428,33 +405,20 @@
     align-items: center;
     gap: .12rem;
     height: .44rem;
-    padding: 0 .26rem 0 .3rem;
+    padding: 0 .32rem 0 .38rem;
     border-radius: .44rem;
-    background: linear-gradient(123.54deg, #165dff 2.38%, #0b4ca1 59.53%);
-    color: #fff;
+    color: #0B4CA1;
+    line-height: normal;
     font-size: .16rem;
-    box-shadow: 0 7px 9.3px rgba(22, 93, 255, 0.2);
+    filter: drop-shadow(0 7px 9.3px rgba(22, 93, 255, 0.15));
+    background-color: #fff;
     transition: filter .2s, transform .2s;
+    border: 1px solid #0B4CA1;
 }
 .prop_dtl_more_btn:hover { filter: brightness(1.12); transform: translateY(-.02rem); }
 .prop_dtl_more_circle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     width: .22rem;
     height: .22rem;
-    border-radius: 50%;
-    background: rgba(255,255,255,.18);
-    font-size: .14rem;
-    line-height: 1;
-}
-.prop_dtl_more_circle::after {
-    content: "";
-    width: .1rem;
-    height: .1rem;
-    border-top: 1.5px solid #fff;
-    border-right: 1.5px solid #fff;
-    transform: rotate(45deg) translate(-1px, 1px);
 }
 
 
@@ -466,7 +430,7 @@
     position: relative;
     padding: 1.0rem 0 1.2rem;
     overflow: hidden;
-    background: #fff;
+    background: url('../images/property-detail/section2-bg.png') center / cover no-repeat;
 }
 .prop_dtl_invest .prop_dtl_sec_title { margin-bottom: .54rem; }
 
@@ -475,7 +439,7 @@
     gap: .4rem;
     align-items: stretch;
     overflow-x: auto;
-    padding-bottom: .2rem;
+    padding-bottom: 1rem;
     scrollbar-width: thin;
     scrollbar-color: rgba(11,76,161,.18) transparent;
 }
@@ -488,10 +452,10 @@
 .prop_dtl_invest_card {
     flex: 0 0 3.6rem;
     height: 5rem;
-    padding: .56rem .32rem .4rem;
+    padding: .78rem .32rem .4rem;
     border-radius: .16rem;
     background: linear-gradient(180deg, #F4F8FF 0%, #FFFFFF 100%);
-    box-shadow: 0 .12rem .3rem rgba(11,76,161,.06);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.10);
     border: 1px solid rgba(11,76,161,.06);
     display: flex;
     flex-direction: column;
@@ -502,7 +466,7 @@
     box-shadow: 0 .18rem .4rem rgba(11,76,161,.12);
 }
 .prop_dtl_invest_card--primary {
-    background: linear-gradient(180deg, #0B4CA1 0%, #165DFF 100%);
+    background: linear-gradient(158deg, rgba(22, 93, 255, 0.80) 6.16%, rgba(11, 76, 161, 0.80) 91.55%);
     color: #fff;
 }
 .prop_dtl_invest_icon {
@@ -513,7 +477,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: .35rem;
+    margin-bottom: .33rem;
 }
 .prop_dtl_invest_icon img { width: .42rem; height: .42rem; }
 .prop_dtl_invest_card--primary .prop_dtl_invest_icon {
@@ -525,33 +489,36 @@
 .prop_dtl_invest_label {
     font-size: .24rem;
     font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: .22rem;
+    color: #222;
+    margin-bottom: .27rem;
 }
 .prop_dtl_invest_card--primary .prop_dtl_invest_label { color: #fff; }
 
 .prop_dtl_invest_num_row {
     display: flex;
     align-items: baseline;
-    gap: .08rem;
+    gap: .18rem;
 }
 .prop_dtl_invest_num {
     font-family: Manrope, 'Source Han Sans CN', sans-serif;
-    font-size: .56rem;
+    font-size: .48rem;
     font-weight: 700;
-    color: #fff;
-    line-height: 1;
+    color: #0B4CA1;
+    line-height: 1.1;
+    letter-spacing: -0.02rem;
 }
-.prop_dtl_invest_unit { font-size: .18rem; color: #fff; }
+.prop_dtl_invest_unit {
+     font-size: .18rem; color: #0B4CA1; 
+    }
 .prop_dtl_invest_val {
     font-size: .2rem;
-    color: #333;
+    color: #222;
     line-height: 1.6;
 }
 .prop_dtl_invest_card--primary .prop_dtl_invest_val { color: #fff; }
 
 .prop_dtl_invest_text {
-    font-size: .16rem;
+    font-size: .18rem;
     line-height: 1.7;
     color: #555;
 }
@@ -565,7 +532,7 @@
     position: relative;
     padding: 1.0rem 0 1.2rem;
     overflow: hidden;
-    background: linear-gradient(180deg, #EEF3FC 0%, #DCE6F7 100%);
+    background: url('../images/property-detail/section3-bg.png') center / cover no-repeat;
 }
 .prop_dtl_detail_sec::before {
     content: "";
@@ -1035,58 +1002,9 @@
 }
 
 
-/* ============================================================
-   CTA 招募区  (Figma: y=8059, h=680)
-   ============================================================ */
-.prop_dtl_cta_sec {
-    position: relative;
-    padding: 1.6rem 0 1.4rem;
-    overflow: hidden;
-}
-.prop_dtl_cta_bg {
-    position: absolute;
-    inset: 0;
-    background: url('../images/agri-detail/section7-bg.jpg') center / cover no-repeat;
-    z-index: 0;
-}
-.prop_dtl_cta_bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0,15,42,.65) 0%, rgba(0,30,80,.85) 100%);
-}
-.prop_dtl_cta_inner {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    color: #fff;
-}
-.prop_dtl_cta_title {
-    font-size: .54rem;
-    font-weight: 700;
-    margin-bottom: .5rem;
-    letter-spacing: .04em;
-}
-.prop_dtl_cta_apply_btn {
-    display: inline-flex;
-    align-items: center;
-    gap: .1rem;
-    height: .54rem;
-    padding: 0 .36rem;
-    border-radius: 5rem;
-    background: linear-gradient(123.54deg, #165dff 2.38%, #0b4ca1 59.53%);
-    color: #fff;
-    font-size: .2rem;
-    transition: filter .2s, transform .2s;
-}
-.prop_dtl_cta_apply_btn:hover {
-    filter: brightness(1.12);
-    transform: translateY(-.02rem);
-}
-.prop_dtl_cta_apply_btn img {
-    width: .22rem;
-    height: .22rem;
-    filter: brightness(10);
+/* 服务申请：仅覆盖公共模块背景图 */
+.prop_service_apply_sec {
+    --service-apply-bg-image: url('../images/property-detail/cta.jpg');
 }
 
 
