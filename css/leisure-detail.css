@@ -450,6 +450,27 @@
     background: url('../images/leisure-detail/section2-bg.png') center / cover no-repeat;
     position: relative;
 }
+.leis_dtl_invest::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1.05rem;
+    height: 1.45rem;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(248, 251, 253, .72) 46%,
+        rgba(255, 255, 255, .96) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(0.2rem);
+}
+.leis_dtl_invest > .w1480 {
+    position: relative;
+    z-index: 1;
+}
 .leis_dtl_invest_grid {
     display: flex;
     align-items: flex-start;
@@ -593,6 +614,7 @@
     position: relative;
     scroll-snap-align: start;
     flex-shrink: 0;
+    aspect-ratio: 16 / 9;
 }
 .leis_dtl_detail_slide + .leis_dtl_detail_slide {
     margin-top: .35rem;
@@ -1193,7 +1215,7 @@ opacity: 0.8;
         overflow: visible;
         scroll-snap-type: none;
     }
-    .leis_dtl_detail_slide { height: auto; aspect-ratio: 14.8 / 8.5; border-radius: .18rem; }
+    .leis_dtl_detail_slide { height: auto; aspect-ratio: 16 / 9; border-radius: .18rem; }
     .leis_dtl_detail_slide + .leis_dtl_detail_slide { margin-top: .26rem; }
 
     /* ---- 特色优势 ---- */
@@ -1222,6 +1244,17 @@ opacity: 0.8;
     /* ---- 周边配套 ---- */
     .leis_dtl_surroundings_sec { padding-bottom: .8rem; }
     .leis_dtl_surroundings_sec .leis_dtl_sec_title { margin-bottom: .42rem; }
+    .leis_dtl_surroundings_sec .agri_dtl_map_img {
+        height: auto;
+        aspect-ratio: auto;
+        overflow: visible;
+        border-radius: 0;
+    }
+    .leis_dtl_surroundings_sec .agri_dtl_map_img > img {
+        height: auto;
+        aspect-ratio: 1480 / 590;
+        border-radius: .16rem;
+    }
 
     /* ---- 支持政策 ---- */
     .leis_dtl_policy_sec { padding: 0 0 .8rem; }
@@ -1350,13 +1383,13 @@ opacity: 0.8;
     .leis_dtl_detail_intro { margin-bottom: .32rem; padding: 0; }
     .leis_dtl_detail_intro p { font-size: .16rem; line-height: 1.7; margin-bottom: .14rem; }
     .leis_dtl_detail_intro p:last-child { font-size: .15rem; }
-    .leis_dtl_detail_slide { aspect-ratio: 4 / 3; border-radius: .16rem; }
+    .leis_dtl_detail_slide { aspect-ratio: 16 / 9; border-radius: .16rem; }
     .leis_dtl_detail_slide + .leis_dtl_detail_slide { margin-top: .2rem; }
 
     /* ---- 特色优势 ---- */
     .leis_dtl_advantage { padding: .6rem 0 0; }
     .leis_dtl_advantage_swiper .swiper-slide {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 9;
         border-radius: .16rem;
     }
     .leis_dtl_advantage_arrow img { width: .42rem; height: .42rem; }
@@ -1369,7 +1402,7 @@ opacity: 0.8;
     /* ---- 项目图集 ---- */
     .leis_dtl_photos_sec { padding: .6rem 0; }
     .leis_dtl_photos_swiper { padding-bottom: .36rem; }
-    .leis_dtl_photo_card { aspect-ratio: 4 / 3; border-radius: .16rem; }
+    .leis_dtl_photo_card { aspect-ratio: 16 / 9; border-radius: .16rem; }
     .leis_dtl_photo_label { left: .22rem; bottom: .2rem; font-size: .17rem; }
     .leis_dtl_photos_ctrls { width: auto; gap: .24rem; }
     .leis_dtl_photos_arrow { width: .36rem; height: .36rem; }
@@ -1377,6 +1410,10 @@ opacity: 0.8;
     /* ---- 周边配套 ---- */
     .leis_dtl_surroundings_sec { padding-bottom: .6rem; }
     .leis_dtl_surroundings_sec .leis_dtl_sec_title { margin-bottom: .32rem; }
+    .leis_dtl_surroundings_sec .agri_dtl_map_img > img {
+        aspect-ratio: 4 / 3;
+        border-radius: .12rem;
+    }
 
     /* ---- 支持政策 ---- */
     .leis_dtl_policy_sec { padding: 0 0 .6rem; }

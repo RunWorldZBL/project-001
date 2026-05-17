@@ -574,7 +574,7 @@
     font-size: .18rem;
     line-height: 1.7;
     color: rgba(0,0,0,1);
-    margin-bottom: .4rem;
+    margin-bottom: 0;
 }
 .agri_dtl_detail_text strong {
     color: #1a1a1a;
@@ -585,14 +585,14 @@
    项目详情图集：3 层层叠卡片轮播
    作用范围严格限定在 .agri_dtl_gallery_swiper 内，不会影响其它 Swiper
    ------------------------------------------------------------
-   第一层 active   : 12rem × 6.8rem
-   第二层 prev/next  : 10rem × 5.7rem，相对 active 露出
-   第三层 prev2/next2: 7.84rem × 4.58rem，相对第二层露出
+   第一层 active   : 10rem × 5.625rem
+   第二层 prev/next  : 8.33rem × 4.69rem，相对 active 露出
+   第三层 prev2/next2: 6.53rem × 3.67rem，相对第二层露出
    远处 slide opacity:0 隐藏，所以无需 overflow:hidden
    ============================================================ */
 .agri_dtl_gallery_wrap {
     position: relative;
-    padding-top: .48rem;
+    padding-top: .4rem;
     overflow: hidden;
 }
 .agri_dtl_gallery_swiper {
@@ -603,8 +603,8 @@
     align-items: center;
 }
 .agri_dtl_gallery_swiper .swiper-slide {
-    width: 12rem;
-    height: 6.8rem;
+    width: 10rem;
+    aspect-ratio: 16 / 9;
     border-radius: .2rem;
     overflow: hidden;
     opacity: 0;
@@ -627,7 +627,7 @@
     height: 100%;
 }
 
-/* 第一层：active (12rem × 6.8rem) */
+/* 第一层：active (10rem × 5.625rem) */
 .agri_dtl_gallery_swiper .swiper-slide-active {
     opacity: 1;
     z-index: 3;
@@ -636,7 +636,7 @@
     box-shadow: 0 0 0.60rem -0.20rem rgba(11, 76, 161, 0.60);
 }
 
-/* 第二层：prev / next (10rem × 5.7rem) */
+/* 第二层：prev / next (8.33rem × 4.69rem) */
 .agri_dtl_gallery_swiper .swiper-slide-prev,
 .agri_dtl_gallery_swiper .swiper-slide-next {
     opacity: 1;
@@ -644,13 +644,13 @@
     box-shadow: 0 0.04rem 0.20rem 0 rgba(1, 47, 167, 0.10);
 }
 .agri_dtl_gallery_swiper .swiper-slide-prev {
-    transform: translateX(10.31rem) scale(.8333);
+    transform: translateX(8.59rem) scale(.8333);
 }
 .agri_dtl_gallery_swiper .swiper-slide-next {
-    transform: translateX(-10.31rem) scale(.8333);
+    transform: translateX(-8.59rem) scale(.8333);
 }
 
-/* 第三层：prev2 / next2 (7.84rem × 4.58rem)
+/* 第三层：prev2 / next2 (6.53rem × 3.67rem)
    ! 必须写在 prev/next/active 之后，确保 source order 优先级覆盖
    ! transform 用 !important 双保险，防止 swiper 切换中间态被覆盖
    transform 不参与过渡，加 class 的瞬间立即就位（opacity .15s 渐显） */
@@ -662,10 +662,10 @@
     transition: opacity .15s ease, box-shadow .5s ease;
 }
 .agri_dtl_gallery_swiper .agri_dtl_slide_prev2 {
-    transform: translateX(20.63rem) scale(.6533) !important;
+    transform: translateX(17.19rem) scale(.6533) !important;
 }
 .agri_dtl_gallery_swiper .agri_dtl_slide_next2 {
-    transform: translateX(-20.63rem) scale(.6533) !important;
+    transform: translateX(-17.19rem) scale(.6533) !important;
 }
 
 /* 控件行：左箭头 + 分页点 + 右箭头 */
@@ -685,7 +685,7 @@
     justify-content: center;
     align-items: center;
     gap: .1rem;
-    width: auto;
+    width: auto !important;
 }
 .agri_dtl_dot {
     display: block;
@@ -803,7 +803,7 @@
    ============================================================ */
 .agri_dtl_photos_sec {
     position: relative;
-    padding: .8rem 0 1rem;
+    padding: 1.1rem 0 1rem;
     overflow: hidden;
 }
 .agri_dtl_photos_sec::before {
@@ -1558,7 +1558,14 @@
     .agri_dtl_map_wrap { height: auto; }
     .agri_dtl_map_img {
         height: auto;
+        aspect-ratio: auto;
+        overflow: visible;
+        border-radius: 0;
+    }
+    .agri_dtl_map_img > img {
+        height: auto;
         aspect-ratio: 1480 / 590;
+        border-radius: .16rem;
     }
     .agri_dtl_poi_panel {
         position: static;
@@ -1781,7 +1788,7 @@
 
     /* ---- 周边配套 ---- */
     .agri_dtl_surroundings_sec { padding: .5rem 0; }
-    .agri_dtl_map_img {
+    .agri_dtl_map_img > img {
         aspect-ratio: 4 / 3;
         border-radius: .12rem;
     }

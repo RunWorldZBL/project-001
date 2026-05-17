@@ -234,11 +234,13 @@
     transform: translateX(-50%);
     width: 14.8rem;
     display: flex;
+    align-items: flex-end;
     gap: .38rem;
 }
 .prop_dtl_hero_card {
     flex: 1;
     height: 1.08rem;
+    cursor: pointer;
     padding: 0 .25rem;
     border-radius: .16rem;
     background: rgba(255,255,255,.4);
@@ -250,6 +252,21 @@
     justify-content: center;
     gap: .08rem;
     box-shadow: 0 .08rem .2rem rgba(0,15,42,.16);
+    overflow: hidden;
+    transition:
+        height .36s cubic-bezier(.2,.7,.2,1),
+        padding .36s cubic-bezier(.2,.7,.2,1),
+        background .36s cubic-bezier(.2,.7,.2,1),
+        box-shadow .36s cubic-bezier(.2,.7,.2,1);
+}
+.prop_dtl_hero_card:hover {
+    height: 2.28rem;
+    padding: .35rem .25rem .35rem;
+    justify-content: flex-start;
+    background: rgba(0,0,0,.4);
+    backdrop-filter: blur(.08rem);
+    -webkit-backdrop-filter: blur(.08rem);
+    box-shadow: 0 .14rem .34rem rgba(0,15,42,.28);
 }
 .prop_dtl_hero_card_value {
     font-size: .2rem;
@@ -259,6 +276,8 @@
     display: flex;
     align-items: center;
     gap: .08rem;
+    width: 100%;
+    min-height: .42rem;
 }
 .prop_dtl_hero_card_value img {
     width: .42rem;
@@ -271,6 +290,28 @@
     flex-shrink: 0;
     margin-left: auto;
     background: url(background-image) center / contain no-repeat;
+}
+.prop_dtl_hero_card_detail {
+    max-height: 0;
+    margin-top: 0;
+    color: #fff;
+    font-size: .18rem;
+    font-weight: 500;
+    line-height: 1.7;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(.12rem);
+    transition:
+        max-height .32s cubic-bezier(.2,.7,.2,1),
+        margin-top .32s cubic-bezier(.2,.7,.2,1),
+        opacity .28s ease .08s,
+        transform .28s ease .08s;
+}
+.prop_dtl_hero_card:hover .prop_dtl_hero_card_detail {
+    max-height: 1.2rem;
+    margin-top: .2rem;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ============================================================
@@ -1527,6 +1568,17 @@
     /* ---- 周边配套（复用 agri 响应式略） ---- */
     .prop_dtl_surroundings_sec { padding: 0 0 .8rem; }
     .prop_dtl_surroundings_sec .agri_dtl_sec_title { margin-bottom: .4rem; }
+    .prop_dtl_surroundings_sec .agri_dtl_map_img {
+        height: auto;
+        aspect-ratio: auto;
+        overflow: visible;
+        border-radius: 0;
+    }
+    .prop_dtl_surroundings_sec .agri_dtl_map_img > img {
+        height: auto;
+        aspect-ratio: 1480 / 590;
+        border-radius: .16rem;
+    }
 
     /* ---- 支持政策（表格可横滑） ---- */
     .prop_dtl_policy_sec { padding: .6rem 0 .8rem; }
@@ -1655,33 +1707,60 @@
     .prop_dtl_meta_item { font-size: .16rem; gap: .08rem; }
     .prop_dtl_meta_price { font-size: .22rem; }
     .prop_dtl_cta_btns {
-        flex-direction: column;
-        width: 100%;
+        flex-direction: row;
+        width: auto;
         gap: .14rem;
     }
     .prop_dtl_cta_btn {
-        width: 100%;
-        height: .54rem;
-        font-size: .17rem;
+        width: 1.6rem;
+        height: .46rem;
+        font-size: .15rem;
     }
 
     /* 大箭头：mobile 隐藏，避免遮挡内容 */
     .prop_dtl_arrow { display: none; }
 
-    /* 5 张属性卡片：单列 / 高度自适应 */
+    /* 5 张属性卡片：横向滚动 */
     .prop_dtl_hero_cards {
-        max-width: 92%;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 4vw;
+        scroll-padding-right: 4vw;
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        padding-top: 0;
+        padding-right: 0;
         padding-bottom: .5rem;
-        gap: .14rem;
-        grid-template-columns: 1fr;
+        padding-left: 4vw;
+        gap: .2rem;
+        grid-template-columns: unset;
+        box-sizing: border-box;
     }
+    .prop_dtl_hero_cards::-webkit-scrollbar { display: none; }
     .prop_dtl_hero_card {
+        flex: 0 0 2.4rem;
         min-height: .8rem;
-        padding: .12rem .18rem;
+        padding: .14rem .2rem;
         border-radius: .12rem;
+        scroll-snap-align: start;
     }
+    .prop_dtl_hero_card:hover {
+        height: auto;
+        min-height: .8rem;
+        padding: .14rem .2rem;
+        justify-content: center;
+        background: rgba(255,255,255,.4);
+        box-shadow: 0 .08rem .2rem rgba(0,15,42,.16);
+    }
+    .prop_dtl_hero_card_detail { display: none; }
     .prop_dtl_hero_card:last-child {
         grid-column: auto;
+        margin-right: 4vw;
+        scroll-snap-align: end;
     }
     .prop_dtl_hero_card_value { font-size: .16rem; }
     .prop_dtl_hero_card_value img,
@@ -1777,6 +1856,10 @@
     /* ---- 周边配套 ---- */
     .prop_dtl_surroundings_sec { padding: 0 0 .6rem; }
     .prop_dtl_surroundings_sec .agri_dtl_sec_title { margin-bottom: .3rem; }
+    .prop_dtl_surroundings_sec .agri_dtl_map_img > img {
+        aspect-ratio: 4 / 3;
+        border-radius: .12rem;
+    }
 
     /* ---- 支持政策 ---- */
     .prop_dtl_policy_sec { padding: .5rem 0 .6rem; }

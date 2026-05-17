@@ -178,6 +178,8 @@
     line-height: 1.42;
     font-weight: 700;
     text-shadow: 0 .08rem .18rem rgba(0, 0, 0, .34);
+    opacity: 0;
+    animation: agriHeroTextIn 1s cubic-bezier(.2, .7, .2, 1) .12s both;
 }
 
 .agri_hero_text p {
@@ -187,6 +189,8 @@
     margin-top: .38rem;
     font-size: .32rem;
     font-weight: 500;
+    opacity: 0;
+    animation: agriHeroTextIn 1s cubic-bezier(.2, .7, .2, 1) .32s both;
 }
 
 .agri_hero_text p span {
@@ -232,6 +236,17 @@
 
 .agri_hero_arrow img {
     width: .3rem;
+}
+
+@keyframes agriHeroTextIn {
+    from {
+        opacity: 0;
+        transform: translate3d(0, .28rem, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 .agri_body {
