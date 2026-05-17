@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="css/swiper-bundle.min.css" />
 <link rel="stylesheet" href="css/aos.css" />
 <link rel="stylesheet" href="css/fancybox.css" />
+<link rel="stylesheet" href="css/image-popup.css" />
+<link rel="stylesheet" href="css/video-popup.css" />
 <link rel="stylesheet" href="css/my.css" />
 <link rel="stylesheet" href="css/platform-pages.css" />
 <link rel="stylesheet" href="css/agri-detail.css" />
@@ -70,10 +72,20 @@
 
 <!-- ========== Hero 详情横幅 ========== -->
 <section class="leis_dtl_hero">
-    <div class="leis_dtl_hero_bg">
-        <img src="images/agri-detail/hero-main.jpg" alt="" class="bg_img">
+    <!-- 主图轮播：Swiper，slide 横滑切换 -->
+    <div class="leis_dtl_hero_bg swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="images/leisure-detail/ban1.jpg" alt="" class="bg_img">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/leisure-detail/ban1.jpg" alt="" class="bg_img">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/leisure-detail/ban1.jpg" alt="" class="bg_img">
+            </div>
+        </div>
     </div>
-    <div class="leis_dtl_hero_overlay"></div>
 
     <div class="leis_dtl_hero_inner">
         <!-- 顶部：面包屑 + 收藏/分享 -->
@@ -131,6 +143,16 @@
                         服务申请
                     </a>
                 </div>
+
+                <!-- 主图轮播切换按钮 -->
+                <div class="leis_dtl_hero_arrows">
+                    <button class="leis_dtl_hero_arrow leis_dtl_hero_arrow_prev" aria-label="上一张">
+                        <img src="images/agri-detail/icon-left.svg" alt="">
+                    </button>
+                    <button class="leis_dtl_hero_arrow leis_dtl_hero_arrow_next" aria-label="下一张">
+                        <img src="images/agri-detail/icon-left.svg" alt="">
+                    </button>
+                </div>
             </div>
 
             <!-- 右侧白色信息卡 -->
@@ -176,15 +198,15 @@
         <div class="leis_dtl_overview_grid">
             <!-- 左：圆形视频图 -->
             <div class="leis_dtl_overview_left">
-                <img src="images/agri-detail/item1.png" alt="老象峰景区实景">
-                <a href="javascript:;" class="leis_dtl_overview_play" aria-label="播放视频"></a>
+                <img src="images/leisure-detail/section1-item.jpg" alt="老象峰景区实景">
+                <a data-video-popup href="video/oceans.mp4" data-caption="老象峰景区项目视频" class="leis_dtl_overview_play" aria-label="播放视频"></a>
             </div>
             <!-- 右：长段描述 -->
             <div class="leis_dtl_overview_right">
                 <p class="leis_dtl_overview_para">
                     老象峰景区位于北京市平谷区大华山镇小峪子村，是一个自然风景区，因其山形酷似一头巨象而得名。景区四至东至景区上道上沿，南至景区售票处，西至景区下道下沿，北至东沟（小长沟峪承包地除外），地块范围以图斑为准。
                 </p>
-                <p class="leis_dtl_overview_para">
+                <p class="leis_dtl_overview_para leis_dtl_overview_para_2">
                     景区总占地总面积 10500 余亩、元宝酒楼旧址（目前已拆除）建设用地地块总面积 2906 平方米、水池、道路等特殊用地 10294 平方米，土地为北京市平谷区大华山镇小峪子村集体所有，小峪子村集体拥有该旅游景区原有自然资源、地上建筑物及现状设施所有权、经营权和开发利用权。
                 </p>
             </div>
@@ -215,7 +237,10 @@
             </div>
             <div class="leis_dtl_overview_stat">
                 <p class="leis_dtl_overview_stat_label">是否经营</p>
-                <p class="leis_dtl_overview_stat_text">有序安全经营中</p>
+                <div class="leis_dtl_overview_stat_num">
+                    <strong class="leis_dtl_overview_stat_value"></strong>
+                    <span class="leis_dtl_overview_stat_unit">有序安全经营中</span>
+                </div>
             </div>
         </div>
     </div>
@@ -231,43 +256,43 @@
 
         <div class="leis_dtl_invest_grid">
             <ul class="leis_dtl_invest_list">
-                <li class="leis_dtl_invest_item">
+                <li class="leis_dtl_invest_item leis_dtl_invest_item--active" data-idx="1">
                     <div class="leis_dtl_invest_head">
-                        <span class="leis_dtl_invest_icon"><img src="images/agri-detail/icon-site.svg" alt=""></span>
+                        <span class="leis_dtl_invest_icon"><img src="images/leisure-detail/icon-1-act.svg" alt=""></span>
                         <span class="leis_dtl_invest_label">招商业态</span>
                     </div>
                     <div class="leis_dtl_invest_value">休闲农业与乡村旅游</div>
                 </li>
-                <li class="leis_dtl_invest_item">
+                <li class="leis_dtl_invest_item" data-idx="2">
                     <div class="leis_dtl_invest_head">
-                        <span class="leis_dtl_invest_icon"><img src="images/agri-detail/icon-big.svg" alt=""></span>
+                        <span class="leis_dtl_invest_icon"><img src="images/leisure-detail/icon-2.svg" alt=""></span>
                         <span class="leis_dtl_invest_label">投资强度</span>
                     </div>
                     <div class="leis_dtl_invest_value">
                         <strong>1000</strong><span class="unit">万元</span>
                     </div>
                 </li>
-                <li class="leis_dtl_invest_item">
+                <li class="leis_dtl_invest_item" data-idx="3">
                     <div class="leis_dtl_invest_head">
-                        <span class="leis_dtl_invest_icon"><img src="images/agri-detail/icon-service.svg" alt=""></span>
+                        <span class="leis_dtl_invest_icon"><img src="images/leisure-detail/icon-3.svg" alt=""></span>
                         <span class="leis_dtl_invest_label">合作内容</span>
                     </div>
                     <p class="leis_dtl_invest_text">
                         为进一步激活景区潜力，现诚招合作伙伴，拟共同对现有景区实施全方位提升改造，依托景区自然资源，打造集休闲农业、农事体验、乡村旅游于一体的综合性旅游景区。
                     </p>
                 </li>
-                <li class="leis_dtl_invest_item">
+                <li class="leis_dtl_invest_item" data-idx="4">
                     <div class="leis_dtl_invest_head">
-                        <span class="leis_dtl_invest_icon"><img src="images/agri-detail/icon-fav.svg" alt=""></span>
+                        <span class="leis_dtl_invest_icon"><img src="images/leisure-detail/icon-4.svg" alt=""></span>
                         <span class="leis_dtl_invest_label">对合作方的具体要求</span>
                     </div>
                     <p class="leis_dtl_invest_text">
                         合作方需为企业，且注册不低于 2000 万元；在达成初步合意后，合作方需结合景区现状提供完整规划方案。
                     </p>
                 </li>
-                <li class="leis_dtl_invest_item">
+                <li class="leis_dtl_invest_item" data-idx="5">
                     <div class="leis_dtl_invest_head">
-                        <span class="leis_dtl_invest_icon"><img src="images/agri-detail/icon-go.svg" alt=""></span>
+                        <span class="leis_dtl_invest_icon"><img src="images/leisure-detail/icon-5.svg" alt=""></span>
                         <span class="leis_dtl_invest_label">产业禁限要求</span>
                     </div>
                     <p class="leis_dtl_invest_text">
@@ -277,7 +302,7 @@
             </ul>
 
             <div class="leis_dtl_invest_image">
-                <img src="images/agri-detail/section3-banner.jpg" alt="老象峰景区招商">
+                <img src="images/leisure-detail/section2-item.jpg" alt="老象峰景区招商">
             </div>
         </div>
     </div>
@@ -295,33 +320,19 @@
                 <p>老象峰景区总面积约 48 平方公里，森林覆盖率高达 95%，生态环境原始。</p>
                 <p>景区核心景观为一座天然形成的巨峰，高约 51.8 米、长约 82 米，形态酷似一头俯首垂鼻汲水的巨象，头朝西尾朝东，转换角度观看还可呈现"子母联体双象"奇观。谷内保存有原始森林风貌，崖壁叠垒如古城遗迹。</p>
             </div>
-        </div>
 
-        <div class="swiper leis_dtl_detail_swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="images/agri-detail/section3-bg.jpg" alt="藏山">
+            <div class="leis_dtl_detail_scroll">
+                <div class="leis_dtl_detail_slide">
+                    <img src="images/leisure-detail/section3-item.jpg" alt="藏山">
                     <div class="leis_dtl_detail_slide_overlay"></div>
-                    <div class="leis_dtl_detail_slide_title">
-                        <strong>藏山</strong>
-                        <span>群山隐秀 · 静观寰宇</span>
-                    </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="leis_dtl_detail_slide">
                     <img src="images/agri-detail/section4-bg.jpg" alt="行游">
                     <div class="leis_dtl_detail_slide_overlay"></div>
-                    <div class="leis_dtl_detail_slide_title">
-                        <strong>行游</strong>
-                        <span>云海林径 · 步入桃源</span>
-                    </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="leis_dtl_detail_slide">
                     <img src="images/agri-detail/section5-bg.jpg" alt="栖境">
                     <div class="leis_dtl_detail_slide_overlay"></div>
-                    <div class="leis_dtl_detail_slide_title">
-                        <strong>栖境</strong>
-                        <span>森系民宿 · 自在栖居</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -331,7 +342,7 @@
 <!-- ========== 特色优势 ========== -->
 <section class="leis_dtl_advantage">
     <div class="w1480 leis_dtl_advantage_inner" data-aos="fade-up">
-        <div class="leis_dtl_sec_title leis_dtl_sec_title--white">
+        <div class="leis_dtl_sec_title leis_dtl_sec_title--dark">
             <span class="leis_dtl_title_bar"></span>
             <h2>特色优势</h2>
         </div>
@@ -339,158 +350,158 @@
         <div class="swiper leis_dtl_advantage_swiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="images/agri-detail/section4-banner.jpg" alt="特色优势 1">
+                    <img src="images/leisure-detail/section4-item.jpg" alt="特色优势 1">
                 </div>
                 <div class="swiper-slide">
-                    <img src="images/agri-detail/section3-banner.jpg" alt="特色优势 2">
+                    <img src="images/leisure-detail/section4-item.jpg" alt="特色优势 1">
                 </div>
                 <div class="swiper-slide">
-                    <img src="images/agri-detail/section6-bg.jpg" alt="特色优势 3">
-                </div>
-                <div class="swiper-slide">
-                    <img src="images/agri-detail/section5-bg.jpg" alt="特色优势 4">
-                </div>
-                <div class="swiper-slide">
-                    <img src="images/agri-detail/section7-bg.jpg" alt="特色优势 5">
+                    <img src="images/leisure-detail/section4-item.jpg" alt="特色优势 1">
                 </div>
             </div>
-        </div>
-
-        <div class="leis_dtl_advantage_ctrls">
             <button class="leis_dtl_advantage_arrow leis_dtl_advantage_arrow--prev" aria-label="上一张">
-                <img src="images/agri-detail/icon-left.svg" alt="">
+                <img src="images/leisure-detail/icon-left.png" alt="">
+            </button>
+            <button class="leis_dtl_advantage_arrow leis_dtl_advantage_arrow--next" aria-label="下一张">
+                <img src="images/leisure-detail/icon-right.png" alt="">
             </button>
             <div class="leis_dtl_advantage_page">
-                <span class="current">1</span>
+                <span class="current"></span>
                 <span> / </span>
-                <span class="total">5</span>
+                <span class="total"></span>
             </div>
-            <button class="leis_dtl_advantage_arrow leis_dtl_advantage_arrow--next" aria-label="下一张">
-                <img src="images/agri-detail/icon-left.svg" alt="">
-            </button>
         </div>
     </div>
 </section>
 
+<div class="main-content">
 <!-- ========== 项目图集 ========== -->
-<section class="leis_dtl_photos_sec">
-    <div class="w1480" data-aos="fade-up">
-        <div class="leis_dtl_sec_title">
-            <span class="leis_dtl_title_bar"></span>
-            <h2>项目图集</h2>
-        </div>
-
-        <div class="leis_dtl_photos_grid">
-            <div class="leis_dtl_photo_card">
-                <a data-fancybox="leis-gallery" href="images/agri-detail/pro-1.png">
-                    <img src="images/agri-detail/pro-1.png" alt="现场照片">
-                </a>
-                <span class="leis_dtl_photo_label">现场照片</span>
+    <section class="leis_dtl_photos_sec">
+        <div class="w1480" data-aos="fade-up">
+            <div class="leis_dtl_sec_title">
+                <span class="leis_dtl_title_bar"></span>
+                <h2>项目图集</h2>
             </div>
-            <div class="leis_dtl_photo_card">
-                <a data-fancybox="leis-gallery" href="images/agri-detail/pro-2.png">
-                    <img src="images/agri-detail/pro-2.png" alt="鸟瞰图">
-                </a>
-                <span class="leis_dtl_photo_label">鸟瞰图</span>
-            </div>
-        </div>
 
-        <div class="leis_dtl_photos_ctrls">
-            <button class="leis_dtl_photos_arrow leis_dtl_photos_arrow--prev" aria-label="上一张">
-                <img src="images/agri-detail/icon-left.svg" alt="">
-            </button>
-            <div class="leis_dtl_photos_dots">
-                <span class="leis_dtl_photos_dot leis_dtl_photos_dot--active"></span>
-                <span class="leis_dtl_photos_dot"></span>
-                <span class="leis_dtl_photos_dot"></span>
-            </div>
-            <button class="leis_dtl_photos_arrow leis_dtl_photos_arrow--next" aria-label="下一张">
-                <img src="images/agri-detail/icon-left.svg" alt="">
-            </button>
-        </div>
-    </div>
-</section>
-
-<!-- ========== 周边配套 ========== -->
-<section class="leis_dtl_surroundings_sec">
-    <div class="w1480" data-aos="fade-up">
-        <div class="leis_dtl_sec_title">
-            <span class="leis_dtl_title_bar"></span>
-            <h2>周边配套</h2>
-        </div>
-
-        <div class="agri_dtl_map_wrap">
-            <div class="agri_dtl_map_img">
-                <img src="images/agri-detail/map.jpg" alt="周边地图">
-                <div class="agri_dtl_poi_panel">
-                    <div class="agri_dtl_poi_tabs">
-                        <div class="agri_dtl_poi_tab_head flex"></div>
-                        <div class="agri_dtl_poi_sub_tabs flex"></div>
-                        <ul class="agri_dtl_poi_list"></ul>
+            <div class="swiper leis_dtl_photos_swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="leis_dtl_photo_card">
+                            <a data-fancybox="leis-gallery" href="images/agri-detail/pro-1.png">
+                                <img src="images/leisure-detail/section5-item1.jpg" alt="现场照片">
+                            </a>
+                            <span class="leis_dtl_photo_label">现场照片</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="leis_dtl_photo_card">
+                            <a data-fancybox="leis-gallery" href="images/agri-detail/pro-2.png">
+                                <img src="images/leisure-detail/section5-item2.jpg" alt="鸟瞰图">
+                            </a>
+                            <span class="leis_dtl_photo_label">鸟瞰图</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <p class="agri_dtl_map_disclaimer">*免责声明：与距离相关的数据均来源于百度地图或高德地图等第三方，仅供您参考。</p>
+
+            <div class="leis_dtl_photos_ctrls">
+                <button class="leis_dtl_photos_arrow leis_dtl_photos_arrow--prev" aria-label="上一张">
+                    <img class="leis_dtl_photos_arrow_normal" src="images/agri-detail/icon-left.png" alt="">
+                    <img class="leis_dtl_photos_arrow_active" src="images/agri-detail/icon-right-active.png" alt="">
+                </button>
+                <div class="leis_dtl_photos_dots"></div>
+                <button class="leis_dtl_photos_arrow leis_dtl_photos_arrow--next" aria-label="下一张">
+                    <img class="leis_dtl_photos_arrow_normal" src="images/agri-detail/icon-left.png" alt="">
+                    <img class="leis_dtl_photos_arrow_active" src="images/agri-detail/icon-right-active.png" alt="">
+                </button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ========== 支持政策 ========== -->
-<section class="leis_dtl_policy_sec">
-    <div class="w1480" data-aos="fade-up">
-        <div class="leis_dtl_sec_title">
-            <span class="leis_dtl_title_bar"></span>
-            <h2>支持政策</h2>
+    <!-- ========== 周边配套 ========== -->
+    <section class="leis_dtl_surroundings_sec">
+        <div class="w1480" data-aos="fade-up">
+            <div class="leis_dtl_sec_title">
+                <span class="leis_dtl_title_bar"></span>
+                <h2>周边配套</h2>
+            </div>
+
+            <div class="agri_dtl_map_wrap">
+                <div class="agri_dtl_map_img">
+                    <img src="images/agri-detail/map.jpg" alt="周边地图">
+                    <div class="agri_dtl_poi_panel">
+                        <div class="agri_dtl_poi_tabs">
+                            <div class="agri_dtl_poi_tab_head flex"></div>
+                            <div class="agri_dtl_poi_sub_tabs flex"></div>
+                            <ul class="agri_dtl_poi_list"></ul>
+                        </div>
+                    </div>
+                </div>
+                <p class="agri_dtl_map_disclaimer">*免责声明：与距离相关的数据均来源于百度地图或高德地图等第三方，仅供您参考。</p>
+            </div>
         </div>
+    </section>
 
-        <div class="leis_dtl_policy_list">
-            <article class="leis_dtl_policy_item">
-                <div class="leis_dtl_policy_thumb">
-                    <img src="images/agri-detail/pro-3.png" alt="">
-                </div>
-                <div class="leis_dtl_policy_body">
-                    <span class="leis_dtl_policy_tag">产业发展政策</span>
-                    <h3 class="leis_dtl_policy_title">北京农村产权交易所 受理出让申请操作规则（试行）</h3>
-                </div>
-                <a href="javascript:;" class="leis_dtl_policy_btn">查看详情</a>
-            </article>
+    <!-- ========== 支持政策 ========== -->
+    <section class="leis_dtl_policy_sec">
+        <div class="w1480" data-aos="fade-up">
+            <div class="leis_dtl_sec_title">
+                <span class="leis_dtl_title_bar"></span>
+                <h2>支持政策</h2>
+            </div>
 
-            <article class="leis_dtl_policy_item">
-                <div class="leis_dtl_policy_thumb">
-                    <img src="images/agri-detail/pro-4.png" alt="">
-                </div>
-                <div class="leis_dtl_policy_body">
-                    <span class="leis_dtl_policy_tag">金融支持政策</span>
-                    <h3 class="leis_dtl_policy_title">我国支持科技创新主要税费优惠政策指引</h3>
-                </div>
-                <a href="javascript:;" class="leis_dtl_policy_btn">查看详情</a>
-            </article>
+            <div class="leis_dtl_policy_list">
+                <article class="leis_dtl_policy_item">
+                    <div class="leis_dtl_policy_thumb">
+                        <img src="images/leisure-detail/icon-list.svg" alt="" class="leis_dtl_policy_thumb_normal">
+                        <img src="images/leisure-detail/icon-list-act.svg" alt="" class="leis_dtl_policy_thumb_act">
+                    </div>
+                    <div class="leis_dtl_policy_body">
+                        <span class="leis_dtl_policy_tag">产业发展政策</span>
+                        <h3 class="leis_dtl_policy_title">北京农村产权交易所 受理出让申请操作规则（试行）</h3>
+                    </div>
+                    <a href="javascript:;" class="leis_dtl_policy_btn">查看详情</a>
+                </article>
 
-            <article class="leis_dtl_policy_item">
-                <div class="leis_dtl_policy_thumb">
-                    <img src="images/agri-detail/pro-5.png" alt="">
-                </div>
-                <div class="leis_dtl_policy_body">
-                    <span class="leis_dtl_policy_tag">产业发展政策</span>
-                    <h3 class="leis_dtl_policy_title">北京市中小微企业首次贷款贴息实施细则（2026年修订版）</h3>
-                </div>
-                <a href="javascript:;" class="leis_dtl_policy_btn">查看详情</a>
-            </article>
+                <article class="leis_dtl_policy_item">
+                    <div class="leis_dtl_policy_thumb">
+                        <img src="images/leisure-detail/icon-list.svg" alt="" class="leis_dtl_policy_thumb_normal">
+                        <img src="images/leisure-detail/icon-list-act.svg" alt="" class="leis_dtl_policy_thumb_act">
+                    </div>
+                    <div class="leis_dtl_policy_body">
+                        <span class="leis_dtl_policy_tag">金融支持政策</span>
+                        <h3 class="leis_dtl_policy_title">我国支持科技创新主要税费优惠政策指引</h3>
+                    </div>
+                    <a href="javascript:;" class="leis_dtl_policy_btn">查看详情</a>
+                </article>
 
-            <article class="leis_dtl_policy_item">
-                <div class="leis_dtl_policy_thumb">
-                    <img src="images/agri-detail/pro-3.png" alt="">
-                </div>
-                <div class="leis_dtl_policy_body">
-                    <span class="leis_dtl_policy_tag">税收政策</span>
-                    <h3 class="leis_dtl_policy_title">科技创新主要税费优惠政策指引（2025年修订版）</h3>
-                </div>
-                <a href="javascript:;" class="leis_dtl_policy_btn">查看详情</a>
-            </article>
+                <article class="leis_dtl_policy_item">
+                    <div class="leis_dtl_policy_thumb">
+                        <img src="images/leisure-detail/icon-list.svg" alt="" class="leis_dtl_policy_thumb_normal">
+                        <img src="images/leisure-detail/icon-list-act.svg" alt="" class="leis_dtl_policy_thumb_act">
+                    </div>
+                    <div class="leis_dtl_policy_body">
+                        <span class="leis_dtl_policy_tag">产业发展政策</span>
+                        <h3 class="leis_dtl_policy_title">北京市中小微企业首次贷款贴息实施细则（2026年修订版）</h3>
+                    </div>
+                    <a href="javascript:;" class="leis_dtl_policy_btn">查看详情</a>
+                </article>
+
+                <article class="leis_dtl_policy_item">
+                    <div class="leis_dtl_policy_thumb">
+                        <img src="images/leisure-detail/icon-list.svg" alt="" class="leis_dtl_policy_thumb_normal">
+                        <img src="images/leisure-detail/icon-list-act.svg" alt="" class="leis_dtl_policy_thumb_act">
+                    </div>
+                    <div class="leis_dtl_policy_body">
+                        <span class="leis_dtl_policy_tag">税收政策</span>
+                        <h3 class="leis_dtl_policy_title">科技创新主要税费优惠政策指引（2025年修订版）</h3>
+                    </div>
+                    <a href="javascript:;" class="leis_dtl_policy_btn">查看详情</a>
+                </article>
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
+</div>
 <!-- ========== 相关推荐项目 ========== -->
 <section class="leis_dtl_related_sec">
     <div class="w1480" data-aos="fade-up">
@@ -500,69 +511,85 @@
         </div>
 
         <div class="leis_dtl_related_grid">
-            <article class="leis_dtl_related_card">
+            <a href="javascript:;" class="leis_dtl_related_card">
                 <div class="leis_dtl_related_thumb">
-                    <img src="images/agri-detail/section3-banner.jpg" alt="">
+                    <img src="images/leisure-detail/fo-item1.jpg" alt="">
                 </div>
-                <div class="leis_dtl_related_more"></div>
                 <div class="leis_dtl_related_overlay">
-                    <h3>北京市朝阳区十八里店乡老君堂村康化路南侧8008号24005.89平方米房屋及5.02亩院落出租</h3>
+                    <div class="leis_dtl_related_overlay_title">
+                        <h3 title="北京市朝阳区十八里店乡老君堂村康化路南侧8008号24005.89平方米房屋及5.02亩院落出租">北京市朝阳区十八里店乡老君堂村康化路南侧8008号24005.89平方米房屋及5.02亩院落出租</h3>
+                        <div class="leis_dtl_related_more">
+                            <img src="images/leisure-detail/icon-link.svg" alt="">
+                        </div>
+                    </div>
                     <div class="leis_dtl_related_meta">
-                        <span class="leis_dtl_related_meta_item"><span class="label">项目类别：</span>休闲农业与乡村旅游</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟出让方式：</span>出租</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟项目规模：</span>24005.89平米</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟出让价格：</span><span class="price_value">14,8740.00 元</span></span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_category"><span class="label">项目类别：</span>休闲农业与乡村旅游</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_scale"><span class="label">拟项目规模：</span>24005.89平米</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_transfer"><span class="label">拟出让方式：</span>出租</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_price"><span class="label">拟出让价格：</span><span class="price_value">14,8740.00元</span></span>
                     </div>
                 </div>
-            </article>
+            </a>
 
-            <article class="leis_dtl_related_card">
+            <a href="javascript:;" class="leis_dtl_related_card">
                 <div class="leis_dtl_related_thumb">
-                    <img src="images/agri-detail/section4-banner.jpg" alt="">
+                    <img src="images/leisure-detail/fo-item1.jpg" alt="">
                 </div>
-                <div class="leis_dtl_related_more"></div>
                 <div class="leis_dtl_related_overlay">
-                    <h3>密云区巨各庄镇北霍各庄村（300亩）涉农土地流转其他农用地出租</h3>
+                    <div class="leis_dtl_related_overlay_title">
+                        <h3 title="密云区巨各庄镇北霍各庄村（300亩）涉农土地流转其他农用地出租">密云区巨各庄镇北霍各庄村（300亩）涉农土地流转其他农用地出租</h3>
+                        <div class="leis_dtl_related_more">
+                            <img src="images/leisure-detail/icon-link.svg" alt="">
+                        </div>
+                    </div>
                     <div class="leis_dtl_related_meta">
-                        <span class="leis_dtl_related_meta_item"><span class="label">项目类别：</span>休闲农业与乡村旅游</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟出让方式：</span>出租</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟项目规模：</span>300亩</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟出让价格：</span><span class="price_value">面议</span></span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_category"><span class="label">项目类别：</span>休闲农业与乡村旅游</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_scale"><span class="label">拟项目规模：</span>300亩</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_transfer"><span class="label">拟出让方式：</span>出租</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_price"><span class="label">拟出让价格：</span><span class="price_value">面议</span></span>
                     </div>
                 </div>
-            </article>
+            </a>
 
-            <article class="leis_dtl_related_card">
+            <a href="javascript:;" class="leis_dtl_related_card">
                 <div class="leis_dtl_related_thumb">
-                    <img src="images/agri-detail/section5-bg.jpg" alt="">
+                    <img src="images/leisure-detail/fo-item1.jpg" alt="">
                 </div>
-                <div class="leis_dtl_related_more"></div>
                 <div class="leis_dtl_related_overlay">
-                    <h3>房山区良乡镇后石羊村（102亩）涉农土地流转其他农用地出租</h3>
+                    <div class="leis_dtl_related_overlay_title">
+                        <h3 title="房山区良乡镇后石羊村（102亩）涉农土地流转其他农用地出租">房山区良乡镇后石羊村（102亩）涉农土地流转其他农用地出租</h3>
+                        <div class="leis_dtl_related_more">
+                            <img src="images/leisure-detail/icon-link.svg" alt="">
+                        </div>
+                    </div>
                     <div class="leis_dtl_related_meta">
-                        <span class="leis_dtl_related_meta_item"><span class="label">项目类别：</span>休闲农业与乡村旅游</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟出让方式：</span>出租</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟项目规模：</span>102亩</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟出让价格：</span><span class="price_value">面议</span></span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_category"><span class="label">项目类别：</span>休闲农业与乡村旅游</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_scale"><span class="label">拟项目规模：</span>102亩</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_transfer"><span class="label">拟出让方式：</span>出租</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_price"><span class="label">拟出让价格：</span><span class="price_value">面议</span></span>
                     </div>
                 </div>
-            </article>
+            </a>
 
-            <article class="leis_dtl_related_card">
+            <a href="javascript:;" class="leis_dtl_related_card">
                 <div class="leis_dtl_related_thumb">
-                    <img src="images/agri-detail/section6-bg.jpg" alt="">
+                    <img src="images/leisure-detail/fo-item1.jpg" alt="">
                 </div>
-                <div class="leis_dtl_related_more"></div>
                 <div class="leis_dtl_related_overlay">
-                    <h3>密云区东邵渠镇东葫芦峪村（40亩）涉农实物资产房地产场院合作</h3>
+                    <div class="leis_dtl_related_overlay_title">
+                        <h3 title="密云区东邵渠镇东葫芦峪村（40亩）涉农实物资产房地产场院合作">密云区东邵渠镇东葫芦峪村（40亩）涉农实物资产房地产场院合作</h3>
+                        <div class="leis_dtl_related_more">
+                            <img src="images/leisure-detail/icon-link.svg" alt="">
+                        </div>
+                    </div>
                     <div class="leis_dtl_related_meta">
-                        <span class="leis_dtl_related_meta_item"><span class="label">项目类别：</span>休闲农业与乡村旅游</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟出让方式：</span>合作</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟项目规模：</span>40亩</span>
-                        <span class="leis_dtl_related_meta_item"><span class="label">拟出让价格：</span><span class="price_value">面议</span></span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_category"><span class="label">项目类别：</span>休闲农业与乡村旅游</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_scale"><span class="label">拟项目规模：</span>40亩</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_transfer"><span class="label">拟出让方式：</span>合作</span>
+                        <span class="leis_dtl_related_meta_item leis_dtl_meta_price"><span class="label">拟出让价格：</span><span class="price_value">面议</span></span>
                     </div>
                 </div>
-            </article>
+            </a>
         </div>
     </div>
 </section>
@@ -627,6 +654,8 @@
 <script src="js/swiper-bundle.min.js"></script>
 <script src="js/aos.js"></script>
 <script src="js/fancybox.umd.js"></script>
+<script src="js/image-popup.js"></script>
+<script src="js/video-popup.js"></script>
 <script src="js/my.js"></script>
 <script src="js/platform-pages.js"></script>
 <script src="js/leisure-detail.js"></script>

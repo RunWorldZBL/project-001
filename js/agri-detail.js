@@ -6,6 +6,48 @@
 $(function () {
 
     /* ----------------------------------------------------------
+       Hero 图片数据：收集主图 src + alt
+       （Swiper init 之前执行，避免读到 loop 复制的 slide）
+    ---------------------------------------------------------- */
+    var heroImgs = [];
+    $('.agri_dtl_main_swiper .swiper-slide img').each(function () {
+        heroImgs.push({ src: $(this).attr('src'), alt: $(this).attr('alt') || '' });
+    });
+    var heroImgSrcs = heroImgs.map(function (o) { return o.src; });
+
+    /* 动态渲染缩略图条 */
+    (function renderThumbs() {
+        var html = '';
+        for (var i = 0; i < heroImgs.length; i++) {
+            html += '<button class="agri_dtl_thumb' + (i === 0 ? ' agri_dtl_thumb--active' : '') + '" data-idx="' + i + '">'
+                  +   '<img src="' + heroImgs[i].src + '" alt="' + heroImgs[i].alt + '">'
+                  + '</button>';
+        }
+        $('.agri_dtl_thumb_strip').html(html);
+    }());
+
+    var $bgA     = $('.agri_dtl_hero_bg .bg_img_a');
+    var $bgB     = $('.agri_dtl_hero_bg .bg_img_b');
+    var bgActive = 'a';
+
+    /* 初始：将第一张图 src 写入 A 层后再显示 */
+    if (heroImgSrcs[0]) {
+        $bgA.attr('src', heroImgSrcs[0]).css('opacity', '1');
+    }
+
+    function updateHeroBg(src) {
+        if (bgActive === 'a') {
+            $bgB.attr('src', src).css('opacity', '1');
+            $bgA.css('opacity', '0');
+            bgActive = 'b';
+        } else {
+            $bgA.attr('src', src).css('opacity', '1');
+            $bgB.css('opacity', '0');
+            bgActive = 'a';
+        }
+    }
+
+    /* ----------------------------------------------------------
        Hero 主图 Swiper（fade 切换）
     ---------------------------------------------------------- */
     var heroMainSwiper = new Swiper('.agri_dtl_main_swiper', {
@@ -18,16 +60,23 @@ $(function () {
         },
         on: {
             slideChange: function () {
-                syncThumb(this.realIndex);
+                var idx = this.realIndex;
+                syncThumb(idx);
+                if (heroImgSrcs[idx]) {
+                    updateHeroBg(heroImgSrcs[idx]);
+                }
             }
         }
     });
 
-    /* 同步缩略图激活状态 */
+    /* 同步缩略图激活状态，并将激活项滚到最左位置 */
     function syncThumb(realIdx) {
         var $thumbs = $('.agri_dtl_thumb');
         $thumbs.removeClass('agri_dtl_thumb--active');
-        $thumbs.eq(realIdx).addClass('agri_dtl_thumb--active');
+        var thumb = $thumbs.eq(realIdx).addClass('agri_dtl_thumb--active')[0];
+        if (!thumb) return;
+
+        thumb.parentElement.scrollTo({ left: thumb.offsetLeft, behavior: 'smooth' });
     }
 
     /* 点击缩略图切换主图 */
@@ -88,14 +137,17 @@ $(function () {
     }
 
     /* ----------------------------------------------------------
-       Fancybox
+       项目图集弹窗：统一由 js/image-popup.js 自动绑定
+       所有 [data-fancybox] 元素共享通用 toolbar / caption / 样式
     ---------------------------------------------------------- */
-    if (typeof Fancybox !== 'undefined') {
 
-        Fancybox.bind('[data-fancybox="photos-gallery"]', {
-            Toolbar: { display: ['close', 'counter', 'fullscreen'] }
-        });
-    }
+    /* ----------------------------------------------------------
+       查看更多：触发图集第一张，打开 Fancybox 图片查看器
+    ---------------------------------------------------------- */
+    $(document).on('click', '.agri_dtl_more_btn', function () {
+        var first = document.querySelector('[data-fancybox="photos-gallery"]');
+        if (first) first.click();
+    });
 
     /* ----------------------------------------------------------
        收藏按钮：点击切换激活状态

@@ -18,12 +18,12 @@
     align-items: center;
     justify-content: center;
     gap: .14rem;
-    margin-bottom: .68rem;
+    margin-bottom: .77rem;
 }
 .leis_dtl_sec_title h2 {
     font-size: .3rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #000;
     line-height: 1.2;
 }
 .leis_dtl_title_bar {
@@ -51,20 +51,22 @@
     inset: 0;
     z-index: 0;
     overflow: hidden;
+    z-index: -1;
+}
+.leis_dtl_hero_bg.swiper,
+.leis_dtl_hero_bg .swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
+.leis_dtl_hero_bg .swiper-slide {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 .leis_dtl_hero_bg .bg_img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-.leis_dtl_hero_overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(180deg,
-        rgba(0,15,42,.42) 0%,
-        rgba(0,20,50,.18) 45%,
-        rgba(0,15,42,.45) 100%);
 }
 .leis_dtl_hero_inner {
     position: absolute;
@@ -85,7 +87,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.04rem;
 }
 .leis_dtl_breadcrumb {
     display: flex;
@@ -157,29 +159,30 @@
 .leis_dtl_hero_left {
     flex: 1;
     min-width: 0;
-    padding-top: .8rem;
+    padding-top: 1.11rem;
 }
 .leis_dtl_proj_title {
     font-size: .42rem;
     font-weight: 700;
     line-height: 1.35;
     color: #fff;
-    margin-bottom: .4rem;
+    margin-bottom: .38rem;
     max-width: 9.1rem;
 }
 .leis_dtl_price_row {
     display: flex;
     align-items: baseline;
     gap: .14rem;
-    margin-bottom: .54rem;
+    margin-bottom: .38rem;
 }
 .leis_dtl_price_label {
     font-size: .18rem;
-    color: rgba(255,255,255,.6);
+    color: #fff;
+    text-shadow: 0 4px 6.7px rgba(0, 0, 0, 0.25);
 }
 .leis_dtl_price_val {
     font-family: Manrope, 'Source Han Sans CN', sans-serif;
-    font-size: .3rem;
+    font-size: .28rem;
     font-weight: 700;
     color: #ff852b;
     letter-spacing: -.01em;
@@ -207,19 +210,42 @@
 }
 .leis_dtl_cta_btn img { width: .2rem; height: .2rem; filter: brightness(10); }
 
+/* 主图轮播切换按钮组（位于 CTA 按钮下方 .64rem） */
+.leis_dtl_hero_arrows {
+    display: flex;
+    align-items: center;
+    gap: .14rem;
+    margin-top: .64rem;
+}
+.leis_dtl_hero_arrow {
+    width: .52rem;
+    height: .52rem;
+    border-radius: 50%;
+    border: 1.25px solid rgba(255, 255, 255, .6);
+    background: rgba(255, 255, 255, .1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .2s;
+    padding: 0;
+}
+.leis_dtl_hero_arrow:hover { background: rgba(255, 255, 255, .22); }
+.leis_dtl_hero_arrow img { width: .3rem; height: .3rem; display: block; }
+.leis_dtl_hero_arrow_next img { transform: scaleX(-1); }
+
 /* 右侧白色信息卡  Figma: w=480, h=534 */
 .leis_dtl_hero_card {
     position: relative;
     flex: 0 0 4.8rem;
     width: 4.8rem;
-    background: rgba(255,255,255,.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: .16rem;
-    padding: .62rem .46rem;
+    border-radius: 0.24rem;
+    background: rgba(0, 0, 0, 0.40);
+    backdrop-filter: blur(0.08rem);
+    -webkit-backdrop-filter: blur(0.08rem);
+    padding: 0.14rem .46rem 0.62rem;
     box-shadow: 0 .14rem .36rem rgba(0,20,55,.18);
     color: #333;
-    margin-top: 1.12rem;
 }
 .leis_dtl_hero_card_list {
     list-style: none;
@@ -230,28 +256,30 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .2rem 0;
+    padding: .48rem 0 .2rem;
     border-bottom: 1px solid #e5e9f0;
 }
 .leis_dtl_hero_card_list li:last-child { border-bottom: none; }
 .leis_dtl_hero_card_label {
     font-size: .18rem;
-    color: #888;
+    color: #fff;
 }
 .leis_dtl_hero_card_value {
     font-size: .18rem;
-    color: #1a1a1a;
+    color: #fff;
     font-weight: 500;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: .04rem;
 }
 .leis_dtl_hero_card_num {
     font-family: Manrope, 'Source Han Sans CN', sans-serif;
-    font-size: .34rem;
+    font-size: .48rem;
     font-weight: 700;
-    color: #0B4CA1;
-    line-height: 1;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.02rem;
+    margin-right: 0.11rem;
 }
 
 
@@ -261,9 +289,9 @@
    ============================================================ */
 .leis_dtl_overview {
     position: relative;
-    padding: 1.07rem 0 1.1rem;
+    padding: 1.07rem 0 1.42rem;
     overflow: hidden;
-    background: linear-gradient(180deg, #F4F7FD 0%, #E6EEFB 100%);
+    background: url('../images/leisure-detail/section1-item.png') center / cover no-repeat;
 }
 .leis_dtl_overview::before {
     content: "";
@@ -291,8 +319,8 @@
 }
 .leis_dtl_overview_grid {
     display: flex;
-    align-items: flex-start;
-    gap: .92rem;
+    align-items: center;
+    gap: .9rem;
     margin-bottom: .8rem;
 }
 /* 左圆形视频 */
@@ -302,7 +330,7 @@
     position: relative;
     border-radius: .2rem;
     overflow: hidden;
-    box-shadow: 0 .14rem .36rem rgba(11,76,161,.16);
+    box-shadow: 0 0.27rem 0.42rem 0 rgba(11, 76, 161, 0.45);
 }
 .leis_dtl_overview_left img {
     width: 100%;
@@ -338,10 +366,17 @@
     padding-top: .1rem;
 }
 .leis_dtl_overview_para {
-    font-size: .18rem;
+    font-size: .24rem;
     line-height: 1.95;
-    color: #444;
-    margin-bottom: .3rem;
+    color: #222;
+    font-weight: 500;
+    margin-bottom: .25rem;
+    line-height: 1.75;
+}
+.leis_dtl_overview_para_2 {
+    font-size: .18rem;
+    line-height: 1.7;
+    font-weight: 400;
 }
 .leis_dtl_overview_para:last-child { margin-bottom: 0; }
 
@@ -349,27 +384,28 @@
 .leis_dtl_overview_stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    padding-left: 0.79rem;
     gap: .4rem;
 }
 .leis_dtl_overview_stat {
     position: relative;
-    padding: .26rem .3rem .26rem .42rem;
+    padding-left: 0.23rem;
 }
 .leis_dtl_overview_stat::before {
     content: "";
     position: absolute;
-    left: 0;
-    top: .2rem;
+    left: 0rem;
+    top: .1rem;
     width: .15rem;
     height: .05rem;
     border-radius: 2px;
     background: linear-gradient(90deg, #165DFF, #0B4CA1);
 }
 .leis_dtl_overview_stat_label {
-    font-size: .2rem;
-    font-weight: 600;
-    color: #0B4CA1;
-    margin-bottom: .18rem;
+    font-size: .24rem;
+    font-weight: 500;
+    color: #222;
+    margin-bottom: .22rem;
 }
 .leis_dtl_overview_stat_num {
     display: flex;
@@ -378,21 +414,30 @@
 }
 .leis_dtl_overview_stat_value {
     font-family: Manrope, 'Source Han Sans CN', sans-serif;
-    font-size: .52rem;
+    font-size: .48rem;
     font-weight: 700;
     color: #0B4CA1;
     line-height: 1;
     letter-spacing: -.02em;
 }
+/* 当数值为空时，用一个不可见的占位字符撑出与数字一致的基线，
+   保证旁边的单位/说明文字仍然能与其他卡片底部对齐；
+   同时把元素宽度归零、并去掉 flex 间距，避免占用横向空间 */
+.leis_dtl_overview_stat_value:empty {
+    display: inline-block;
+    width: 0;
+    overflow: hidden;
+}
+.leis_dtl_overview_stat_value:empty::before {
+    content: "0";
+    visibility: hidden;
+}
+.leis_dtl_overview_stat_num:has(.leis_dtl_overview_stat_value:empty) {
+    gap: 0;
+}
 .leis_dtl_overview_stat_unit {
     font-size: .18rem;
-    color: #555;
-}
-.leis_dtl_overview_stat_text {
-    font-size: .26rem;
-    font-weight: 600;
     color: #0B4CA1;
-    line-height: 1;
 }
 
 
@@ -401,8 +446,8 @@
    左 5 项纵向列表 + 右大图
    ============================================================ */
 .leis_dtl_invest {
-    padding: 1rem 0 1.2rem;
-    background: #fff;
+    padding: 0 0 1.2rem;
+    background: url('../images/leisure-detail/section2-bg.png') center / cover no-repeat;
     position: relative;
 }
 .leis_dtl_invest_grid {
@@ -425,30 +470,41 @@
 .leis_dtl_invest_head {
     display: flex;
     align-items: center;
-    gap: .16rem;
+    gap: .2rem;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+.leis_dtl_invest_item--active .leis_dtl_invest_head {
     margin-bottom: .14rem;
 }
 .leis_dtl_invest_icon {
-    width: .3rem;
-    height: .3rem;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(22,93,255,.15), rgba(11,76,161,.08));
+    width: .36rem;
+    height: .36rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
 }
-.leis_dtl_invest_icon img { width: .18rem; height: .18rem; }
+.leis_dtl_invest_icon img { width: .36rem; height: .36rem; }
 .leis_dtl_invest_label {
     font-size: .24rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #222;
+    transition: color .2s;
+}
+.leis_dtl_invest_item--active .leis_dtl_invest_label {
+    color: #0B4CA1;
 }
 .leis_dtl_invest_value {
+    display: none;
     font-size: .18rem;
-    color: #1a1a1a;
+    color: #222;
     line-height: 1.7;
-    padding-left: .46rem;
+    padding-left: .56rem;
+    font-weight: 400;
+}
+.leis_dtl_invest_item--active .leis_dtl_invest_value {
+    display: block;
 }
 .leis_dtl_invest_value strong {
     font-family: Manrope, sans-serif;
@@ -462,19 +518,23 @@
     color: #666;
 }
 .leis_dtl_invest_text {
+    display: none;
     font-size: .16rem;
     color: #555;
     line-height: 1.85;
-    padding-left: .46rem;
+    padding-left: .56rem;
+}
+.leis_dtl_invest_item--active .leis_dtl_invest_text {
+    display: block;
 }
 
 /* 右大图 */
 .leis_dtl_invest_image {
     flex: 1;
     height: 5.25rem;
-    border-radius: .2rem;
+    border-radius: .24rem;
     overflow: hidden;
-    box-shadow: 0 .14rem .36rem rgba(11,76,161,.16);
+    box-shadow: 0 0.27rem 0.42rem 0 rgba(11, 76, 161, 0.45);
     position: relative;
 }
 .leis_dtl_invest_image img {
@@ -492,46 +552,52 @@
    ============================================================ */
 .leis_dtl_detail_sec {
     position: relative;
-    padding: 1.0rem 0 1.6rem;
+    padding: 1.17rem 0 1.2rem;
     overflow: hidden;
-    background: linear-gradient(180deg, #DCE8DA 0%, #C5D8C1 100%);
-    color: #1a1a1a;
-}
-.leis_dtl_detail_sec::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: url('../images/agri-detail/section3-bg.jpg') center / cover no-repeat;
-    opacity: .35;
-    z-index: 0;
+    color: #222;
+    background: url('../images/leisure-detail/section3-bg.jpg') center / cover no-repeat;
 }
 .leis_dtl_detail_inner { position: relative; z-index: 1; }
 .leis_dtl_detail_intro {
     max-width: 13rem;
-    margin: 0 auto .76rem;
+    margin: 0 auto .6rem;
     text-align: center;
-    color: #1a1a1a;
+    color: #222;
 }
 .leis_dtl_detail_intro p {
-    font-size: .18rem;
-    line-height: 1.95;
-    margin-bottom: .16rem;
+    font-size: .24rem;
+    font-weight: 500;
+    line-height: 1.75;
+    margin-bottom: .25rem;
 }
-.leis_dtl_detail_intro p:last-child { margin-bottom: 0; }
+.leis_dtl_detail_intro p:last-child { 
+    margin-bottom: 0; 
+    color: #000;
+    font-size: 0.18rem;
+    font-weight: 400;
+    line-height: 1.7;
+}
 
-/* 大图轮播：宽 1480 x 高 700，每张图标题叠加 */
-.leis_dtl_detail_swiper {
-    width: 100%;
-    overflow: hidden;
+/* 大图纵向滚动区：初始显示一张半，鼠标滚轮逐张切换 */
+.leis_dtl_detail_scroll {
+    height: 15.4rem;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    scroll-snap-type: y mandatory;
 }
-.leis_dtl_detail_swiper .swiper-slide {
-    width: 14.8rem;
-    height: 7rem;
+.leis_dtl_detail_scroll::-webkit-scrollbar { display: none; }
+.leis_dtl_detail_slide {
+    height: 8.5rem;
     border-radius: .24rem;
     overflow: hidden;
     position: relative;
+    scroll-snap-align: start;
+    flex-shrink: 0;
 }
-.leis_dtl_detail_swiper .swiper-slide img {
+.leis_dtl_detail_slide + .leis_dtl_detail_slide {
+    margin-top: .35rem;
+}
+.leis_dtl_detail_slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -542,27 +608,6 @@
     background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, transparent 50%, rgba(0,0,0,.55) 100%);
     pointer-events: none;
 }
-.leis_dtl_detail_slide_title {
-    position: absolute;
-    right: 1.2rem;
-    bottom: 1rem;
-    z-index: 2;
-    text-align: right;
-    color: #fff;
-}
-.leis_dtl_detail_slide_title strong {
-    display: block;
-    font-size: .68rem;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: .12rem;
-    letter-spacing: .08em;
-}
-.leis_dtl_detail_slide_title span {
-    display: block;
-    font-size: .18rem;
-    opacity: .85;
-}
 
 
 /* ============================================================
@@ -571,16 +616,18 @@
    ============================================================ */
 .leis_dtl_advantage {
     position: relative;
-    padding: 1.0rem 0 1.2rem;
+    padding: 1.2rem 0 0;
     overflow: hidden;
-    background: linear-gradient(180deg, #0B4CA1 0%, #082C5E 100%);
+    background-color: #F2F5FA;
 }
 .leis_dtl_advantage::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: url('../images/agri-detail/section2-bg.jpg') center / cover no-repeat;
-    opacity: .35;
+    top: 0.57rem;
+    right: 0.54rem;
+    width: 7.26rem;
+    height: 5.34rem;
+    background: url('../images/leisure-detail/section4-bg.png') no-repeat center / cover;
     z-index: 0;
 }
 .leis_dtl_advantage_inner {
@@ -594,8 +641,8 @@
 }
 .leis_dtl_advantage_swiper .swiper-slide {
     width: 100%;
-    height: 5.34rem;
-    border-radius: .2rem;
+    height: 8.3rem;
+    border-radius: .24rem;
     overflow: hidden;
 }
 .leis_dtl_advantage_swiper .swiper-slide img {
@@ -603,45 +650,35 @@
     height: 100%;
     object-fit: cover;
 }
-.leis_dtl_advantage_ctrls {
-    margin-top: .5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .4rem;
-}
 .leis_dtl_advantage_arrow {
-    width: .52rem;
-    height: .52rem;
-    border-radius: 50%;
-    background: rgba(255,255,255,.16);
-    border: 1px solid rgba(255,255,255,.32);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
     cursor: pointer;
-    transition: background .2s;
 }
-.leis_dtl_advantage_arrow:hover {
-    background: #fff;
-}
-.leis_dtl_advantage_arrow:hover img {
-    filter: none;
-}
+.leis_dtl_advantage_arrow--prev { left: .4rem; }
+.leis_dtl_advantage_arrow--next { right: .4rem; }
 .leis_dtl_advantage_arrow img {
-    width: .26rem;
-    height: .26rem;
-    filter: brightness(10);
+    width: .64rem;
+    height: .64rem;
+    display: block;
 }
-.leis_dtl_advantage_arrow--next img { transform: scaleX(-1); }
 .leis_dtl_advantage_page {
+    position: absolute;
+    bottom: .32rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
     font-family: Manrope, sans-serif;
     font-size: .32rem;
     font-weight: 600;
     color: #fff;
     letter-spacing: .04em;
-    min-width: 1.4rem;
-    text-align: center;
+    white-space: nowrap;
 }
 .leis_dtl_advantage_page .current {
     font-size: .44rem;
@@ -654,21 +691,39 @@
     margin-left: .04rem;
 }
 
+.main-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.main-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 22rem;
+    z-index: -1;
+    background: url('../images/leisure-detail/section6-bg.png') no-repeat center top;
+    background-size: 100% auto;
+}
 
 /* ============================================================
    项目图集  (Figma: y=5874, h=2193)
    2 × 2 网格（现场照片、鸟瞰图）+ 下方控件
    ============================================================ */
 .leis_dtl_photos_sec {
-    padding: 1rem 0 1.4rem;
-    background: #fff;
+    padding: 1.2rem 0 1.1rem;
+    background: transparent;
     position: relative;
     overflow: hidden;
 }
-.leis_dtl_photos_grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: .6rem;
+.leis_dtl_photos_swiper {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 0.6rem;
+}
+.leis_dtl_photos_swiper .swiper-slide {
+    height: auto;
 }
 .leis_dtl_photo_card {
     position: relative;
@@ -694,16 +749,18 @@
     content: "";
     position: absolute;
     inset: auto 0 0;
-    height: 1.6rem;
-    background: linear-gradient(180deg, transparent, rgba(0,0,0,.6));
+    height: 100%;
     pointer-events: none;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+opacity: 0.8;
 }
 .leis_dtl_photo_label {
     position: absolute;
     left: .4rem;
     bottom: .36rem;
     z-index: 2;
-    font-size: .22rem;
+    line-height: 1.6;
+    font-size: .2rem;
     color: #fff;
     font-weight: 500;
 }
@@ -714,31 +771,40 @@
     justify-content: center;
     align-items: center;
     gap: .4rem;
-    margin-top: .6rem;
+    width: 2.34rem;
+    margin: 0 auto;
 }
 .leis_dtl_photos_arrow {
-    width: .52rem;
-    height: .52rem;
-    border-radius: 50%;
-    background: #fff;
-    border: 1px solid rgba(11,76,161,.18);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    width: .48rem;
+    height: .48rem;
+    padding: 0;
+    background: none;
+    border: none;
     cursor: pointer;
-    transition: background .2s;
+    flex-shrink: 0;
 }
-.leis_dtl_photos_arrow:hover {
-    background: linear-gradient(135deg, #165DFF, #0B4CA1);
-    border-color: transparent;
+.leis_dtl_photos_arrow img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: opacity .25s;
 }
-.leis_dtl_photos_arrow:hover img { filter: brightness(10); }
-.leis_dtl_photos_arrow img { width: .26rem; height: .26rem; }
-.leis_dtl_photos_arrow--next img { transform: scaleX(-1); }
+.leis_dtl_photos_arrow_active {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+.leis_dtl_photos_arrow:hover .leis_dtl_photos_arrow_normal { opacity: 0; }
+.leis_dtl_photos_arrow:hover .leis_dtl_photos_arrow_active { opacity: 1; }
+.leis_dtl_photos_arrow--next .leis_dtl_photos_arrow_normal { transform: scaleX(-1); }
+.leis_dtl_photos_arrow--prev .leis_dtl_photos_arrow_active { transform: scaleX(-1); }
+.leis_dtl_photos_arrow--disabled { opacity: .35; cursor: default; }
 .leis_dtl_photos_dots {
     display: flex;
     gap: .08rem;
     align-items: center;
+    justify-content: center;
 }
 .leis_dtl_photos_dot {
     width: .1rem;
@@ -750,7 +816,6 @@
 }
 .leis_dtl_photos_dot--active {
     background: #0B4CA1;
-    width: .26rem;
     border-radius: .1rem;
 }
 
@@ -759,8 +824,8 @@
    周边配套  (Figma: y=6953, 复用 agri 的地图样式)
    ============================================================ */
 .leis_dtl_surroundings_sec {
-    padding: 1rem 0 1.2rem;
-    background: #fff;
+    padding-bottom: 1.05rem;
+    background: transparent;
 }
 .leis_dtl_surroundings_sec .leis_dtl_sec_title { margin-bottom: .76rem; }
 
@@ -770,27 +835,26 @@
    每行：左缩略图 + 标签 + 标题 + 右"查看详情"按钮
    ============================================================ */
 .leis_dtl_policy_sec {
-    padding: 1rem 0 1.2rem;
-    background: #F5F7FB;
+    padding: 0 0 1.05rem;
 }
 .leis_dtl_policy_list {
     display: flex;
     flex-direction: column;
-    gap: .2rem;
 }
 .leis_dtl_policy_item {
     display: flex;
     align-items: center;
-    gap: .36rem;
-    padding: .2rem .3rem .2rem .2rem;
+    padding: .2rem .56rem .2rem 0;
     background: #fff;
-    border-radius: .16rem;
-    box-shadow: 0 .06rem .18rem rgba(11,76,161,.05);
-    transition: transform .2s, box-shadow .2s;
+    border-radius: 0;
+    border-bottom: .01rem solid rgba(11, 76, 161, 0.2);
+    transition: background .25s, filter .25s, border-color .25s, border-radius .25s;
 }
 .leis_dtl_policy_item:hover {
-    transform: translateY(-.04rem);
-    box-shadow: 0 .14rem .3rem rgba(11,76,161,.12);
+    background: rgba(255, 255, 255, 0.62);
+    filter: drop-shadow(0 .1rem .2rem rgba(0, 0, 0, 0.10));
+    border-color: transparent;
+    border-radius: .16rem;
 }
 .leis_dtl_policy_thumb {
     flex: 0 0 2.34rem;
@@ -798,14 +862,24 @@
     height: 1.63rem;
     border-radius: .12rem;
     overflow: hidden;
+    position: relative;
 }
 .leis_dtl_policy_thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform .5s;
 }
-.leis_dtl_policy_item:hover .leis_dtl_policy_thumb img { transform: scale(1.05); }
+.leis_dtl_policy_thumb_normal {
+    transition: opacity .25s;
+}
+.leis_dtl_policy_thumb_act {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .25s;
+}
+.leis_dtl_policy_item:hover .leis_dtl_policy_thumb_normal { opacity: 0; }
+.leis_dtl_policy_item:hover .leis_dtl_policy_thumb_act { opacity: 1; }
 .leis_dtl_policy_body {
     flex: 1;
     min-width: 0;
@@ -820,17 +894,17 @@
     align-self: flex-start;
     height: .3rem;
     padding: 0 .14rem;
-    border-radius: .04rem;
-    background: rgba(22,93,255,.1);
-    color: #0B4CA1;
-    font-size: .14rem;
-    font-weight: 500;
+    border-radius: .24rem;
+    background: rgba(255, 129, 35, 0.6);
+    color: #fff;
+    font-size: .16rem;
+    font-weight: 400;
 }
 .leis_dtl_policy_title {
     font-size: .2rem;
-    color: #1a1a1a;
-    line-height: 1.5;
-    font-weight: 500;
+    color: #000;
+    line-height: 1.7;
+    font-weight: 400;
 }
 .leis_dtl_policy_btn {
     display: inline-flex;
@@ -839,16 +913,12 @@
     flex-shrink: 0;
     width: 1.37rem;
     height: .45rem;
-    border-radius: .45rem;
+    border-radius: .33rem;
     border: 1px solid #0B4CA1;
-    color: #0B4CA1;
-    font-size: .16rem;
-    background: transparent;
-    transition: background .2s, color .2s;
-}
-.leis_dtl_policy_btn:hover {
     background: #0B4CA1;
     color: #fff;
+    font-size: .16rem;
+    transition: background .2s, color .2s;
 }
 
 
@@ -856,7 +926,7 @@
    相关推荐项目  (Figma: y=8854, h=1010, 2×2 网格)
    ============================================================ */
 .leis_dtl_related_sec {
-    padding: 1rem 0 1.4rem;
+    padding: 0 0 1.4rem;
     background: #fff;
 }
 .leis_dtl_related_grid {
@@ -893,58 +963,85 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: .3rem .3rem .26rem;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 100%);
+    padding: .8rem .3rem .3rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.78) 100%);
     color: #fff;
+}
+.leis_dtl_related_overlay_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .leis_dtl_related_overlay h3 {
-    font-size: .22rem;
+    width: 4.5rem;
+    font-size: .2rem;
     line-height: 1.5;
     font-weight: 600;
-    margin-bottom: .14rem;
     color: #fff;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 .leis_dtl_related_meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .08rem .26rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .1rem .16rem;
     font-size: .14rem;
     color: rgba(255,255,255,.85);
+    max-height: 0;
+    overflow: hidden;
+    margin-top: 0;
+    opacity: 0;
+    transform: translateY(.15rem);
+    transition: max-height .35s ease, opacity .35s, transform .35s, margin-top .35s;
+}
+.leis_dtl_related_card:hover .leis_dtl_related_meta {
+    max-height: 2rem;
+    margin-top: .18rem;
+    opacity: 1;
+    transform: translateY(0);
 }
 .leis_dtl_related_meta_item {
     display: flex;
     align-items: center;
     gap: .06rem;
 }
-.leis_dtl_related_meta_item .label { color: rgba(255,255,255,.65); }
+.leis_dtl_related_meta_item::before {
+    content: "";
+    flex-shrink: 0;
+    width: .16rem;
+    height: .16rem;
+    background: center / contain no-repeat;
+    filter: brightness(0) invert(1);
+}
+.leis_dtl_meta_category::before  { background-image: url('../images/listShow/icon-category.svg'); }
+.leis_dtl_meta_scale::before     { background-image: url('../images/listShow/icon-scale1.svg'); }
+.leis_dtl_meta_transfer::before  { background-image: url('../images/listShow/icon-transfer.svg'); }
+.leis_dtl_meta_price::before     { background-image: url('../images/listShow/icon-price.svg'); }
+.leis_dtl_related_meta_item .label { color: rgba(255,255,255,1); }
 .leis_dtl_related_meta_item .price_value {
     font-family: Manrope, sans-serif;
-    font-size: .18rem;
+    font-size: .15rem;
     font-weight: 700;
     color: #ff852b;
 }
 .leis_dtl_related_more {
-    position: absolute;
-    top: .26rem;
-    right: .26rem;
     width: .36rem;
     height: .36rem;
-    border-radius: 50%;
-    background: rgba(255,255,255,.18);
-    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    border: 1px solid rgba(255,255,255,.28);
+    transition: background .2s, transform .2s;
 }
-.leis_dtl_related_more::after {
-    content: "";
-    width: .08rem;
-    height: .08rem;
-    border-top: 1.5px solid #fff;
-    border-right: 1.5px solid #fff;
-    transform: rotate(45deg) translate(-1px, 1px);
+.leis_dtl_related_more::after { display: none; }
+.leis_dtl_related_more img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: block;
 }
 
 
@@ -953,20 +1050,14 @@
    ============================================================ */
 .leis_dtl_cta_sec {
     position: relative;
-    padding: 1.6rem 0 1.4rem;
+    padding: 2.57rem 0;
     overflow: hidden;
 }
 .leis_dtl_cta_bg {
     position: absolute;
     inset: 0;
-    background: url('../images/agri-detail/section7-bg.jpg') center / cover no-repeat;
+    background: url('../images/leisure-detail/section7-bg.jpg') center / cover no-repeat;
     z-index: 0;
-}
-.leis_dtl_cta_bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0,15,42,.65) 0%, rgba(0,30,80,.85) 100%);
 }
 .leis_dtl_cta_inner {
     position: relative;
@@ -1004,26 +1095,347 @@
 
 
 /* ============================================================
-   响应式
+   响应式：≤ 1366px（中等桌面屏）
    ============================================================ */
 @media (max-width: 1366px) {
     .leis_dtl_hero_body { gap: 1.4rem; }
-    .leis_dtl_hero_card { flex: 0 0 4.2rem; width: 4.2rem; padding: .5rem .36rem; }
+    .leis_dtl_hero_card { flex: 0 0 4.2rem; width: 4.2rem; padding: .14rem .36rem .5rem; }
     .leis_dtl_overview_grid { gap: .56rem; }
     .leis_dtl_overview_left { flex: 0 0 5.8rem; height: 4.1rem; }
     .leis_dtl_invest_grid { gap: .56rem; }
     .leis_dtl_invest_list { flex: 0 0 5.6rem; }
+    .leis_dtl_detail_scroll { height: 13rem; }
+    .leis_dtl_detail_slide { height: 7.2rem; }
+    .leis_dtl_advantage_swiper .swiper-slide { height: 7rem; }
 }
+
+/* ============================================================
+   响应式：≤ 1200px（平板 / 小屏笔记本）
+   ============================================================ */
+@media (max-width: 1200px) {
+    /* ------- 统一节奏（平板）-------
+       区块上下间距：双侧 .8rem，单侧 .8rem，相邻段落形成 1.6rem 呼吸
+       区块标题与正文：margin-bottom .42rem
+       卡片圆角：.16rem
+       ------------------------------- */
+
+    /* 通用区块标题 */
+    .leis_dtl_sec_title { gap: .18rem; margin-bottom: .42rem; }
+    .leis_dtl_sec_title h2 { font-size: .26rem; }
+    .leis_dtl_title_bar { height: .26rem; }
+
+    /* ---- HERO ---- */
+    .leis_dtl_hero { height: auto; min-height: 0; }
+    .leis_dtl_hero_bg .bg_img { filter: brightness(.6); }
+    .leis_dtl_hero_inner {
+        position: static;
+        width: 92%;
+        max-width: none;
+        transform: none;
+        left: auto;
+        margin: 0 auto;
+        padding: 1rem 0 .56rem;
+    }
+    .leis_dtl_hero_top { flex-wrap: wrap; gap: .2rem; margin-bottom: .4rem; }
+    .leis_dtl_breadcrumb { font-size: .15rem; }
+    .leis_dtl_breadcrumb .icon-home { width: .15rem; height: .15rem; }
+    .leis_dtl_hero_body { flex-direction: column; align-items: stretch; gap: .4rem; }
+    .leis_dtl_hero_left { padding-top: 0; }
+    .leis_dtl_proj_title { font-size: .3rem; line-height: 1.4; margin-bottom: .26rem; max-width: none; }
+    .leis_dtl_price_label { font-size: .17rem; }
+    .leis_dtl_price_val { font-size: .26rem; }
+    .leis_dtl_price_row { margin-bottom: .3rem; }
+    .leis_dtl_cta_btns { gap: .2rem; }
+    .leis_dtl_cta_btn { width: auto; min-width: 1.5rem; height: .5rem; padding: 0 .24rem; font-size: .17rem; }
+    .leis_dtl_hero_arrows { margin-top: .36rem; }
+    .leis_dtl_hero_arrow { width: .44rem; height: .44rem; }
+    .leis_dtl_hero_arrow img { width: .24rem; height: .24rem; }
+    .leis_dtl_hero_card { width: 100%; flex: 0 0 auto; padding: 0 .36rem .4rem; border-radius: .2rem; }
+    .leis_dtl_hero_card_list li { padding: .3rem 0 .16rem; }
+    .leis_dtl_hero_card_label { font-size: .17rem; }
+    .leis_dtl_hero_card_value { font-size: .17rem; }
+    .leis_dtl_hero_card_num { font-size: .32rem; }
+
+    /* ---- 项目概览 ---- */
+    .leis_dtl_overview { padding: .8rem 0; }
+    .leis_dtl_overview::before,
+    .leis_dtl_overview::after { display: none; }
+    .leis_dtl_overview_grid { flex-direction: column; gap: .4rem; margin-bottom: .5rem; }
+    .leis_dtl_overview_left { flex: 0 0 auto; width: 100%; height: auto; aspect-ratio: 7.44 / 5.25; }
+    .leis_dtl_overview_play { width: .68rem; height: .68rem; }
+    .leis_dtl_overview_right { padding-top: 0; }
+    .leis_dtl_overview_para { font-size: .18rem; line-height: 1.7; margin-bottom: .2rem; }
+    .leis_dtl_overview_para_2 { font-size: .17rem; line-height: 1.75; }
+    .leis_dtl_overview_stats { grid-template-columns: repeat(2, 1fr); gap: .4rem .36rem; padding-left: 0; }
+    .leis_dtl_overview_stat { padding-left: .2rem; }
+    .leis_dtl_overview_stat_label { font-size: .2rem; margin-bottom: .16rem; }
+    .leis_dtl_overview_stat_num { flex-wrap: wrap; row-gap: .04rem; }
+    .leis_dtl_overview_stat_value { font-size: .4rem; }
+    .leis_dtl_overview_stat_unit { font-size: .16rem; }
+
+    /* ---- 招商条件 ---- */
+    .leis_dtl_invest { padding: 0 0 .8rem; }
+    .leis_dtl_invest_grid { flex-direction: column; gap: .4rem; }
+    .leis_dtl_invest_list { flex: 0 0 auto; width: 100%; }
+    .leis_dtl_invest_item { padding: .22rem 0; }
+    .leis_dtl_invest_label { font-size: .2rem; }
+    .leis_dtl_invest_value { font-size: .17rem; padding-left: .5rem; }
+    .leis_dtl_invest_value strong { font-size: .28rem; }
+    .leis_dtl_invest_text { font-size: .15rem; padding-left: .5rem; }
+    .leis_dtl_invest_image { width: 100%; height: auto; aspect-ratio: 8.4 / 5.25; border-radius: .18rem; }
+
+    /* ---- 项目详情 ---- */
+    .leis_dtl_detail_sec { padding: .8rem 0; }
+    .leis_dtl_detail_intro { padding: 0 .2rem; margin-bottom: .42rem; }
+    .leis_dtl_detail_intro p { font-size: .18rem; line-height: 1.7; margin-bottom: .18rem; }
+    .leis_dtl_detail_scroll {
+        height: auto;
+        overflow: visible;
+        scroll-snap-type: none;
+    }
+    .leis_dtl_detail_slide { height: auto; aspect-ratio: 14.8 / 8.5; border-radius: .18rem; }
+    .leis_dtl_detail_slide + .leis_dtl_detail_slide { margin-top: .26rem; }
+
+    /* ---- 特色优势 ---- */
+    .leis_dtl_advantage { padding: .8rem 0 0; }
+    .leis_dtl_advantage::before { display: none; }
+    .leis_dtl_advantage_swiper .swiper-slide {
+        height: auto;
+        aspect-ratio: 14.8 / 8.3;
+        border-radius: .18rem;
+    }
+    .leis_dtl_advantage_arrow img { width: .5rem; height: .5rem; }
+    .leis_dtl_advantage_arrow--prev { left: .2rem; }
+    .leis_dtl_advantage_arrow--next { right: .2rem; }
+    .leis_dtl_advantage_page { bottom: .22rem; font-size: .24rem; }
+    .leis_dtl_advantage_page .current { font-size: .36rem; }
+    .leis_dtl_advantage_page .total { font-size: .22rem; }
+
+    /* ---- 项目图集 ---- */
+    .leis_dtl_photos_sec { padding: .8rem 0; }
+    .leis_dtl_photos_swiper { padding-bottom: .42rem; }
+    .leis_dtl_photo_card { height: auto; aspect-ratio: 7.2 / 5.1; border-radius: .18rem; }
+    .leis_dtl_photo_label { left: .26rem; bottom: .24rem; font-size: .18rem; }
+    .leis_dtl_photos_ctrls { gap: .28rem; }
+    .leis_dtl_photos_arrow { width: .42rem; height: .42rem; }
+
+    /* ---- 周边配套 ---- */
+    .leis_dtl_surroundings_sec { padding-bottom: .8rem; }
+    .leis_dtl_surroundings_sec .leis_dtl_sec_title { margin-bottom: .42rem; }
+
+    /* ---- 支持政策 ---- */
+    .leis_dtl_policy_sec { padding: 0 0 .8rem; }
+    .leis_dtl_policy_item { padding: .2rem .3rem .2rem 0; gap: .24rem; }
+    .leis_dtl_policy_thumb { flex: 0 0 1.8rem; width: 1.8rem; height: 1.26rem; border-radius: .12rem; }
+    .leis_dtl_policy_body { gap: .12rem; }
+    .leis_dtl_policy_title { font-size: .18rem; line-height: 1.6; }
+    .leis_dtl_policy_btn { width: 1.2rem; height: .4rem; font-size: .15rem; }
+
+    /* ---- 相关推荐 ---- */
+    .leis_dtl_related_sec { padding: 0 0 .8rem; }
+    .leis_dtl_related_grid { grid-template-columns: 1fr; gap: .3rem; }
+    .leis_dtl_related_card { height: auto; aspect-ratio: 7.2 / 4.22; border-radius: .18rem; }
+    .leis_dtl_related_overlay { padding: .56rem .26rem .26rem; }
+    .leis_dtl_related_overlay h3 { width: 70%; font-size: .18rem; }
+    .leis_dtl_related_meta {
+        max-height: 2rem;
+        margin-top: .16rem;
+        opacity: 1;
+        transform: none;
+        font-size: .13rem;
+        grid-template-columns: 1fr;
+        gap: .08rem;
+    }
+
+    /* ---- CTA ---- */
+    .leis_dtl_cta_sec { padding: 1rem 0; }
+    .leis_dtl_cta_title { font-size: .32rem; margin-bottom: .3rem; line-height: 1.5; }
+    .leis_dtl_cta_apply_btn { height: .5rem; padding: 0 .3rem; font-size: .17rem; gap: .1rem; }
+}
+
+/* ============================================================
+   响应式：≤ 1024px（小笔记本/竖屏平板，对原 1024 断点的增强）
+   ============================================================ */
 @media (max-width: 1024px) {
-    .leis_dtl_hero_body { flex-direction: column; align-items: stretch; gap: .8rem; }
-    .leis_dtl_hero_card { width: 100%; flex: 0 0 auto; margin-top: 0; }
-    .leis_dtl_overview_grid { flex-direction: column; }
-    .leis_dtl_overview_left { flex: 0 0 auto; width: 100%; height: 4.2rem; }
-    .leis_dtl_overview_stats { grid-template-columns: repeat(2, 1fr); gap: .3rem; }
-    .leis_dtl_invest_grid { flex-direction: column; }
-    .leis_dtl_invest_list { flex: 0 0 auto; }
-    .leis_dtl_photos_grid { grid-template-columns: 1fr; }
-    .leis_dtl_related_grid { grid-template-columns: 1fr; }
-    .leis_dtl_policy_item { flex-wrap: wrap; }
-    .leis_dtl_policy_thumb { flex: 0 0 100%; height: 2.2rem; }
+    .leis_dtl_overview_left { aspect-ratio: 16 / 10; }
+    .leis_dtl_overview_stats { gap: .26rem; }
+    .leis_dtl_overview_stat_value { font-size: .36rem; }
+    .leis_dtl_advantage_swiper .swiper-slide { aspect-ratio: 16 / 9; }
+    .leis_dtl_photo_card { aspect-ratio: 16 / 10; }
+    .leis_dtl_related_card { aspect-ratio: 16 / 9; }
+}
+
+/* ============================================================
+   响应式：≤ 767px（手机端）
+   ============================================================ */
+@media screen and (max-width: 767px) {
+    /* ------- 统一节奏（手机端） -------
+       区块上下间距：双侧 .6rem，单侧 .6rem，相邻段落自然形成 1.2rem 呼吸
+       区块标题与正文：margin-bottom .32rem
+       卡片圆角：.16rem
+       --------------------------------- */
+
+    /* 通用区块标题 */
+    .leis_dtl_sec_title { gap: .12rem; margin-bottom: .32rem; }
+    .leis_dtl_sec_title h2 { font-size: .22rem; }
+    .leis_dtl_title_bar { height: .22rem; }
+
+    /* ---- HERO ---- */
+    .leis_dtl_hero_bg .bg_img { filter: brightness(.5); }
+    .leis_dtl_hero_inner { width: 92%; padding: .9rem 0 .5rem; }
+    .leis_dtl_hero_top {
+        flex-wrap: wrap;
+        gap: .14rem;
+        margin-bottom: .32rem;
+    }
+    .leis_dtl_breadcrumb {
+        font-size: .13rem;
+        flex-wrap: wrap;
+        row-gap: .04rem;
+    }
+    .leis_dtl_hero_actions { gap: .18rem; }
+    .leis_dtl_act_btn { font-size: .14rem; }
+    .leis_dtl_act_icon img { width: .22rem; height: .22rem; }
+    .leis_dtl_share_popup { width: 1.5rem; }
+
+    .leis_dtl_hero_body { gap: .32rem; }
+    .leis_dtl_proj_title { font-size: .24rem; line-height: 1.45; margin-bottom: .22rem; }
+    .leis_dtl_price_row { margin-bottom: .26rem; gap: .12rem; }
+    .leis_dtl_price_label { font-size: .15rem; }
+    .leis_dtl_price_val { font-size: .22rem; }
+    .leis_dtl_cta_btns { flex-direction: column; gap: .12rem; }
+    .leis_dtl_cta_btn { width: 100%; height: .5rem; font-size: .16rem; }
+    .leis_dtl_hero_arrows { margin-top: .24rem; justify-content: center; gap: .12rem; }
+    .leis_dtl_hero_arrow { width: .4rem; height: .4rem; }
+    .leis_dtl_hero_arrow img { width: .2rem; height: .2rem; }
+    .leis_dtl_hero_card { padding: 0 .26rem .28rem; border-radius: .16rem; }
+    .leis_dtl_hero_card_list li {
+        padding: .22rem 0 .14rem;
+        flex-wrap: wrap;
+        gap: .04rem;
+    }
+    .leis_dtl_hero_card_label { font-size: .15rem; }
+    .leis_dtl_hero_card_value { font-size: .15rem; flex-wrap: wrap; row-gap: .04rem; }
+    .leis_dtl_hero_card_num { font-size: .24rem; margin-right: .06rem; }
+
+    /* ---- 项目概览 ---- */
+    .leis_dtl_overview { padding: .6rem 0; }
+    .leis_dtl_overview_grid { gap: .32rem; margin-bottom: .4rem; }
+    .leis_dtl_overview_left { border-radius: .16rem; }
+    .leis_dtl_overview_play { width: .56rem; height: .56rem; }
+    .leis_dtl_overview_para { font-size: .16rem; line-height: 1.7; margin-bottom: .14rem; }
+    .leis_dtl_overview_para_2 { font-size: .15rem; }
+    .leis_dtl_overview_stats { grid-template-columns: 1fr 1fr; gap: .3rem .24rem; }
+    .leis_dtl_overview_stat { padding-left: .18rem; }
+    .leis_dtl_overview_stat::before { width: .12rem; top: .08rem; }
+    .leis_dtl_overview_stat_label { font-size: .17rem; margin-bottom: .14rem; }
+    .leis_dtl_overview_stat_num { gap: .06rem; align-items: flex-end; }
+    .leis_dtl_overview_stat_value { font-size: .3rem; }
+    .leis_dtl_overview_stat_unit { font-size: .14rem; line-height: 1.3; }
+
+    /* ---- 招商条件 ---- */
+    .leis_dtl_invest { padding: 0 0 .6rem; }
+    .leis_dtl_invest_grid { gap: .32rem; }
+    .leis_dtl_invest_item { padding: .18rem 0; }
+    .leis_dtl_invest_icon,
+    .leis_dtl_invest_icon img { width: .3rem; height: .3rem; }
+    .leis_dtl_invest_label { font-size: .18rem; }
+    .leis_dtl_invest_value { font-size: .15rem; padding-left: .42rem; }
+    .leis_dtl_invest_value strong { font-size: .24rem; }
+    .leis_dtl_invest_text { font-size: .14rem; padding-left: .42rem; line-height: 1.7; }
+    .leis_dtl_invest_image { border-radius: .16rem; }
+
+    /* ---- 项目详情 ---- */
+    .leis_dtl_detail_sec { padding: .6rem 0; }
+    .leis_dtl_detail_intro { margin-bottom: .32rem; padding: 0; }
+    .leis_dtl_detail_intro p { font-size: .16rem; line-height: 1.7; margin-bottom: .14rem; }
+    .leis_dtl_detail_intro p:last-child { font-size: .15rem; }
+    .leis_dtl_detail_slide { aspect-ratio: 4 / 3; border-radius: .16rem; }
+    .leis_dtl_detail_slide + .leis_dtl_detail_slide { margin-top: .2rem; }
+
+    /* ---- 特色优势 ---- */
+    .leis_dtl_advantage { padding: .6rem 0 0; }
+    .leis_dtl_advantage_swiper .swiper-slide {
+        aspect-ratio: 4 / 3;
+        border-radius: .16rem;
+    }
+    .leis_dtl_advantage_arrow img { width: .42rem; height: .42rem; }
+    .leis_dtl_advantage_arrow--prev { left: .12rem; }
+    .leis_dtl_advantage_arrow--next { right: .12rem; }
+    .leis_dtl_advantage_page { bottom: .18rem; font-size: .2rem; }
+    .leis_dtl_advantage_page .current { font-size: .28rem; }
+    .leis_dtl_advantage_page .total { font-size: .18rem; }
+
+    /* ---- 项目图集 ---- */
+    .leis_dtl_photos_sec { padding: .6rem 0; }
+    .leis_dtl_photos_swiper { padding-bottom: .36rem; }
+    .leis_dtl_photo_card { aspect-ratio: 4 / 3; border-radius: .16rem; }
+    .leis_dtl_photo_label { left: .22rem; bottom: .2rem; font-size: .17rem; }
+    .leis_dtl_photos_ctrls { width: auto; gap: .24rem; }
+    .leis_dtl_photos_arrow { width: .36rem; height: .36rem; }
+
+    /* ---- 周边配套 ---- */
+    .leis_dtl_surroundings_sec { padding-bottom: .6rem; }
+    .leis_dtl_surroundings_sec .leis_dtl_sec_title { margin-bottom: .32rem; }
+
+    /* ---- 支持政策 ---- */
+    .leis_dtl_policy_sec { padding: 0 0 .6rem; }
+    .leis_dtl_policy_item {
+        flex-wrap: wrap;
+        padding: .18rem 0;
+        gap: .18rem;
+    }
+    .leis_dtl_policy_item:hover { padding: .18rem .14rem; border-radius: .12rem; }
+    .leis_dtl_policy_thumb {
+        flex: 0 0 1.2rem;
+        width: 1.2rem;
+        height: .84rem;
+        border-radius: .1rem;
+    }
+    .leis_dtl_policy_body { gap: .1rem; }
+    .leis_dtl_policy_tag {
+        height: .26rem;
+        padding: 0 .1rem;
+        font-size: .13rem;
+        border-radius: .2rem;
+    }
+    .leis_dtl_policy_title {
+        font-size: .15rem;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .leis_dtl_policy_btn {
+        flex: 0 0 auto;
+        width: auto;
+        padding: 0 .2rem;
+        height: .36rem;
+        font-size: .13rem;
+        border-radius: .24rem;
+    }
+
+    /* ---- 相关推荐 ---- */
+    .leis_dtl_related_sec { padding: 0 0 .6rem; }
+    .leis_dtl_related_grid { gap: .24rem; }
+    .leis_dtl_related_card { aspect-ratio: 3 / 2; border-radius: .16rem; }
+    .leis_dtl_related_overlay { padding: .5rem .22rem .22rem; }
+    .leis_dtl_related_overlay h3 { width: 65%; font-size: .16rem; line-height: 1.45; }
+    .leis_dtl_related_more { width: .32rem; height: .32rem; }
+    .leis_dtl_related_meta {
+        max-height: 4rem;
+        margin-top: .14rem;
+        font-size: .12rem;
+        gap: .08rem;
+    }
+    .leis_dtl_related_meta_item::before { width: .14rem; height: .14rem; }
+    .leis_dtl_related_meta_item .price_value { font-size: .14rem; }
+
+    /* ---- CTA ---- */
+    .leis_dtl_cta_sec { padding: .8rem 0; }
+    .leis_dtl_cta_title { font-size: .26rem; margin-bottom: .28rem; line-height: 1.5; }
+    .leis_dtl_cta_apply_btn { height: .48rem; padding: 0 .26rem; font-size: .16rem; gap: .08rem; }
+    .leis_dtl_cta_apply_btn img { width: .18rem; height: .18rem; }
 }

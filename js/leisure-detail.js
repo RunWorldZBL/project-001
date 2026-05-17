@@ -6,13 +6,29 @@
 $(function () {
 
     /* ----------------------------------------------------------
-       Fancybox：项目图集弹窗
+       Hero 主图轮播（Swiper：slide 横滑切换）
+       - loop: true 循环切换，箭头不会变 disabled
+       - navigation 绑定 CTA 下方的左右切换按钮
+       - allowTouchMove: false：swiper 处于背景层，避免与上层内容拖拽冲突
     ---------------------------------------------------------- */
-    if (typeof Fancybox !== 'undefined') {
-        Fancybox.bind('[data-fancybox="leis-gallery"]', {
-            Toolbar: { display: ['close', 'counter', 'fullscreen'] }
+    if ($('.leis_dtl_hero_bg.swiper').length) {
+        new Swiper('.leis_dtl_hero_bg.swiper', {
+            loop: true,
+            speed: 600,
+            slidesPerView: 1,
+            spaceBetween: 0,
+            allowTouchMove: false,
+            navigation: {
+                prevEl: '.leis_dtl_hero_arrow_prev',
+                nextEl: '.leis_dtl_hero_arrow_next'
+            }
         });
     }
+
+    /* ----------------------------------------------------------
+       项目图集弹窗：统一由 js/image-popup.js 自动绑定
+       所有 [data-fancybox] 元素共享通用 toolbar / caption / 样式
+    ---------------------------------------------------------- */
 
     /* ----------------------------------------------------------
        收藏按钮：切换激活状态
@@ -22,20 +38,36 @@ $(function () {
     });
 
     /* ----------------------------------------------------------
-       项目详情：通栏 Swiper（藏山/行游 等多张大图）
+       招商条件：手风琴展开/收起
+       点击 head 切换 --active，并切换图标 src（普通 / -act 版本）
     ---------------------------------------------------------- */
-    new Swiper('.leis_dtl_detail_swiper', {
-        slidesPerView: 'auto',
-        spaceBetween: (function () {
-            var fs = parseFloat(getComputedStyle(document.documentElement).fontSize) || 100;
-            return Math.round(0.3 * fs);
-        }()),
-        centeredSlides: true,
-        loop: true,
-        speed: 600,
-        autoplay: { delay: 5000, disableOnInteraction: false },
-        grabCursor: true
+    $(document).on('click', '.leis_dtl_invest_head', function () {
+        var $item = $(this).closest('.leis_dtl_invest_item');
+        if ($item.hasClass('leis_dtl_invest_item--active')) return;
+
+        var $list = $item.closest('.leis_dtl_invest_list');
+
+        // 收起所有项，恢复普通图标
+        $list.find('.leis_dtl_invest_item--active').each(function () {
+            var $prev = $(this);
+            var idx = $prev.data('idx');
+            $prev.find('.leis_dtl_invest_icon img')
+                 .attr('src', 'images/leisure-detail/icon-' + idx + '.svg');
+            $prev.removeClass('leis_dtl_invest_item--active');
+        });
+
+        // 激活当前项，切换激活图标
+        var idx = $item.data('idx');
+        $item.find('.leis_dtl_invest_icon img')
+             .attr('src', 'images/leisure-detail/icon-' + idx + '-act.svg');
+        $item.addClass('leis_dtl_invest_item--active');
     });
+
+    /* ----------------------------------------------------------
+       项目详情：纵向滚动区域（CSS scroll-snap 实现，无需 Swiper）
+       .leis_dtl_detail_scroll 容器高 15.4rem，每张图 8.5rem，间距 0.35rem
+       鼠标悬停后滚轮自动逐张吸附切换
+    ---------------------------------------------------------- */
 
     /* ----------------------------------------------------------
        特色优势：通栏 Swiper + 自定义页码
@@ -55,7 +87,7 @@ $(function () {
         on: {
             init: function () {
                 $advCurrent.text(this.realIndex + 1);
-                $advTotal.text(this.slides.length - 2);
+                $advTotal.text(this.slides.length);
             },
             slideChange: function () {
                 $advCurrent.text(this.realIndex + 1);
@@ -64,24 +96,36 @@ $(function () {
     });
 
     /* ----------------------------------------------------------
-       项目图集：分页 dot + 上下箭头
+       项目图集：Swiper 轮播（每页并排 2 张）
+       pagination 交由 Swiper 内置管理，bulletClass 复用现有 dot 样式
     ---------------------------------------------------------- */
-    var $photoDots = $('.leis_dtl_photos_dot');
-    $photoDots.on('click', function () {
-        $photoDots.removeClass('leis_dtl_photos_dot--active');
-        $(this).addClass('leis_dtl_photos_dot--active');
-    });
+    var photoFs = parseFloat(getComputedStyle(document.documentElement).fontSize) || 100;
 
-    var photoIndex = 0;
-    $('.leis_dtl_photos_arrow--prev').on('click', function () {
-        photoIndex = Math.max(0, photoIndex - 1);
-        $photoDots.removeClass('leis_dtl_photos_dot--active');
-        $photoDots.eq(photoIndex).addClass('leis_dtl_photos_dot--active');
-    });
-    $('.leis_dtl_photos_arrow--next').on('click', function () {
-        photoIndex = Math.min($photoDots.length - 1, photoIndex + 1);
-        $photoDots.removeClass('leis_dtl_photos_dot--active');
-        $photoDots.eq(photoIndex).addClass('leis_dtl_photos_dot--active');
+    new Swiper('.leis_dtl_photos_swiper', {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: Math.round(0.3 * photoFs),
+        loop: false,
+        watchOverflow: false,
+        navigation: {
+            prevEl: '.leis_dtl_photos_arrow--prev',
+            nextEl: '.leis_dtl_photos_arrow--next',
+            disabledClass: 'leis_dtl_photos_arrow--disabled'
+        },
+        pagination: {
+            el: '.leis_dtl_photos_dots',
+            clickable: true,
+            bulletClass: 'leis_dtl_photos_dot',
+            bulletActiveClass: 'leis_dtl_photos_dot--active'
+        },
+        breakpoints: {
+            // ≥ 768px：恢复每屏两张并排
+            768: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                spaceBetween: Math.round(0.6 * photoFs)
+            }
+        }
     });
 
     /* ----------------------------------------------------------

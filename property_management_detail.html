@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="css/swiper-bundle.min.css" />
 <link rel="stylesheet" href="css/aos.css" />
 <link rel="stylesheet" href="css/fancybox.css" />
+<link rel="stylesheet" href="css/image-popup.css" />
+<link rel="stylesheet" href="css/video-popup.css" />
 <link rel="stylesheet" href="css/my.css" />
 <link rel="stylesheet" href="css/platform-pages.css" />
 <link rel="stylesheet" href="css/service-apply.css" />
@@ -71,8 +73,13 @@
 
 <!-- ========== Hero 详情横幅 ========== -->
 <section class="prop_dtl_hero">
-    <div class="prop_dtl_hero_bg">
-        <img src="images/property-detail/banner.jpg" alt="" class="bg_img">
+    <!-- 主图轮播：Swiper，slide 效果，与左右大箭头联动 -->
+    <div class="prop_dtl_hero_bg swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="images/property-detail/banner.jpg" alt="" class="bg_img">
+            </div>
+        </div>
     </div>
 
     <!-- 左右大箭头 -->
@@ -221,7 +228,7 @@
                 <div class="prop_dtl_overview_circle">
                     <img src="images/property-detail/overview-video.png" alt="项目实景">
                 </div>
-                <a href="javascript:;" class="prop_dtl_overview_play" aria-label="播放视频"></a>
+                <a data-video-popup href="videos/project.mp4" data-caption="物业项目视频" class="prop_dtl_overview_play" aria-label="播放视频"></a>
             </div>
 
             <!-- 右侧 6 行 -->
@@ -254,7 +261,7 @@
         </div>
 
         <div class="prop_dtl_overview_more">
-            <a href="javascript:;" class="prop_dtl_more_btn">
+            <a href="javascript:;" class="prop_dtl_more_btn" id="prop_dtl_overview_more_btn">
                 <span class="prop_dtl_more_circle">
                     <img src="images/property-detail/icon-more.svg" alt="">
                 </span>
@@ -263,6 +270,49 @@
         </div>
     </div>
 </section>
+
+<!-- ========== 物业概况-查看更多 弹窗 ========== -->
+<div class="prop_overview_popup" id="prop_overview_popup" aria-hidden="true">
+    <div class="prop_overview_popup__overlay" data-popup-close></div>
+    <div class="prop_overview_popup__dialog" role="dialog" aria-modal="true" aria-labelledby="prop_overview_popup_title">
+        <button class="prop_overview_popup__close" type="button" aria-label="关闭" data-popup-close>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path d="M6 6 L18 18 M18 6 L6 18" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+            </svg>
+        </button>
+        <div class="prop_overview_popup__inner">
+            <div class="prop_overview_popup__title_block">
+                <h3 class="prop_overview_popup__title" id="prop_overview_popup_title">物业概况</h3>
+            </div>
+            <div class="prop_overview_popup__grid">
+                <ul class="prop_overview_popup__list">
+                    <li><span class="prop_overview_popup__label">所处商圈</span><span class="prop_overview_popup__value">石景山区科技创新功能区</span></li>
+                    <li><span class="prop_overview_popup__label">工商注册</span><span class="prop_overview_popup__value">可注册</span></li>
+                    <li><span class="prop_overview_popup__label">可租面积</span><span class="prop_overview_popup__value">3700平方米</span></li>
+                    <li><span class="prop_overview_popup__label">产权年限</span><span class="prop_overview_popup__value">50年</span></li>
+                    <li><span class="prop_overview_popup__label">总层数</span><span class="prop_overview_popup__value">36层</span></li>
+                    <li><span class="prop_overview_popup__label">容积率</span><span class="prop_overview_popup__value">2.0</span></li>
+                    <li><span class="prop_overview_popup__label">车位</span><span class="prop_overview_popup__value">2350个</span></li>
+                    <li><span class="prop_overview_popup__label">有无燃气</span><span class="prop_overview_popup__value">有</span></li>
+                    <li><span class="prop_overview_popup__label">用电类型</span><span class="prop_overview_popup__value">商业用电</span></li>
+                    <li><span class="prop_overview_popup__label">物业公司</span><span class="prop_overview_popup__value">新光天地物业有限公司</span></li>
+                </ul>
+                <ul class="prop_overview_popup__list">
+                    <li><span class="prop_overview_popup__label">装修情况</span><span class="prop_overview_popup__value">精装</span></li>
+                    <li><span class="prop_overview_popup__label">开发商</span><span class="prop_overview_popup__value">远洋地产公司</span></li>
+                    <li><span class="prop_overview_popup__label">可租房源</span><span class="prop_overview_popup__value">3700平方米</span></li>
+                    <li><span class="prop_overview_popup__label">标准层高</span><span class="prop_overview_popup__value">3.3米</span></li>
+                    <li><span class="prop_overview_popup__label">客梯数</span><span class="prop_overview_popup__value">6部</span></li>
+                    <li><span class="prop_overview_popup__label">绿化率</span><span class="prop_overview_popup__value">35%</span></li>
+                    <li><span class="prop_overview_popup__label">朝向</span><span class="prop_overview_popup__value">南</span></li>
+                    <li><span class="prop_overview_popup__label">用水类型</span><span class="prop_overview_popup__value">商业用水</span></li>
+                    <li><span class="prop_overview_popup__label">供暖方式</span><span class="prop_overview_popup__value">集中供暖</span></li>
+                    <li><span class="prop_overview_popup__label">物业费用</span><span class="prop_overview_popup__value">2.8元/平方米</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ========== 招商条件 ========== -->
 <section class="prop_dtl_invest">
@@ -334,302 +384,385 @@
         </div>
 
         <div class="prop_dtl_detail_gallery">
-            <div class="prop_dtl_detail_main">
-                <img src="images/agri-detail/item1.png" alt="项目主图">
+            <div class="prop_dtl_detail_main swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="images/property-detail/detail-1.jpg" alt="项目主图1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/agri-detail/section2-bg.jpg" alt="项目主图2">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/agri-detail/section3-bg.jpg" alt="项目主图3">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/agri-detail/section4-bg.jpg" alt="项目主图4">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/agri-detail/section4-bg.jpg" alt="项目主图5">
+                    </div>
+                </div>
             </div>
-            <div class="prop_dtl_detail_thumbs">
-                <div class="prop_dtl_detail_thumb prop_dtl_detail_thumb--active">
-                    <img src="images/agri-detail/section1-bg.png" alt="项目缩略图1">
+            <div class="prop_dtl_detail_side">
+                <button class="prop_dtl_detail_arrow prop_dtl_detail_arrow--prev" type="button" aria-label="上一张">
+                    <img class="prop_dtl_detail_arrow_normal" src="images/agri-detail/icon-left.png" alt="">
+                    <img class="prop_dtl_detail_arrow_active" src="images/agri-detail/icon-right-active.png" alt="">
+                </button>
+                <div class="prop_dtl_detail_thumbs swiper">
+                    <div class="swiper-wrapper"></div>
                 </div>
-                <div class="prop_dtl_detail_thumb">
-                    <img src="images/agri-detail/section2-bg.jpg" alt="项目缩略图2">
-                </div>
-                <div class="prop_dtl_detail_thumb">
-                    <img src="images/agri-detail/section3-bg.jpg" alt="项目缩略图3">
-                </div>
-                <div class="prop_dtl_detail_thumb">
-                    <img src="images/agri-detail/section4-bg.jpg" alt="项目缩略图4">
-                </div>
+                <button class="prop_dtl_detail_arrow prop_dtl_detail_arrow--next" type="button" aria-label="下一张">
+                    <img class="prop_dtl_detail_arrow_normal" src="images/agri-detail/icon-left.png" alt="">
+                    <img class="prop_dtl_detail_arrow_active" src="images/agri-detail/icon-right-active.png" alt="">
+                </button>
             </div>
         </div>
     </div>
 </section>
+<div class="main-content">
+    <!-- ========== 特色优势 ========== -->
+    <section class="prop_dtl_advantage">
+        <div class="w1480 prop_dtl_advantage_inner" data-aos="fade-up">
+            <div class="prop_dtl_sec_title">
+                <span class="prop_dtl_title_bar"></span>
+                <h2>特色优势</h2>
+            </div>
 
-<!-- ========== 特色优势 ========== -->
-<section class="prop_dtl_advantage">
-    <div class="w1480 prop_dtl_advantage_inner" data-aos="fade-up">
-        <div class="prop_dtl_sec_title">
-            <span class="prop_dtl_title_bar"></span>
-            <h2>特色优势</h2>
-        </div>
-
-        <div class="swiper prop_dtl_adv_swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="prop_dtl_adv_card">
-                        <div class="prop_dtl_adv_head">
-                            <span class="prop_dtl_adv_num">01</span>
-                            <div class="prop_dtl_adv_head_text">
-                                <span class="prop_dtl_adv_subtitle">CORE LOCATION</span>
-                                <h3 class="prop_dtl_adv_title">区位与交通</h3>
+            <div class="swiper prop_dtl_adv_swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="prop_dtl_adv_card">
+                            <div class="prop_dtl_adv_img">
+                                <img src="images/property-detail/detail-1-1.jpg" alt="图片">
                             </div>
                         </div>
-                        <p class="prop_dtl_adv_desc">
-                            紧邻刘娘府北街与金府南路，临近西五环、阜石路等城市主干道；周边汇集地铁 1 号线苹果园站、6 号线杨庄站及在建福寿岭站，多线轨交联动，通勤体验便捷。
-                        </p>
-                        <div class="prop_dtl_adv_img">
-                            <img src="images/agri-detail/section3-banner.jpg" alt="区位与交通">
-                        </div>
                     </div>
-                </div>
 
-                <div class="swiper-slide">
-                    <div class="prop_dtl_adv_card">
-                        <div class="prop_dtl_adv_head">
-                            <span class="prop_dtl_adv_num">02</span>
-                            <div class="prop_dtl_adv_head_text">
-                                <span class="prop_dtl_adv_subtitle">GLOBAL INDUSTRY</span>
-                                <h3 class="prop_dtl_adv_title">产业与配套</h3>
+                    <div class="swiper-slide">
+                        <div class="prop_dtl_adv_card">
+                            <div class="prop_dtl_adv_img">
+                                <img src="images/property-detail/detail-1-1.jpg" alt="图片">
                             </div>
                         </div>
-                        <p class="prop_dtl_adv_desc">
-                            周边环绕宏昌商务园、点石商务公园、西山汇等商业载体，办公与日常生活场景一体化；远洋·乐堤港、万达广场等大型商业中心环伺，构建优质商办综合生态圈。
-                        </p>
-                        <div class="prop_dtl_adv_img">
-                            <img src="images/agri-detail/section4-banner.jpg" alt="产业与配套">
-                        </div>
                     </div>
-                </div>
 
-                <div class="swiper-slide">
-                    <div class="prop_dtl_adv_card">
-                        <div class="prop_dtl_adv_head">
-                            <span class="prop_dtl_adv_num">03</span>
-                            <div class="prop_dtl_adv_head_text">
-                                <span class="prop_dtl_adv_subtitle">SMART OFFICE</span>
-                                <h3 class="prop_dtl_adv_title">智慧办公</h3>
+                    <div class="swiper-slide">
+                        <div class="prop_dtl_adv_card">
+                            <div class="prop_dtl_adv_img">
+                                <img src="images/property-detail/detail-1-1.jpg" alt="图片">
                             </div>
                         </div>
-                        <p class="prop_dtl_adv_desc">
-                            楼宇标配智能门禁、智能照明、远程会议等设施，标准层高 3.3 米，6 部高速客梯及智能化运维体系，全面满足现代商办企业的高效办公需求。
-                        </p>
-                        <div class="prop_dtl_adv_img">
-                            <img src="images/agri-detail/section5-bg.jpg" alt="智慧办公">
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="prop_dtl_adv_ctrls">
-            <div class="prop_dtl_adv_track">
-                <div class="prop_dtl_adv_fill"></div>
+            <div class="prop_dtl_adv_ctrls">
+                <div class="prop_dtl_adv_track">
+                    <div class="prop_dtl_adv_fill"></div>
+                </div>
+                <div class="prop_dtl_adv_arrows">
+                    <button class="prop_dtl_adv_arrow prop_dtl_adv_arrow--prev" aria-label="上一张">
+                        <img class="prop_dtl_adv_arrow_normal" src="images/agri-detail/icon-left.png" alt="">
+                        <img class="prop_dtl_adv_arrow_active" src="images/agri-detail/icon-right-active.png" alt="">
+                    </button>
+                    <button class="prop_dtl_adv_arrow prop_dtl_adv_arrow--next" aria-label="下一张">
+                        <img class="prop_dtl_adv_arrow_normal" src="images/agri-detail/icon-left.png" alt="">
+                        <img class="prop_dtl_adv_arrow_active" src="images/agri-detail/icon-right-active.png" alt="">
+                    </button>
+                </div>
             </div>
-            <div class="prop_dtl_adv_arrows">
-                <button class="prop_dtl_adv_arrow prop_dtl_adv_arrow--prev" aria-label="上一张">
-                    <img src="images/agri-detail/icon-left.svg" alt="">
-                </button>
-                <button class="prop_dtl_adv_arrow prop_dtl_adv_arrow--next" aria-label="下一张">
-                    <img src="images/agri-detail/icon-left.svg" alt="">
-                </button>
+        </div>
+    </section>
+
+    <!-- ========== 项目图集 ========== -->
+    <section class="prop_dtl_photos_sec">
+        <div class="w1480" data-aos="fade-up">
+            <div class="prop_dtl_sec_title">
+                <span class="prop_dtl_title_bar"></span>
+                <h2>项目图集</h2>
             </div>
-        </div>
-    </div>
-</section>
 
-<!-- ========== 项目图集 ========== -->
-<section class="prop_dtl_photos_sec">
-    <div class="w1480" data-aos="fade-up">
-        <div class="prop_dtl_sec_title">
-            <span class="prop_dtl_title_bar"></span>
-            <h2>项目图集</h2>
-        </div>
-
-        <div class="prop_dtl_photos_row">
-            <div class="prop_dtl_photo_card">
-                <a data-fancybox="prop-gallery" href="images/agri-detail/pro-3.png">
-                    <div class="prop_dtl_photo_thumb">
-                        <img src="images/agri-detail/pro-3.png" alt="现场照片">
-                        <div class="prop_dtl_photo_zoom">
-                            <img src="images/agri-detail/icon-big.svg" alt="">
-                        </div>
+            <div class="prop_dtl_photos_swiper swiper">
+                <div class="prop_dtl_photos_row swiper-wrapper">
+                    <div class="prop_dtl_photo_card swiper-slide">
+                        <a data-fancybox="prop-gallery" href="images/agri-detail/pro-3.png">
+                            <div class="prop_dtl_photo_thumb">
+                                <img src="images/agri-detail/pro-3.png" alt="现场照片">
+                                <div class="prop_dtl_photo_zoom">
+                                    <img src="images/property-detail/icon-mag.svg" alt="">
+                                </div>
+                            </div>
+                        </a>
+                        <p class="prop_dtl_photo_label">现场照片</p>
                     </div>
-                </a>
-                <p class="prop_dtl_photo_label">现场照片</p>
-            </div>
-            <div class="prop_dtl_photo_card">
-                <a data-fancybox="prop-gallery" href="images/agri-detail/pro-1.png">
-                    <div class="prop_dtl_photo_thumb">
-                        <img src="images/agri-detail/pro-1.png" alt="效果图">
-                        <div class="prop_dtl_photo_zoom">
-                            <img src="images/agri-detail/icon-big.svg" alt="">
-                        </div>
+                    <div class="prop_dtl_photo_card swiper-slide">
+                        <a data-fancybox="prop-gallery" href="images/agri-detail/pro-1.png">
+                            <div class="prop_dtl_photo_thumb">
+                                <img src="images/agri-detail/pro-1.png" alt="效果图">
+                                <div class="prop_dtl_photo_zoom">
+                                    <img src="images/property-detail/icon-mag.svg" alt="">
+                                </div>
+                            </div>
+                        </a>
+                        <p class="prop_dtl_photo_label">效果图</p>
                     </div>
-                </a>
-                <p class="prop_dtl_photo_label">效果图</p>
-            </div>
-            <div class="prop_dtl_photo_card">
-                <a data-fancybox="prop-gallery" href="images/agri-detail/pro-4.png">
-                    <div class="prop_dtl_photo_thumb">
-                        <img src="images/agri-detail/pro-4.png" alt="平面图（CAD）">
-                        <div class="prop_dtl_photo_zoom">
-                            <img src="images/agri-detail/icon-big.svg" alt="">
-                        </div>
-                    </div>
-                </a>
-                <p class="prop_dtl_photo_label">平面图（CAD）</p>
-            </div>
-        </div>
-
-        <div class="prop_dtl_photos_bar">
-            <div class="prop_dtl_photos_track">
-                <div class="prop_dtl_photos_fill"></div>
-            </div>
-            <div class="prop_dtl_photos_arrows">
-                <button class="prop_dtl_adv_arrow prop_dtl_photos_arrow prop_dtl_photos_arrow--prev" aria-label="上一张">
-                    <img src="images/agri-detail/icon-left.svg" alt="">
-                </button>
-                <button class="prop_dtl_adv_arrow prop_dtl_photos_arrow prop_dtl_photos_arrow--next" aria-label="下一张">
-                    <img src="images/agri-detail/icon-left.svg" alt="">
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== 周边配套 ========== -->
-<section class="prop_dtl_surroundings_sec agri_dtl_surroundings_sec">
-    <div class="w1480" data-aos="fade-up">
-        <div class="agri_dtl_sec_title agri_dtl_sec_title--dark">
-            <span class="agri_dtl_title_bar"></span>
-            <h2>周边配套</h2>
-        </div>
-
-        <div class="agri_dtl_map_wrap">
-            <div class="agri_dtl_map_img">
-                <img src="images/agri-detail/map.jpg" alt="周边地图">
-                <div class="agri_dtl_poi_panel">
-                    <div class="agri_dtl_poi_tabs">
-                        <div class="agri_dtl_poi_tab_head flex"></div>
-                        <div class="agri_dtl_poi_sub_tabs flex"></div>
-                        <ul class="agri_dtl_poi_list"></ul>
+                    <div class="prop_dtl_photo_card swiper-slide">
+                        <a data-fancybox="prop-gallery" href="images/agri-detail/pro-4.png">
+                            <div class="prop_dtl_photo_thumb">
+                                <img src="images/agri-detail/pro-4.png" alt="平面图（CAD）">
+                                <div class="prop_dtl_photo_zoom">
+                                    <img src="images/property-detail/icon-mag.svg" alt="">
+                                </div>
+                            </div>
+                        </a>
+                        <p class="prop_dtl_photo_label">平面图（CAD）</p>
                     </div>
                 </div>
             </div>
-            <p class="agri_dtl_map_disclaimer">*免责声明：与距离相关的数据均来源于百度地图或高德地图等第三方，仅供您参考。</p>
-        </div>
-    </div>
-</section>
 
-<!-- ========== 支持政策 ========== -->
-<section class="prop_dtl_policy_sec agri_dtl_policy_sec">
-    <div class="w1480 agri_dtl_policy_inner" data-aos="fade-up">
-        <div class="agri_dtl_sec_title agri_dtl_sec_title--dark">
-            <span class="agri_dtl_title_bar"></span>
-            <h2>支持政策</h2>
-        </div>
-
-        <div class="agri_dtl_policy_table_wrap">
-            <table class="agri_dtl_policy_table">
-                <thead>
-                    <tr>
-                        <th class="agri_dtl_policy_th--type">文件类型</th>
-                        <th class="agri_dtl_policy_th--date">发布时间</th>
-                        <th class="agri_dtl_policy_th--name">文件名</th>
-                        <th class="agri_dtl_policy_th--op">操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>产业发展政策</td>
-                        <td>2026-03-24</td>
-                        <td>北京农村产权交易所 受理出让申请操作规则（试行）</td>
-                        <td><a href="javascript:;" class="agri_dtl_policy_btn">查看详情</a></td>
-                    </tr>
-                    <tr>
-                        <td>涉农补贴政策</td>
-                        <td>2026-03-20</td>
-                        <td>耕地地力保护补贴</td>
-                        <td><a href="javascript:;" class="agri_dtl_policy_btn">查看详情</a></td>
-                    </tr>
-                    <tr>
-                        <td>税收政策</td>
-                        <td>2026-03-15</td>
-                        <td>我国支持科技创新主要税费优惠政策指引</td>
-                        <td><a href="javascript:;" class="agri_dtl_policy_btn">查看详情</a></td>
-                    </tr>
-                    <tr>
-                        <td>金融支持政策</td>
-                        <td>2026-03-12</td>
-                        <td>北京市中小微企业首次贷款贴息实施细则（2026年修订版）</td>
-                        <td><a href="javascript:;" class="agri_dtl_policy_btn">查看详情</a></td>
-                    </tr>
-                    <tr>
-                        <td>税收政策</td>
-                        <td>2026-03-02</td>
-                        <td>科技创新主要税费优惠政策指引（2025年修订版）</td>
-                        <td><a href="javascript:;" class="agri_dtl_policy_btn">查看详情</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<!-- ========== 相关推荐项目 ========== -->
-<section class="prop_dtl_related_sec">
-    <div class="w1480" data-aos="fade-up">
-        <div class="prop_dtl_sec_title">
-            <span class="prop_dtl_title_bar"></span>
-            <h2>相关推荐项目</h2>
-        </div>
-
-        <article class="prop_dtl_related_card">
-            <div class="prop_dtl_related_thumb">
-                <img src="images/agri-detail/pro-2.png" alt="相关推荐项目">
+            <div class="prop_dtl_photos_bar">
+                <div class="prop_dtl_photos_track">
+                    <div class="prop_dtl_photos_fill"></div>
+                </div>
+                <div class="prop_dtl_photos_arrows">
+                    <button class="prop_dtl_adv_arrow prop_dtl_photos_arrow prop_dtl_photos_arrow--prev" aria-label="上一张">
+                        <img class="prop_dtl_adv_arrow_normal" src="images/agri-detail/icon-left.png" alt="">
+                        <img class="prop_dtl_adv_arrow_active" src="images/agri-detail/icon-right-active.png" alt="">
+                    </button>
+                    <button class="prop_dtl_adv_arrow prop_dtl_photos_arrow prop_dtl_photos_arrow--next" aria-label="下一张">
+                        <img class="prop_dtl_adv_arrow_normal" src="images/agri-detail/icon-left.png" alt="">
+                        <img class="prop_dtl_adv_arrow_active" src="images/agri-detail/icon-right-active.png" alt="">
+                    </button>
+                </div>
             </div>
-            <div class="prop_dtl_related_body">
-                <h3 class="prop_dtl_related_title">
-                    北京市昌平区城南街道凉水河路8号商业楼8-8室1-2层185.7平方米房屋出租
-                </h3>
-                <ul class="prop_dtl_related_meta">
-                    <li>
-                        <i></i>
-                        <span>项目类别：</span>
-                        <span>物业经营管理-商业综合</span>
-                    </li>
-                    <li>
-                        <i></i>
-                        <span>拟出让期限：</span>
-                        <span>5年</span>
-                    </li>
-                    <li>
-                        <i></i>
-                        <span>拟出让方式：</span>
-                        <span>出租</span>
-                    </li>
-                    <li>
-                        <i></i>
-                        <span>拟项目规模：</span>
-                        <span>185.7平方米</span>
-                    </li>
-                    <li>
-                        <i></i>
-                        <span>拟成交金额：</span>
-                        <span class="price_value">948,925.00 元</span>
-                    </li>
-                </ul>
-                <a href="javascript:;" class="prop_dtl_related_btn">
-                    查看详情 ›
-                </a>
-            </div>
-        </article>
-    </div>
-</section>
+        </div>
+    </section>
 
+    <!-- ========== 周边配套 ========== -->
+    <section class="prop_dtl_surroundings_sec agri_dtl_surroundings_sec">
+        <div class="w1480" data-aos="fade-up">
+            <div class="agri_dtl_sec_title agri_dtl_sec_title--dark">
+                <span class="agri_dtl_title_bar"></span>
+                <h2>周边配套</h2>
+            </div>
+
+            <div class="agri_dtl_map_wrap">
+                <div class="agri_dtl_map_img">
+                    <img src="images/agri-detail/map.jpg" alt="周边地图">
+                    <div class="agri_dtl_poi_panel">
+                        <div class="agri_dtl_poi_tabs">
+                            <div class="agri_dtl_poi_tab_head flex"></div>
+                            <div class="agri_dtl_poi_sub_tabs flex"></div>
+                            <ul class="agri_dtl_poi_list"></ul>
+                        </div>
+                    </div>
+                </div>
+                <p class="agri_dtl_map_disclaimer">*免责声明：与距离相关的数据均来源于百度地图或高德地图等第三方，仅供您参考。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 支持政策 ========== -->
+    <section class="prop_dtl_policy_sec agri_dtl_policy_sec">
+        <div class="w1480 agri_dtl_policy_inner" data-aos="fade-up">
+            <div class="agri_dtl_sec_title agri_dtl_sec_title--dark">
+                <span class="agri_dtl_title_bar"></span>
+                <h2>支持政策</h2>
+            </div>
+
+            <div class="agri_dtl_policy_table_wrap">
+                <table class="agri_dtl_policy_table">
+                    <thead>
+                        <tr>
+                            <th class="agri_dtl_policy_th--type">文件类型</th>
+                            <th class="agri_dtl_policy_th--date">发布时间</th>
+                            <th class="agri_dtl_policy_th--name">文件名</th>
+                            <th class="agri_dtl_policy_th--op">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>产业发展政策</td>
+                            <td>2026-03-24</td>
+                            <td>北京农村产权交易所 受理出让申请操作规则（试行）</td>
+                            <td><a href="javascript:;" class="agri_dtl_policy_btn">查看详情</a></td>
+                        </tr>
+                        <tr>
+                            <td>涉农补贴政策</td>
+                            <td>2026-03-20</td>
+                            <td>耕地地力保护补贴</td>
+                            <td><a href="javascript:;" class="agri_dtl_policy_btn">查看详情</a></td>
+                        </tr>
+                        <tr>
+                            <td>税收政策</td>
+                            <td>2026-03-15</td>
+                            <td>我国支持科技创新主要税费优惠政策指引</td>
+                            <td><a href="javascript:;" class="agri_dtl_policy_btn">查看详情</a></td>
+                        </tr>
+                        <tr>
+                            <td>金融支持政策</td>
+                            <td>2026-03-12</td>
+                            <td>北京市中小微企业首次贷款贴息实施细则（2026年修订版）</td>
+                            <td><a href="javascript:;" class="agri_dtl_policy_btn">查看详情</a></td>
+                        </tr>
+                        <tr>
+                            <td>税收政策</td>
+                            <td>2026-03-02</td>
+                            <td>科技创新主要税费优惠政策指引（2025年修订版）</td>
+                            <td><a href="javascript:;" class="agri_dtl_policy_btn">查看详情</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 相关推荐项目 ========== -->
+    <section class="prop_dtl_related_sec">
+        <div class="w1480" data-aos="fade-up">
+            <div class="prop_dtl_sec_title">
+                <span class="prop_dtl_title_bar"></span>
+                <h2>相关推荐项目</h2>
+            </div>
+
+            <div class="prop_dtl_case_list">
+                <!-- 案例项 1（默认展开） -->
+                <article class="prop_dtl_case_item is-open" data-index="0">
+                    <div class="prop_dtl_case_img">
+                        <div class="prop_dtl_case_img_inner">
+                            <img src="images/property-detail/case/homeCase-img1.jpg" alt="案例图1">
+                        </div>
+                        <div class="prop_dtl_case_tip">
+                            <img src="images/property-detail/case/homeCase-map-icon.svg" alt="">
+                            <p>北京-昌平区</p>
+                        </div>
+                    </div>
+                    <div class="prop_dtl_case_txt">
+                        <h3>北京市昌平区城南街道凉水河路8号商业楼8-8室1-2层185.7平方米房屋出租</h3>
+                        <ul class="prop_dtl_case_meta">
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon1.svg" alt=""></i>
+                                <span>项目类别：</span>物业经营管理-商业综合
+                            </li>
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon2.svg" alt=""></i>
+                                <span>拟出让期限：</span>5年
+                            </li>
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon3.svg" alt=""></i>
+                                <span>拟出让方式：</span>出租
+                            </li>
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon4.svg" alt=""></i>
+                                <span>拟项目规模：</span>185.7平方米
+                            </li>
+                            <li class="price_item">
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon5.svg" alt=""></i>
+                                <span>拟成交金额：</span>
+                            </li>
+                        </ul>
+                        <div class="prop_dtl_case_price">948,925.00元</div>
+                        <a href="javascript:;" class="prop_dtl_case_btn">查看详情 ›</a>
+                    </div>
+                    <div class="prop_dtl_case_arrow">
+                        <img src="images/property-detail/case/homeCase-btn.svg" alt="展开">
+                    </div>
+                </article>
+
+                <!-- 案例项 2 -->
+                <article class="prop_dtl_case_item" data-index="1">
+                    <div class="prop_dtl_case_img">
+                        <div class="prop_dtl_case_img_inner">
+                            <img src="images/property-detail/case/homeCase-img11.jpg" alt="案例图2">
+                        </div>
+                        <div class="prop_dtl_case_tip">
+                            <img src="images/property-detail/case/homeCase-map-icon.svg" alt="">
+                            <p>北京-海淀区</p>
+                        </div>
+                    </div>
+                    <div class="prop_dtl_case_txt">
+                        <h3>北京市海淀区中关村软件园配套商务用房3200平方米出租</h3>
+                        <ul class="prop_dtl_case_meta">
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon1.svg" alt=""></i>
+                                <span>项目类别：</span>物业经营管理-写字楼
+                            </li>
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon2.svg" alt=""></i>
+                                <span>拟出让期限：</span>10年
+                            </li>
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon3.svg" alt=""></i>
+                                <span>拟出让方式：</span>出租
+                            </li>
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon4.svg" alt=""></i>
+                                <span>拟项目规模：</span>3200平方米
+                            </li>
+                            <li class="price_item">
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon5.svg" alt=""></i>
+                                <span>拟成交金额：</span>
+                            </li>
+                        </ul>
+                        <div class="prop_dtl_case_price">1,860,000.00元</div>
+                        <a href="javascript:;" class="prop_dtl_case_btn">查看详情 ›</a>
+                    </div>
+                    <div class="prop_dtl_case_arrow">
+                        <img src="images/property-detail/case/homeCase-btn.svg" alt="展开">
+                    </div>
+                </article>
+
+                <!-- 案例项 3 -->
+                <article class="prop_dtl_case_item" data-index="2">
+                    <div class="prop_dtl_case_img">
+                        <div class="prop_dtl_case_img_inner">
+                            <img src="images/property-detail/case/homeCase-img11.jpg" alt="案例图3">
+                        </div>
+                        <div class="prop_dtl_case_tip">
+                            <img src="images/property-detail/case/homeCase-map-icon.svg" alt="">
+                            <p>北京-石景山区</p>
+                        </div>
+                    </div>
+                    <div class="prop_dtl_case_txt">
+                        <h3>北京市石景山区涉农实物资产房地产商办综合用房3700平方米出租</h3>
+                        <ul class="prop_dtl_case_meta">
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon1.svg" alt=""></i>
+                                <span>项目类别：</span>物业经营管理-商业综合
+                            </li>
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon2.svg" alt=""></i>
+                                <span>拟出让期限：</span>5年
+                            </li>
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon3.svg" alt=""></i>
+                                <span>拟出让方式：</span>出租
+                            </li>
+                            <li>
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon4.svg" alt=""></i>
+                                <span>拟项目规模：</span>3700平方米
+                            </li>
+                            <li class="price_item">
+                                <i class="ico"><img src="images/property-detail/case/homeCase-icon5.svg" alt=""></i>
+                                <span>拟成交金额：</span>
+                            </li>
+                        </ul>
+                        <div class="prop_dtl_case_price">2,580,000.00元</div>
+                        <a href="javascript:;" class="prop_dtl_case_btn">查看详情 ›</a>
+                    </div>
+                    <div class="prop_dtl_case_arrow">
+                        <img src="images/property-detail/case/homeCase-btn.svg" alt="展开">
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- 背景 -->
+    <div class="bg-opc"></div>
+</div>
 <!-- ========== CTA 招募区 ========== -->
 <section class="service_apply_sec prop_service_apply_sec">
-    <div class="service_apply_bg"></div>
+    <div class="service_apply_bg" style="background-image: url('images/property-detail/cta.jpg');"></div>
     <div class="service_apply_inner">
         <h2 class="service_apply_title">我们正在寻找优质的合作方</h2>
         <a href="javascript:;" class="service_apply_btn">
@@ -687,6 +820,8 @@
 <script src="js/swiper-bundle.min.js"></script>
 <script src="js/aos.js"></script>
 <script src="js/fancybox.umd.js"></script>
+<script src="js/image-popup.js"></script>
+<script src="js/video-popup.js"></script>
 <script src="js/my.js"></script>
 <script src="js/platform-pages.js"></script>
 <script src="js/property-detail.js"></script>

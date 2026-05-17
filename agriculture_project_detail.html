@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="css/swiper-bundle.min.css" />
 <link rel="stylesheet" href="css/aos.css" />
 <link rel="stylesheet" href="css/fancybox.css" />
+<link rel="stylesheet" href="css/image-popup.css" />
+<link rel="stylesheet" href="css/video-popup.css" />
 <link rel="stylesheet" href="css/my.css" />
 <link rel="stylesheet" href="css/platform-pages.css" />
 <link rel="stylesheet" href="css/service-apply.css" />
@@ -72,8 +74,8 @@
 <section class="agri_dtl_hero">
     <!-- 模糊背景：与主图相同，叠加 blur + 暗色遮罩 -->
     <div class="agri_dtl_hero_bg">
-        <img src="images/agri-detail/hero-main.jpg" alt="" class="bg_img">
-        <!-- <div class="bg_img"></div> -->
+        <img alt="" class="bg_img bg_img_a">
+        <img alt="" class="bg_img bg_img_b">
     </div>
     <div class="agri_dtl_hero_overlay"></div>
 
@@ -116,7 +118,7 @@
                     </div>
 
                     <!-- 主图上层：播放按钮 -->
-                    <a class="agri_dtl_play_btn" href="javascript:;" aria-label="播放视频"></a>
+                    <a data-video-popup href="videos/project.mp4" data-caption="现代农业项目视频" class="agri_dtl_play_btn" aria-label="播放视频"></a>
                     <!-- 左右箭头（叠在主图上） -->
                     <button class="agri_dtl_arrow agri_dtl_arrow_prev" id="heroImgPrev" aria-label="上一张">
                         <img src="images/agri-detail/icon-left.svg" alt="">
@@ -129,23 +131,7 @@
                     <div class="agri_dtl_img_gradient"></div>
 
                     <!-- 缩略图条（叠在主图底部） -->
-                    <div class="agri_dtl_thumb_strip">
-                        <button class="agri_dtl_thumb agri_dtl_thumb--active" data-idx="0">
-                            <img src="images/agri-detail/hero-main.jpg" alt="">
-                        </button>
-                        <button class="agri_dtl_thumb" data-idx="1">
-                            <img src="images/agri-detail/thumb1.jpg" alt="">
-                        </button>
-                        <button class="agri_dtl_thumb" data-idx="2">
-                            <img src="images/agri-detail/thumb2.jpg" alt="">
-                        </button>
-                        <button class="agri_dtl_thumb" data-idx="3">
-                            <img src="images/agri-detail/thumb3.jpg" alt="">
-                        </button>
-                        <button class="agri_dtl_thumb" data-idx="4">
-                            <img src="images/agri-detail/thumb4.jpg" alt="">
-                        </button>
-                    </div>
+                    <div class="agri_dtl_thumb_strip"></div>
                 </div>
             </div><!-- /.agri_dtl_hero_left -->
 
@@ -472,6 +458,8 @@
                         <span>现场照片</span>
                     </div>
                 </a>
+                <!-- 此为隐藏的图片 -->
+                <a data-fancybox="photos-gallery" href="images/agri-detail/pro-2.png" style="display: none;"></a>
             </div>
             <div class="agri_dtl_photo_lg">
                 <a data-fancybox="photos-gallery" href="images/agri-detail/pro-2.png">
@@ -772,6 +760,8 @@
 <script src="js/swiper-bundle.min.js"></script>
 <script src="js/aos.js"></script>
 <script src="js/fancybox.umd.js"></script>
+<script src="js/image-popup.js"></script>
+<script src="js/video-popup.js"></script>
 <script src="js/my.js"></script>
 <script src="js/platform-pages.js"></script>
 <script src="js/agri-detail.js"></script>

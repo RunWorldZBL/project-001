@@ -1,0 +1,189 @@
+/* ============================================================
+   video-popup.css —— 通用视频弹窗（自包含、不依赖 Fancybox）
+
+   视觉与 image-popup 保持一致：
+   - 黑色 80% 蒙层
+   - 右上角深色条 (#292929) [下载] [关闭] 两个按钮
+   - 视频 24px 圆角，水平垂直居中
+   - 底部白色 caption
+   ============================================================ */
+
+.video-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.video-popup.is-open {
+    display: flex;
+    pointer-events: auto;
+}
+
+/* ----------------------------------------------------------
+   1) 蒙层（80% 黑）
+---------------------------------------------------------- */
+.video-popup__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+/* ----------------------------------------------------------
+   2) 右上角深色条 + [下载] [关闭]
+---------------------------------------------------------- */
+.video-popup__toolbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    background: #292929;
+    z-index: 2;
+}
+
+.video-popup__btn {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    transition: background .15s ease;
+}
+
+.video-popup__btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.video-popup__btn:active {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.video-popup__btn svg {
+    display: block;
+    pointer-events: none;
+}
+
+/* ----------------------------------------------------------
+   3) 视频舞台：居中、24px 圆角、自适应
+---------------------------------------------------------- */
+.video-popup__stage {
+    position: relative;
+    z-index: 1;
+    width: min(1100px, 86vw);
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-popup__video {
+    width: 100%;
+    max-height: calc(100vh - 160px);
+    border-radius: 24px;
+    background: #000;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    display: block;
+    object-fit: contain;
+    outline: none;
+}
+
+/* ----------------------------------------------------------
+   4) 错误提示（视频加载失败时显示）
+---------------------------------------------------------- */
+.video-popup__error {
+    display: none;
+    width: 100%;
+    min-height: 360px;
+    max-height: calc(100vh - 160px);
+    border-radius: 24px;
+    background: #1a1a1a;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    padding: 40px 24px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.video-popup__error-icon {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.video-popup__error-text {
+    margin: 0;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.video-popup.has-error .video-popup__video { display: none; }
+.video-popup.has-error .video-popup__error { display: flex; }
+.video-popup.has-error [data-vp-download] { display: none; }
+
+/* ----------------------------------------------------------
+   5) 底部 caption（白色文本）
+---------------------------------------------------------- */
+.video-popup__caption {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    padding: 14px 0 4px;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* ----------------------------------------------------------
+   6) 移动端适配（≤767px）
+---------------------------------------------------------- */
+@media (max-width: 767px) {
+    .video-popup__btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .video-popup__btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .video-popup__stage {
+        width: 92vw;
+    }
+
+    .video-popup__video {
+        border-radius: 12px;
+        max-height: calc(100vh - 120px);
+    }
+
+    .video-popup__error {
+        border-radius: 12px;
+        min-height: 240px;
+        padding: 32px 16px;
+    }
+
+    .video-popup__error-text {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .video-popup__caption {
+        font-size: 15px;
+        line-height: 22px;
+        padding: 10px 12px 4px;
+    }
+}

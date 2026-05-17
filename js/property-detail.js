@@ -5,25 +5,73 @@
 
 $(function () {
 
-    /* ----------------------------------------------------------
-       项目详情：右侧缩略图点击切换主图
-    ---------------------------------------------------------- */
-    $(document).on('click', '.prop_dtl_detail_thumb', function () {
-        var $thumb = $(this);
-        var src = $thumb.find('img').attr('src');
-        $('.prop_dtl_detail_main img').attr('src', src);
-        $('.prop_dtl_detail_thumb').removeClass('prop_dtl_detail_thumb--active');
-        $thumb.addClass('prop_dtl_detail_thumb--active');
-    });
+    function propRem(value) {
+        var fs = parseFloat(getComputedStyle(document.documentElement).fontSize) || 100;
+        return Math.round(value * fs);
+    }
 
     /* ----------------------------------------------------------
-       Fancybox 项目图集弹窗
+       项目详情：主图 Swiper + 右侧缩略图 Swiper
     ---------------------------------------------------------- */
-    if (typeof Fancybox !== 'undefined') {
-        Fancybox.bind('[data-fancybox="prop-gallery"]', {
-            Toolbar: { display: ['close', 'counter', 'fullscreen'] }
+    if ($('.prop_dtl_detail_main').length && $('.prop_dtl_detail_thumbs').length) {
+
+        /* 从主图 slides 收集数据，动态生成缩略图 slides（Swiper init 前执行） */
+        var $thumbWrapper = $('.prop_dtl_detail_thumbs .swiper-wrapper');
+        $('.prop_dtl_detail_main .swiper-slide img').each(function (i) {
+            var src = $(this).attr('src');
+            var alt = $(this).attr('alt') || '';
+            $thumbWrapper.append(
+                '<div class="prop_dtl_detail_thumb swiper-slide' + (i === 0 ? ' prop_dtl_detail_thumb--active' : '') + '">'
+                + '<img src="' + src + '" alt="' + alt + '">'
+                + '</div>'
+            );
+        });
+
+        var detailThumbSwiper = new Swiper('.prop_dtl_detail_thumbs', {
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            spaceBetween: propRem(0.16),
+            watchSlidesProgress: true,
+            grabCursor: true,
+            on: {
+                resize: function () {
+                    this.params.spaceBetween = propRem(0.16);
+                    this.update();
+                }
+            }
+        });
+
+        var detailMainSwiper = new Swiper('.prop_dtl_detail_main', {
+            slidesPerView: 1,
+            speed: 500,
+            on: {
+                slideChange: function () {
+                    var index = this.activeIndex;
+                    $('.prop_dtl_detail_thumb').removeClass('prop_dtl_detail_thumb--active').eq(index).addClass('prop_dtl_detail_thumb--active');
+                    detailThumbSwiper.slideTo(index);
+                }
+            }
+        });
+
+        $(document).on('click', '.prop_dtl_detail_thumb', function () {
+            var index = $(this).index();
+            detailMainSwiper.slideTo(index);
+            detailThumbSwiper.slideTo(index);
+        });
+
+        $('.prop_dtl_detail_arrow--prev').on('click', function () {
+            detailMainSwiper.slidePrev();
+        });
+
+        $('.prop_dtl_detail_arrow--next').on('click', function () {
+            detailMainSwiper.slideNext();
         });
     }
+
+    /* ----------------------------------------------------------
+       项目图集弹窗：统一由 js/image-popup.js 自动绑定
+       所有 [data-fancybox] 元素共享通用 toolbar / caption / 样式
+    ---------------------------------------------------------- */
 
     /* ----------------------------------------------------------
        收藏按钮：点击切换激活状态
@@ -35,11 +83,6 @@ $(function () {
     /* ----------------------------------------------------------
        招商条件：通栏 Swiper + 进度条
     ---------------------------------------------------------- */
-    function propRem(value) {
-        var fs = parseFloat(getComputedStyle(document.documentElement).fontSize) || 100;
-        return Math.round(value * fs);
-    }
-
     function calcInvestOffset() {
         var fs = parseFloat(getComputedStyle(document.documentElement).fontSize) || 100;
         var contentWidth = Math.min(14.8 * fs, window.innerWidth * 0.9);
@@ -108,10 +151,9 @@ $(function () {
 
     var advSwiper = new Swiper('.prop_dtl_adv_swiper', {
         slidesPerView: 'auto',
-        spaceBetween: (function () {
-            var fs = parseFloat(getComputedStyle(document.documentElement).fontSize) || 100;
-            return Math.round(0.4 * fs);
-        }()),
+        spaceBetween: propRem(0.4),
+        slidesOffsetBefore: calcInvestOffset(),
+        slidesOffsetAfter: calcInvestOffset(),
         watchSlidesProgress: true,
         freeMode: { enabled: true, momentum: true },
         grabCursor: true,
@@ -122,42 +164,105 @@ $(function () {
         on: {
             init: function () { setAdvProgress(this.progress || 0); },
             progress: function () { setAdvProgress(this.progress); },
-            slideChange: function () { setAdvProgress(this.progress); }
+            slideChange: function () { setAdvProgress(this.progress); },
+            resize: function () {
+                var offset = calcInvestOffset();
+                this.params.spaceBetween = propRem(0.4);
+                this.params.slidesOffsetBefore = offset;
+                this.params.slidesOffsetAfter = offset;
+                this.update();
+            }
         }
     });
 
     /* ----------------------------------------------------------
-       项目图集：进度条 + 翻页（暂时静态展示，箭头点击为占位）
+       项目图集：中间主图轮播 + 进度条
+       ⚠ Swiper 10 的 loop 算法要求 slides 数量 > slidesPerView 才能正常克隆缓冲位。
+       本节只有 3 张原图、slidesPerView 也是 3，会出现“右侧到头不循环 / 左侧 wrapper
+       先闪到最左再滚回”的 bug。解决办法：在初始化前把原 slide 物理复制 2 份（共 9 张），
+       让 loop 有足够素材。复制片剥掉 data-fancybox，并把点击转发到原图，避免图集重复。
     ---------------------------------------------------------- */
-    $('.prop_dtl_photos_arrow').on('click', function () {
-        var $arrow = $(this);
-        var $fill = $('.prop_dtl_photos_fill');
-        var current = parseInt($fill[0].style.width || '30', 10);
-        if ($arrow.hasClass('prop_dtl_photos_arrow--next')) {
-            current = Math.min(100, current + 20);
-        } else {
-            current = Math.max(20, current - 20);
-        }
-        $fill.css('width', current + '%');
-    });
+    var $photosFill = $('.prop_dtl_photos_fill');
+    var $photosWrapper = $('.prop_dtl_photos_swiper .swiper-wrapper');
+    var $photosOrigSlides = $photosWrapper.children('.swiper-slide');
+    var photosTotal = $photosOrigSlides.length;
 
-    /* ----------------------------------------------------------
-       Hero 主图左右切换按钮（占位：切换主图与缩略图同步演示）
-    ---------------------------------------------------------- */
-    var heroBgImages = [
-        'images/agri-detail/hero-main.jpg',
-        'images/agri-detail/thumb1.jpg',
-        'images/agri-detail/thumb2.jpg',
-        'images/agri-detail/thumb3.jpg'
-    ];
-    var heroBgIndex = 0;
-    function showHeroBg(idx) {
-        idx = (idx + heroBgImages.length) % heroBgImages.length;
-        heroBgIndex = idx;
-        $('.prop_dtl_hero_bg .bg_img').attr('src', heroBgImages[idx]);
+    function setPhotosProgressByIndex(index) {
+        var progress = photosTotal > 1 ? index / (photosTotal - 1) : 1;
+        var pct = Math.max(8, Math.min(100, Math.round(progress * 100)));
+        $photosFill.css('width', pct + '%');
     }
-    $(document).on('click', '.prop_dtl_arrow_prev', function () { showHeroBg(heroBgIndex - 1); });
-    $(document).on('click', '.prop_dtl_arrow_next', function () { showHeroBg(heroBgIndex + 1); });
+
+    if ($('.prop_dtl_photos_swiper').length && photosTotal > 0) {
+
+        if (photosTotal < 7) {
+            for (var dupRound = 0; dupRound < 2; dupRound++) {
+                $photosOrigSlides.each(function () {
+                    var $clone = $(this).clone();
+                    $clone.addClass('prop_dtl_photo_card--dup');
+                    $clone.find('[data-fancybox]').removeAttr('data-fancybox');
+                    $photosWrapper.append($clone);
+                });
+            }
+        }
+
+        $(document).on('click', '.prop_dtl_photo_card--dup a', function (e) {
+            e.preventDefault();
+            var $clone = $(this).closest('.prop_dtl_photo_card--dup');
+            var dupIdx = $photosWrapper.children('.prop_dtl_photo_card--dup').index($clone);
+            var origIdx = ((dupIdx % photosTotal) + photosTotal) % photosTotal;
+            var origLink = $photosOrigSlides.eq(origIdx).find('a[data-fancybox]')[0];
+            if (origLink) origLink.click();
+        });
+
+        new Swiper('.prop_dtl_photos_swiper', {
+            slidesPerView: 3,
+            centeredSlides: true,
+            loop: true,
+            spaceBetween: propRem(0.4),
+            speed: 500,
+            watchSlidesProgress: true,
+            grabCursor: true,
+            navigation: {
+                nextEl: '.prop_dtl_photos_arrow--next',
+                prevEl: '.prop_dtl_photos_arrow--prev'
+            },
+            on: {
+                init: function () {
+                    var realIdx = ((this.realIndex || 0) % photosTotal + photosTotal) % photosTotal;
+                    setPhotosProgressByIndex(realIdx);
+                },
+                slideChange: function () {
+                    var realIdx = ((this.realIndex || 0) % photosTotal + photosTotal) % photosTotal;
+                    setPhotosProgressByIndex(realIdx);
+                },
+                resize: function () {
+                    this.params.spaceBetween = propRem(0.4);
+                    this.update();
+                }
+            }
+        });
+    }
+
+    /* ----------------------------------------------------------
+       Hero 主图轮播（Swiper：slide 横滑切换）
+       - loop: true 循环，箭头不会变 disabled
+       - 大箭头通过 navigation 绑定 prev / next
+       - allowTouchMove: false 因为 swiper 在最底层，避免与上层内容拖拽冲突
+    ---------------------------------------------------------- */
+    if ($('.prop_dtl_hero_bg.swiper').length) {
+        new Swiper('.prop_dtl_hero_bg.swiper', {
+            loop: true,
+            speed: 600,
+            slidesPerView: 1,
+            spaceBetween: 0,
+            allowTouchMove: false,
+            navigation: {
+                prevEl: '.prop_dtl_arrow_prev',
+                nextEl: '.prop_dtl_arrow_next'
+            }
+        });
+    }
 
     /* ----------------------------------------------------------
        周边配套：两层 Tab 切换（与 agri 详情页一致的数据结构）
@@ -299,5 +404,79 @@ $(function () {
         var cat = $poiSubTabs.attr('data-cat');
         renderPoiList(cat, $btn.data('sub'));
     });
+
+    /* ----------------------------------------------------------
+       相关推荐项目 —— 手风琴开合
+       1. 桌面端 (>=1025px)：鼠标悬停切换展开项，点击同样可触发；
+          始终保证有且仅有一项展开（互斥）。
+       2. 移动端 (<1025px)：全部展开，无交互。
+       3. 开合通过 .is-open 类切换，配合 CSS 过渡完成动画。
+    ---------------------------------------------------------- */
+    (function initCaseAccordion() {
+        var $list = $('.prop_dtl_case_list');
+        if (!$list.length) return;
+
+        var $items = $list.find('.prop_dtl_case_item');
+
+        function openItem($target) {
+            if (!$target || !$target.length) return;
+            if ($target.hasClass('is-open')) return;
+            $items.removeClass('is-open');
+            $target.addClass('is-open');
+        }
+
+        // 默认确保首项展开
+        if (!$items.filter('.is-open').length) {
+            $items.eq(0).addClass('is-open');
+        }
+
+        var isDesktop = function () { return window.matchMedia('(min-width: 1025px)').matches; };
+
+        $items.on('mouseenter', function () {
+            if (!isDesktop()) return;
+            openItem($(this));
+        });
+
+        $items.on('click', function (e) {
+            if ($(e.target).closest('.prop_dtl_case_btn').length) return;
+            openItem($(this));
+        });
+    })();
+
+    /* ----------------------------------------------------------
+       物业概况 - 查看更多 弹窗
+       打开方式：点击 #prop_dtl_overview_more_btn
+       关闭方式：点击遮罩 / 关闭按钮 / ESC
+    ---------------------------------------------------------- */
+    (function initOverviewPopup() {
+        var $popup = $('#prop_overview_popup');
+        var $trigger = $('#prop_dtl_overview_more_btn');
+        if (!$popup.length || !$trigger.length) return;
+
+        function openPopup() {
+            $popup.addClass('is-open').attr('aria-hidden', 'false');
+            $('body').addClass('prop_overview_popup_open');
+        }
+
+        function closePopup() {
+            $popup.removeClass('is-open').attr('aria-hidden', 'true');
+            $('body').removeClass('prop_overview_popup_open');
+        }
+
+        $trigger.on('click', function (e) {
+            e.preventDefault();
+            openPopup();
+        });
+
+        $popup.on('click', '[data-popup-close]', function () {
+            closePopup();
+        });
+
+        $(document).on('keydown.propOverviewPopup', function (e) {
+            if (e.key === 'Escape' && $popup.hasClass('is-open')) {
+                closePopup();
+            }
+        });
+    })();
 
 });

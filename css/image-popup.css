@@ -1,0 +1,227 @@
+/* ============================================================
+   image-popup.css —— 通用图集弹窗（覆盖 Fancybox v5 默认 UI）
+   设计稿：项目图集-弹窗 (Figma node 562:5660)
+   - 黑色 80% 蒙层
+   - 左上角浅白计数器 "X / Y"
+   - 右上角深色条 (#292929) 仅 [下载] [关闭] 两个按钮
+   - 左右圆形蓝色导航按钮 (#165DFF + 1.25px 白描边)
+   - 图片 24px 圆角
+   - 底部白色 caption
+   依赖：Fancybox v5 (css/fancybox.css 之后引入)
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1) 背景蒙层：纯黑 80%
+---------------------------------------------------------- */
+.fancybox__container {
+    --fancybox-bg: rgba(0, 0, 0, 0.8);
+    --fancybox-color: #fff;
+    --fancybox-hover-color: #fff;
+}
+
+/* ----------------------------------------------------------
+   2) 顶部 toolbar：左计数器、右深色按钮条
+   设为绝对定位浮在顶部，这样图片与左右导航按钮均以整个视口为中心，
+   与 Figma 设计稿（按钮垂直居中于 1080 视口）保持一致。
+---------------------------------------------------------- */
+.fancybox__toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    background: transparent;
+    text-shadow: none;
+    pointer-events: none;
+}
+
+.fancybox__toolbar > * { pointer-events: auto; }
+
+.fancybox__toolbar__column.is-left {
+    padding: 17px 30px;
+    flex-grow: 1;
+}
+
+.fancybox__toolbar__column.is-middle { display: none; }
+
+.fancybox__toolbar__column.is-right {
+    background: #292929;
+    padding: 0;
+    flex-grow: 0;
+    flex-wrap: nowrap;
+    align-self: flex-start;
+}
+
+/* 计数器 "X / Y" */
+.fancybox__infobar {
+    color: #fff;
+    opacity: 0.5;
+    font-size: 16px;
+    line-height: 32px;
+    font-weight: 400;
+    background: transparent !important;
+    padding: 0;
+    text-shadow: none;
+    user-select: none;
+}
+
+/* 右上角按钮（下载 / 关闭） */
+.fancybox__toolbar .f-button {
+    --f-button-width: 44px;
+    --f-button-height: 44px;
+    --f-button-bg: transparent;
+    --f-button-hover-bg: rgba(255, 255, 255, 0.12);
+    --f-button-active-bg: rgba(255, 255, 255, 0.18);
+    --f-button-color: #fff;
+    --f-button-hover-color: #fff;
+    --f-button-svg-width: 20px;
+    --f-button-svg-height: 20px;
+    --f-button-svg-stroke-width: 2;
+    --f-button-svg-filter: none;
+    border-radius: 0;
+    border: 0;
+}
+
+.fancybox__toolbar .f-button svg {
+    stroke: #fff;
+    fill: none;
+}
+
+/* ----------------------------------------------------------
+   3) 左右导航按钮：圆形蓝色 + 白描边
+---------------------------------------------------------- */
+.fancybox__nav {
+    --f-button-width: 52px;
+    --f-button-height: 52px;
+    --f-button-border-radius: 50%;
+    --f-button-bg: #165DFF;
+    --f-button-hover-bg: #0B4CA1;
+    --f-button-active-bg: #0B4CA1;
+    --f-button-color: #fff;
+    --f-button-hover-color: #fff;
+    --f-button-svg-filter: none;
+    --f-button-svg-disabled-opacity: 0.5;
+    --f-button-next-pos: 24px;
+    --f-button-prev-pos: 24px;
+}
+
+.fancybox__nav .f-button.is-prev,
+.fancybox__nav .f-button.is-next {
+    border: 1.25px solid #fff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    /* 用 flex 居中 ::after 图标 */
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.fancybox__nav .f-button.is-prev:hover,
+.fancybox__nav .f-button.is-next:hover {
+    background-color: #0B4CA1 !important;
+    border-color: #fff !important;
+}
+
+/* 隐藏 Fancybox 默认的内联 SVG（默认那个偏小且形状奇怪），改用项目内置的干净 chevron 图标 */
+.fancybox__nav .f-button.is-prev svg,
+.fancybox__nav .f-button.is-next svg {
+    display: none !important;
+}
+
+.fancybox__nav .f-button.is-prev::after,
+.fancybox__nav .f-button.is-next::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    pointer-events: none;
+}
+
+.fancybox__nav .f-button.is-prev::after {
+    background-image: url('../images/agri-detail/icon-left.svg');
+}
+
+.fancybox__nav .f-button.is-next::after {
+    background-image: url('../images/agri-detail/icon-right.svg');
+}
+
+.fancybox__nav .f-button[disabled]::after { opacity: 0.5; }
+
+/* ----------------------------------------------------------
+   4) 图片：24px 圆角
+---------------------------------------------------------- */
+.fancybox__slide.has-image > .fancybox__content {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+.fancybox__slide.has-image > .fancybox__content > picture > img,
+.fancybox__slide.has-image > .fancybox__content > img,
+.fancybox-image {
+    border-radius: 24px;
+}
+
+/* 隐藏 slide 内置的右上角小关闭按钮（has-close-btn 兜底） */
+.fancybox__slide > .f-button.is-close-btn,
+.fancybox__content > .f-button.is-close-btn { display: none !important; }
+
+/* 防止 .has-close-btn 类自动留出 40px 顶部内边距 */
+.fancybox__container:not(.is-compact) .fancybox__slide.has-close-btn { padding-top: 0; }
+
+/* ----------------------------------------------------------
+   5) 底部 caption（白色文本）
+---------------------------------------------------------- */
+.fancybox__caption {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    padding: 14px 0 4px;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    opacity: 1;
+}
+
+.is-compact .fancybox__footer { background: transparent; }
+.is-compact .fancybox__footer .fancybox__caption { padding: 12px; }
+
+/* ----------------------------------------------------------
+   6) 移动端适配（≤767px）
+---------------------------------------------------------- */
+@media (max-width: 767px) {
+    .fancybox__toolbar__column.is-left { padding: 10px 16px; }
+
+    .fancybox__infobar { font-size: 14px; line-height: 24px; }
+
+    .fancybox__toolbar .f-button {
+        --f-button-width: 36px;
+        --f-button-height: 36px;
+        --f-button-svg-width: 18px;
+        --f-button-svg-height: 18px;
+    }
+
+    .fancybox__nav {
+        --f-button-width: 40px;
+        --f-button-height: 40px;
+        --f-button-next-pos: 8px;
+        --f-button-prev-pos: 8px;
+    }
+
+    .fancybox__nav .f-button.is-prev::after,
+    .fancybox__nav .f-button.is-next::after {
+        width: 18px;
+        height: 18px;
+    }
+
+    .fancybox__caption {
+        font-size: 15px;
+        line-height: 22px;
+        padding: 10px 12px 4px;
+    }
+
+    .fancybox__slide.has-image > .fancybox__content { border-radius: 12px; }
+    .fancybox-image { border-radius: 12px; }
+}

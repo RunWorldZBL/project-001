@@ -55,11 +55,17 @@
     overflow: hidden;
 }
 .agri_dtl_hero_bg .bg_img {
+    position: absolute;
+    top: -5%;
+    left: -5%;
     width: 110%;
     height: 110%;
     object-fit: cover;
     filter: blur(50px);
+    transition: opacity .8s ease;
 }
+.agri_dtl_hero_bg .bg_img_a { z-index: 1; opacity: 0; }
+.agri_dtl_hero_bg .bg_img_b { z-index: 2; opacity: 0; }
 
 /* ---- 深色半透渐变遮罩 ---- */
 .agri_dtl_hero_overlay {
@@ -96,6 +102,7 @@
     font-size: .16rem;
     color: rgba(255,255,255,.75);
     margin-bottom: .68rem;
+    z-index: 2;
 }
 .agri_dtl_breadcrumb .icon-home {
     width: .16rem;
@@ -209,10 +216,16 @@
     z-index: 5;
     bottom: .2rem;
     left: .2rem;
+    right: .2rem;
     display: flex;
     gap: .1rem;
     align-items: flex-end;
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
+.agri_dtl_thumb_strip::-webkit-scrollbar { display: none; }
 
 /* 普通缩略图：Figma 144×102px */
 .agri_dtl_thumb {
@@ -554,7 +567,7 @@
    项目详情  (Figma: y=2830, h=1161, 白底)
    ============================================================ */
 .agri_dtl_detail_sec {
-    padding: .8rem 0;
+    padding: .8rem 0 0;
     background: #fff;
 }
 .agri_dtl_detail_text {
@@ -662,6 +675,7 @@
     align-items: center;
     gap: .37rem;
     margin-top: .4rem;
+    padding-bottom: 0.8rem;
 }
 
 /* 分页点（Swiper pagination 容器） */
@@ -702,6 +716,7 @@
     height: 100%;
     display: block;
     transition: opacity .25s;
+    border-radius: 50%;
 }
 .agri_dtl_gallery_arrow_active {
     position: absolute;
@@ -1494,7 +1509,7 @@
     .agri_dtl_invest_long_line { margin-top: .3rem; }
 
     /* ---- 项目详情 ---- */
-    .agri_dtl_detail_sec { padding: .6rem 0; }
+    .agri_dtl_detail_sec { padding: .6rem 0 0; }
     .agri_dtl_detail_text { font-size: .17rem; margin-bottom: .3rem; }
     .agri_dtl_gallery_wrap { padding-top: .3rem; }
     .agri_dtl_gallery_swiper { overflow: hidden; padding: 0; }
@@ -1716,7 +1731,7 @@
     .agri_dtl_invest_long_line { margin-top: .22rem; }
 
     /* ---- 项目详情 ---- */
-    .agri_dtl_detail_sec { padding: .5rem 0; }
+    .agri_dtl_detail_sec { padding: .5rem 0 0; }
     .agri_dtl_detail_text {
         font-size: .15rem;
         line-height: 1.7;
